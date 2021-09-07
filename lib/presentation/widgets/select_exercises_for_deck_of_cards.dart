@@ -187,7 +187,7 @@ class _SelectExercisesForDeckOfCards
                             color: const Color(0xFFe0e0e0),
                             child:
                             new Text(
-                              "Random Exercises",
+                              "Randomise",
                               style: new TextStyle(fontSize:12.0,
                                   color: const Color(0xFF000000),
                                   fontWeight: FontWeight.w200,

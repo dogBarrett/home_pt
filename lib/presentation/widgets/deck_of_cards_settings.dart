@@ -49,7 +49,7 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
             size: 16,
           ),
           onPressed: () {
-            _onWillPop;
+            _onWillPop();
             //Navigator.of(context).pop();
           },
         ),
@@ -112,7 +112,7 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
                           child: new Text(
                             "10 reps",
                             style: new TextStyle(
-                                fontSize: 12.0,
+                                fontSize: 10.0,
                                 color: const Color(0xFF000000),
                                 fontWeight: isPicture10
                                     ? FontWeight.w800
@@ -130,7 +130,7 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
                           child: new Text(
                             "Card value",
                             style: new TextStyle(
-                                fontSize: 12.0,
+                                fontSize: 10.0,
                                 color: const Color(0xFF000000),
                                 fontWeight: isPicturePicture
                                     ? FontWeight.w800
