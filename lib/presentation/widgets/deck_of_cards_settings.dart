@@ -48,10 +48,7 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
             Icons.arrow_back_ios,
             size: 16,
           ),
-          onPressed: () {
-            _onWillPop();
-            //Navigator.of(context).pop();
-          },
+          onPressed: () {},
         ),
       ),
       body: new Container(
@@ -149,7 +146,7 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
                     style: new TextStyle(
                         fontSize: 12.0,
                         color: const Color(0xFF000000),
-                        fontWeight: FontWeight.w200,
+                        fontWeight: FontWeight.w400,
                         fontFamily: "Roboto"),
                   ))
             ]),

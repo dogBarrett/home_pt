@@ -62,7 +62,6 @@ class _SelectExercisesForDeckOfCards
                 new DropdownButton<String>(
                   isExpanded: true,
                   value: exercise1,
-                  hint: Text("Select exercise for Spades"),
                   icon: const Icon(Icons.arrow_drop_down),
                   iconSize: 24,
                   elevation: 16,
@@ -71,12 +70,12 @@ class _SelectExercisesForDeckOfCards
                     height: 2,
                     color: Colors.deepPurpleAccent,
                   ),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      exercise1 = newValue!;
+                  onChanged: (newValue) {
+                      exercise1 = newValue.toString();
                       updateValues();
+                      setState(() {
 
-                    });
+                      });
                   },
                   items: deckOfCardsExercises()
                       .map<DropdownMenuItem<String>>((String value) {
@@ -92,7 +91,6 @@ class _SelectExercisesForDeckOfCards
                 new DropdownButton<String>(
                   value: exercise2,
                   isExpanded: true,
-                  hint: Text("Select exercise for Clubs"),
                   icon: const Icon(Icons.arrow_drop_down),
                   iconSize: 24,
                   elevation: 16,
@@ -121,7 +119,6 @@ class _SelectExercisesForDeckOfCards
                 new DropdownButton<String>(
                   value: exercise3,
                   isExpanded: true,
-                  hint: Text("Select exercise for Diamonds"),
                   icon: const Icon(Icons.arrow_drop_down),
                   iconSize: 24,
                   elevation: 16,
@@ -131,9 +128,10 @@ class _SelectExercisesForDeckOfCards
                     color: Colors.deepPurpleAccent,
                   ),
                   onChanged: (String? newValue) {
-                    setState(() {
+
                       exercise3 = newValue!;
                       updateValues();
+                      setState(() {
                     });
                   },
                   items: deckOfCardsExercises()
@@ -150,7 +148,6 @@ class _SelectExercisesForDeckOfCards
                 new DropdownButton<String>(
                   value: exercise4,
                   isExpanded: true,
-                  hint: Text("Select exercise for Hearts"),
                   icon: const Icon(Icons.arrow_drop_down),
                   iconSize: 24,
                   elevation: 16,
@@ -190,7 +187,7 @@ class _SelectExercisesForDeckOfCards
                               "Randomise",
                               style: new TextStyle(fontSize:12.0,
                                   color: const Color(0xFF000000),
-                                  fontWeight: FontWeight.w200,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: "Roboto"),
                             )
                         ),
@@ -202,7 +199,7 @@ class _SelectExercisesForDeckOfCards
                               "Continue",
                               style: new TextStyle(fontSize:12.0,
                                   color: const Color(0xFF000000),
-                                  fontWeight: FontWeight.w200,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: "Roboto"),
                             )
                         ),
@@ -219,10 +216,10 @@ class _SelectExercisesForDeckOfCards
 
   void updateValues() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('deckOfCardsExercise1', exercise1);
-    await prefs.setString('deckOfCardsExercise2', exercise2);
-    await prefs.setString('deckOfCardsExercise3', exercise3);
-    await prefs.setString('deckOfCardsExercise4', exercise4);
+    prefs.setString('deckOfCardsExercise1', exercise1);
+    prefs.setString('deckOfCardsExercise2', exercise2);
+    prefs.setString('deckOfCardsExercise3', exercise3);
+    prefs.setString('deckOfCardsExercise4', exercise4);
 
   }
 

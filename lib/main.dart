@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:home_pt/helpers/initialise.dart';
 import 'package:home_pt/presentation/widgets/deck_of_cards.dart';
 import 'package:home_pt/presentation/widgets/deck_of_cards_settings.dart';
+import 'package:home_pt/presentation/widgets/loading_page.dart';
 import 'package:home_pt/presentation/widgets/select_exercises_for_deck_of_cards.dart';
 
 void main() {
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.indigo,
       ),
-      home: DeckOfCardsSettings(),
+      home: LoadingPage(),
     );
   }
 }

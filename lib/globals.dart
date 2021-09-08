@@ -30,7 +30,7 @@ import 'package:flutter/material.dart';
 
 //exerciseName[0] = "[Select Exercise...]";
 //Global.deckOfCardsSuit[0] = "";
-//globals.deckOfCards[0] = true;
+//globals.deckOfCards[0] = true;`
 //Global.HIIT[0] = true;
 //Global.circuit[0] = true;
 //Global.circuitNumber[0] = 0;
