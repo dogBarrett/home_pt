@@ -58,7 +58,7 @@ class _DeckOfCards extends State<DeckOfCards> {
               new InkWell(
                 child: Container(
                   child: _getCardImage(),
-                  height: 350,
+                  height: 300,
                 ),
                 onTap: () {
                   if (numberOfCardsLeft > 1) {
