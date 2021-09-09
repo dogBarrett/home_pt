@@ -31,8 +31,34 @@ class _SelectExercisesForDeckOfCards
   String exercise3 = "Squats";
   String exercise4 = "Sit-ups";
 
+  void randomiseExercises(){
+    int count = deckOfCardsExercises().length;
+    List<int> ex = [0, 0, 0, 0];
+    int currentInt = 0;
+
+    ex[0] = randomNumber.nextInt(count);
+    do{
+      ex[1] = randomNumber.nextInt(count);
+    }while (ex[1] == ex[0]);
+    do{
+      ex[2] = randomNumber.nextInt(count);
+    }while (ex[2] == ex[0] || ex[2] == ex[1]);
+    do{
+      ex[3] = randomNumber.nextInt(count);
+    }while (ex[3] == ex[0] || ex[3] == ex[1] || ex[3] == ex[2]);
+
+    exercise1 = getDeckOfCardsExercises(ex[0]);
+    exercise2 = getDeckOfCardsExercises(ex[1]);
+    exercise3 = getDeckOfCardsExercises(ex[2]);
+    exercise4 = getDeckOfCardsExercises(ex[3]);
+    setState(() {
+
+    });
+    updateValues();
+
+  }
+
   Widget build(BuildContext context) {
-    randomiseExercises();
     return new Scaffold(
         appBar: new AppBar(
           title: new Text('Deck of Cards'),
@@ -100,10 +126,11 @@ class _SelectExercisesForDeckOfCards
                     color: Colors.deepPurpleAccent,
                   ),
                   onChanged: (String? newValue) {
-                    setState(() {
                       exercise2 = newValue!;
                       updateValues();
-                    });
+                      setState(() {
+
+                      });
                   },
                   items: deckOfCardsExercises()
                       .map<DropdownMenuItem<String>>((String value) {
@@ -157,10 +184,11 @@ class _SelectExercisesForDeckOfCards
                     color: Colors.deepPurpleAccent,
                   ),
                   onChanged: (String? newValue) {
-                    setState(() {
                       exercise4 = newValue!;
                       updateValues();
-                    });
+                      setState(() {
+
+                      });
                   },
                   items: deckOfCardsExercises()
                       .map<DropdownMenuItem<String>>((String value) {
@@ -223,32 +251,7 @@ class _SelectExercisesForDeckOfCards
 
   }
 
-  void randomiseExercises(){
-    int count = deckOfCardsExercises().length;
-    List<int> ex = [0, 0, 0, 0];
-    int currentInt = 0;
 
-    ex[0] = randomNumber.nextInt(count);
-    do{
-      ex[1] = randomNumber.nextInt(count);
-    }while (ex[1] == ex[0]);
-    do{
-      ex[2] = randomNumber.nextInt(count);
-    }while (ex[2] == ex[0] || ex[2] == ex[1]);
-    do{
-      ex[3] = randomNumber.nextInt(count);
-    }while (ex[3] == ex[0] || ex[3] == ex[1] || ex[3] == ex[2]);
-
-    exercise1 = getDeckOfCardsExercises(ex[0]);
-    exercise2 = getDeckOfCardsExercises(ex[1]);
-    exercise3 = getDeckOfCardsExercises(ex[2]);
-    exercise4 = getDeckOfCardsExercises(ex[3]);
-    setState(() {
-
-    });
-    updateValues();
-
-  }
 
   void continueButton(){
     updateValues();

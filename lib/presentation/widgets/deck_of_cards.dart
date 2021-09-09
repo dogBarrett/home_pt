@@ -1,8 +1,11 @@
 import 'dart:core';
 import 'dart:math';
 import 'package:home_pt/globals.dart' as globals;
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 
 import 'package:flutter/material.dart';
+import 'package:home_pt/helpers/ad_helper.dart';
 import 'package:home_pt/helpers/getCard.dart';
 import 'package:home_pt/presentation/widgets/congratulations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,7 +33,24 @@ class _DeckOfCards extends State<DeckOfCards> {
 
   var randomNumber = new Random();
 
+  Future<InitializationStatus> _initGoogleMobileAds() {
+    // TODO: Initialize Google Mobile Ads SDK
+    return MobileAds.instance.initialize();
+  }
+
+  // TODO: Add _interstitialAd
+  InterstitialAd? _interstitialAd;
+
+  // TODO: Add _isInterstitialAdReady
+  bool _isInterstitialAdReady = false;
+
+
+
   Widget build(BuildContext context) {
+    // TODO: Load an Interstitial Ad
+    if (!_isInterstitialAdReady) {
+    _loadInterstitialAd();
+    }
     getPreferences();
     return new Scaffold(
       appBar: new AppBar(
@@ -58,10 +78,21 @@ class _DeckOfCards extends State<DeckOfCards> {
               new InkWell(
                 child: Container(
                   child: _getCardImage(),
-                  height: 300,
+                  height: MediaQuery.of(context).size.height * 0.6,
                 ),
                 onTap: () {
-                  if (numberOfCardsLeft > 1) {
+                  if(numberOfCardsLeft == 52){
+                    // TODO: Display an Interstitial Ad
+                    if (_isInterstitialAdReady) {
+                      _interstitialAd?.show();
+
+                      setState(() {
+                        numberOfCardsLeft--;
+                        currentCard = randomNumber.nextInt(52);
+                      });
+                    }
+                  }
+                  else if (numberOfCardsLeft > 1 && numberOfCardsLeft < 52) {
                     do {
                       currentCard = randomNumber.nextInt(52);
                     } while (hasBeenUsed[currentCard]);
@@ -92,6 +123,10 @@ class _DeckOfCards extends State<DeckOfCards> {
       ),
     );
   }
+
+  void _moveToHome(){
+    Navigator.of(context).pop;
+  }
   Widget _getCardsLeftText() {
     return Text(
       numerousOrSingleCardLeft(),
@@ -113,6 +148,33 @@ class _DeckOfCards extends State<DeckOfCards> {
         return "Last card";
     }
   }
+
+  void _loadInterstitialAd() {
+    InterstitialAd.load(
+      adUnitId: AdHelper.interstitialAdUnitId,
+      request: AdRequest(),
+      adLoadCallback: InterstitialAdLoadCallback(
+        onAdLoaded: (ad) {
+          this._interstitialAd = ad;
+
+          ad.fullScreenContentCallback = FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {
+              setState(() {
+                numberOfCardsLeft = 51;
+              });
+            },
+          );
+
+          _isInterstitialAdReady = true;
+        },
+        onAdFailedToLoad: (err) {
+          print('Failed to load an interstitial ad: ${err.message}');
+          _isInterstitialAdReady = false;
+        },
+      ),
+    );
+  }
+
 
   Widget _getCardImage() {
     return Image.asset(
@@ -165,4 +227,14 @@ class _DeckOfCards extends State<DeckOfCards> {
     ex3 = prefs.getString('deckOfCardsExercise3') ?? "";
     ex4 = prefs.getString('deckOfCardsExercise4') ?? "";
   }
+
+  // TODO: Implement _loadInterstitialAd()
+
+  void dispose() {
+    // COMPLETE: Dispose an InterstitialAd object
+    _interstitialAd?.dispose();
+
+    super.dispose();
+  }
+
 }
