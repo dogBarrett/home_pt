@@ -1,7 +1,8 @@
+
 import 'dart:io';
 
-/*class AdHelper {
-
+class AdHelper {
+/*
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
       return '<YOUR_ANDROID_BANNER_AD_UNIT_ID>';
@@ -31,10 +32,7 @@ import 'dart:io';
       throw new UnsupportedError('Unsupported platform');
     }
   }
-}
-
-*/class AdHelper {
-
+*/
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
       return 'ca-app-pub-3940256099942544/6300978111';
@@ -64,4 +62,8 @@ import 'dart:io';
       throw new UnsupportedError("Unsupported platform");
     }
   }
+
+
+
+
 }

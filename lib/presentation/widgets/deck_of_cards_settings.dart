@@ -150,6 +150,12 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
                         fontFamily: "Roboto"),
                   ))
             ]),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/light_background2.jpg"),
+            fit: BoxFit.fill,
+          ),
+        ),
         padding: const EdgeInsets.all(20.0),
         alignment: Alignment.center,
       ),

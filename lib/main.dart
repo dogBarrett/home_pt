@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:home_pt/helpers/initialise.dart';
+import 'package:home_pt/presentation/widgets/exercise_selection.dart';
 import 'package:home_pt/presentation/widgets/deck_of_cards.dart';
 import 'package:home_pt/presentation/widgets/deck_of_cards_settings.dart';
 import 'package:home_pt/presentation/widgets/loading_page.dart';
+import 'package:home_pt/presentation/widgets/main_menu.dart';
 import 'package:home_pt/presentation/widgets/select_exercises_for_deck_of_cards.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  SystemChrome.setPreferredOrientations([
+
+
+Future<void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
@@ -33,8 +40,9 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.indigo,
+        //primarySwatch: Colors.transparent,
       ),
-      home: LoadingPage(),
+      home: MainMenu(),
     );
   }
 }

@@ -8,8 +8,11 @@ import 'package:home_pt/helpers/getCard.dart';
 import 'package:home_pt/presentation/widgets/select_exercises_for_deck_of_cards.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'exercise_selection.dart';
+
+
 class MainMenu extends StatefulWidget {
-  //DeckOfCardsPage({Key key}) : super(key: key);
+  //MainMenu({Key key}) : super(key: key);
   @override
   _MainMenu createState() => new _MainMenu();
 }
@@ -17,8 +20,24 @@ class MainMenu extends StatefulWidget {
 class _MainMenu extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
+    print("1");
     return new Scaffold(
-
+      appBar: new AppBar(
+        //title: new Text('Deck of Cards'),
+        leading: IconButton(
+          icon: Icon(
+            Icons.settings,
+            size: 16,
+          ),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ExerciseSelection(),
+              ),
+            );
+          },
+        ),
+      ),
       body: new Container(
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -40,7 +59,7 @@ class _MainMenu extends State<MainMenu> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Deck of Cards Circuit',
+                      'Deck of Cards',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -149,19 +168,25 @@ class _MainMenu extends State<MainMenu> {
             ),
           ],
         ),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/light_background2.jpg"),
+            fit: BoxFit.fill,
+          ),
+        ),
         padding: const EdgeInsets.all(10.0),
       ),
 
     );
   }
 
-  void onClose() {
+  /*void onClose() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => SelectExercisesForDeckOfCards(),
       ),
     );
-  }
+  }*/
 
   void openDeckOfCards(){
     Navigator.of(context).push(

@@ -33,6 +33,7 @@ dependencies:
   google_mobile_ads: ^0.13.0
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -53,6 +54,7 @@ flutter:
    - assets/
    - assets/cards/
    - assets/images/
+   - assets/exercises/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
