@@ -13,7 +13,7 @@ class Initialise {
     globals.circuit[0] = true;
     globals.circuitNumber[0] = 3;
     globals.sets[0] = true;
-    globals.description[0] = "Window Wipers require no equipment.\n\n";
+    globals.description[0] = "Window Wipers require no equipment.\n\nStart position is laying on your back, arms out for balance and your legs straight out 90 degrees from your hips. Under control, slowly and deliberately move your legs from side to side touching gently on the ground at either side of the movement.\n\nIf your legs can not remain straight during this exercise, that is no problem, just try to keep them as straight as you can and concentrate on not swinging through from side to side, but have deliberate movements.";
     globals.core[0] = true;
     globals.biceps[0] = false;
     globals.triceps[0] = false;
@@ -34,7 +34,7 @@ class Initialise {
     globals.circuit[1] = true;
     globals.circuitNumber[1] = 3;
     globals.sets[1] = true;
-    globals.description[1] = "Barbell press requires the use of a barbell.\n\nBarbell press is done on your back with the barbell in line with your nipples.\n\nUP\nBarbell is pushed up until the arms are extended straight up and the elbows lock out at the top.\n\nDOWN\nBarbell is lowered down under control until the bar touches the chest and elbows are in line with your body";
+    globals.description[1] = "Barbell press requires the use of a barbell.\n\nBarbell press is done on your back with the barbell in line with your nipples.\n\nUP\nBarbell is pushed up until the arms are extended straight up and the elbows lock out at the top. Chest muscles are squeezed to increase the rep.\n\nDOWN\nBarbell is lowered down under control until the bar touches the chest and elbows are in line with your body";
     globals.core[1] = false;
     globals.biceps[1] = false;
     globals.triceps[1] = false;
@@ -55,7 +55,7 @@ class Initialise {
     globals.circuit[2] = true;
     globals.circuitNumber[2] = 3;
     globals.sets[2] = true;
-    globals.description[2] = "Bicycles require no equipment.\n\nLay on your back with your head slightly raised with hands next to each ear\n\nKeeping one leg extended straight, bend the other knee until the opposite elbow touches the knee. Then straighten that leg as you bend the other leg until the opposite elbow meets the bent knee.";
+    globals.description[2] = "Bicycles require no equipment.\n\nLay on your back with your head slightly raised with hands next to each ear\n\nKeeping one leg extended straight, bend the other knee until the opposite elbow touches the knee. Then straighten that leg as you bend the other leg until the opposite elbow meets the bent knee.\n\nThe focus of this exercise is not the leg movement as much as the rotation of your trunk.";
     globals.core[2] = true;
     globals.biceps[2] = false;
     globals.triceps[2] = false;
@@ -76,7 +76,7 @@ class Initialise {
     globals.circuit[3] = true;
     globals.circuitNumber[3] = 2;
     globals.sets[3] = true;
-    globals.description[3] = "Burpees require no equipment.\n\n";
+    globals.description[3] = "Burpees require no equipment.\n\nStart position is standing upright.\n\nSTEP 1\nBring your hands down to the ground in front of your feet and about shoulder width apart\n\nSTEP 2\nKick your feet back far enough that your body is in a straight line from shoulders to feet in the push up up position\n\nSTEP 3\nConduct a push up (this is for those of a higher physical capability, it can be excluded)\n\nSTEP 4\nJump your feet back just behind your hands where they were originally (This can be done one foot at a time instead of a jump as fatigue sets in)\n\nSTEP 6\nStand upright and conduct a vertical jump getting your feet up off the ground and clapping your hands above your head at the peak of the jump and land safely back on your feet.";
     globals.core[3] = false;
     globals.biceps[3] = false;
     globals.triceps[3] = false;
@@ -95,9 +95,9 @@ class Initialise {
     globals.deckOfCards[4] = false;
     globals.HIIT[4] = true;
     globals.circuit[4] = true;
-    globals.circuitNumber[4] = 3;
+    globals.circuitNumber[4] = 2;
     globals.sets[4] = true;
-    globals.description[4] = "Bus Drivers require a dumbbell.\n\n";
+    globals.description[4] = "Bus Drivers require a dumbbell or weight plate or similar.\n\nStarting position is standing upright with weight in your hands. Arms remain straight throughout the entire exercise locked out at the elbows. Bring the weight up until it is shoulder height in front of your body. Steer the 'steering wheel' left until your right hand is vertically above your left hand. Now steer the wheel to the right 180 degrees until your left hand is above your right hand. Return the wheel to the originla position in front of your body, and slowly lower the weight back down.";
     globals.core[4] = false;
     globals.biceps[4] = false;
     globals.triceps[4] = false;
@@ -118,7 +118,7 @@ class Initialise {
     globals.circuit[5] = true;
     globals.circuitNumber[5] = 3;
     globals.sets[5] = true;
-    globals.description[5] = "Crunches require no equipment.\n\n";
+    globals.description[5] = "Crunches require no equipment.\n\nLying on the ground with knees raised at 90 degrees to the ground, hands across your chest (or behind your head if you prefer) crunch your abs until your shoulder blades are off the ground, squeeze, and lower under control back down to the gorund";
     globals.core[5] = true;
     globals.biceps[5] = false;
     globals.triceps[5] = false;
@@ -139,7 +139,7 @@ class Initialise {
     globals.circuit[6] = true;
     globals.circuitNumber[6] = 3;
     globals.sets[6] = true;
-    globals.description[6] = "Deadlifts require a barbell.\n\n";
+    globals.description[6] = "Deadlifts require a barbell.\n\nStand at the bar with your shins touching the bar. Keeping your knees behind your toes, lower your body to grab the bar. Almost running the bar up your shins as you stand up straight, raise your body until you are standing upright with weight in your hands. Do the opposite to lower weight back to the ground under control";
     globals.core[6] = false;
     globals.biceps[6] = false;
     globals.triceps[6] = false;
@@ -160,7 +160,7 @@ class Initialise {
     globals.circuit[7] = true;
     globals.circuitNumber[7] = 3;
     globals.sets[7] = true;
-    globals.description[7] = "Dips require 1 or 2 x chairs.\n\n";
+    globals.description[7] = "Dips require 1 or 2 x chairs.\n\nUsing 2 chairs for beginners, 1 chair for more medium, and a dip bar or equivalent for a harder workout.\n\nPosition your body so that your arms are grabbing the chair just behind your back. Lower your body under control until about 90 degrees and push through to raise back up again";
     globals.core[7] = false;
     globals.biceps[7] = false;
     globals.triceps[7] = true;
@@ -181,7 +181,7 @@ class Initialise {
     globals.circuit[8] = true;
     globals.circuitNumber[8] = 3;
     globals.sets[8] = true;
-    globals.description[8] = "Dumbbell Press require 2 x dumbbells.\n\n";
+    globals.description[8] = "Dumbbell Press require 2 x dumbbells.\n\nLaying on your back with dumbbells in your hands, hold them about in line with your nipples. Push up until your arms are at full extension and squeeze your chest muscles to maximize the exercise, then lower under control until just before your elbow touch the ground";
     globals.core[8] = false;
     globals.biceps[8] = false;
     globals.triceps[8] = false;
@@ -202,7 +202,7 @@ class Initialise {
     globals.circuit[9] = true;
     globals.circuitNumber[9] = 3;
     globals.sets[9] = true;
-    globals.description[9] = "Dumbbell Curls require 2 x dumbbells.\n\n";
+    globals.description[9] = "Dumbbell Curls require 2 x dumbbells.\n\nStanding upright with a dumbbell (or alternative weight) in each hand, lock in your elbows to your side to prevent them from moving and try not to swing to assist the lift. Moving only at the elbows, raise the dumbbells in front of you until above 90 degrees, squeeze at the top, and then lower back down under control and safely";
     globals.core[9] = false;
     globals.biceps[9] = true;
     globals.triceps[9] = false;
@@ -223,7 +223,7 @@ class Initialise {
     globals.circuit[10] = true;
     globals.circuitNumber[10] = 3;
     globals.sets[10] = true;
-    globals.description[10] = "Flyes require 2 x dumbbells.\n\n";
+    globals.description[10] = "Flyes require 2 x dumbbells.\n\nStarting position is on the ground on your back, arms out to the side with dumbbells in each hand. Elbows should be touching the ground in a straight line through your shoulders.\n\nSqueezing with your chest, bring your arms up without bending at the elbows until the weights meet up in front of your face, squeeze chest muscles and lower back under control until your elbows lightly feel the ground";
     globals.core[10] = false;
     globals.biceps[10] = false;
     globals.triceps[10] = false;
@@ -244,7 +244,7 @@ class Initialise {
     globals.circuit[11] = true;
     globals.circuitNumber[11] = 3;
     globals.sets[11] = true;
-    globals.description[11] = "Getups require no equipment.\n\n";
+    globals.description[11] = "Getups require no equipment.\n\nGet ups start position is lying on the ground with hands out above your head in a straight line.\n\nWithout your hands touching the ground, bring your hands in, and stand up straight. After standing straight, again, without the use of your hands to push off with, lower your body carefully and extends out again back into the strat position";
     globals.core[11] = true;
     globals.biceps[11] = false;
     globals.triceps[11] = false;
@@ -265,7 +265,7 @@ class Initialise {
     globals.circuit[12] = true;
     globals.circuitNumber[12] = 3;
     globals.sets[12] = true;
-    globals.description[12] = "Halos require a dumbbell or weight.\n\n";
+    globals.description[12] = "Halos require a dumbbell or weight.\n\nUsing the weight, start position is holding the weight close to the front of your face. Choose a direction to move the weight around your head and, keeping weight close to your head, conduct an entire revolution around your head";
     globals.core[12] = false;
     globals.biceps[12] = false;
     globals.triceps[12] = false;
@@ -286,7 +286,7 @@ class Initialise {
     globals.circuit[13] = true;
     globals.circuitNumber[13] = 1;
     globals.sets[13] = true;
-    globals.description[13] = "Heaves require a heave beam.\n\n";
+    globals.description[13] = "Heaves require a heave beam.\n\nUsing a heave beam or any horizontal bar taller than you, using an overhand grasp (palms facing away from you) start position is hanging freely from the bar. Under control, raise your body until your chin reaches the bar, pause, and lower back down under control back to starting position with arms fully outstretched";
     globals.core[13] = false;
     globals.biceps[13] = false;
     globals.triceps[13] = false;
@@ -307,7 +307,7 @@ class Initialise {
     globals.circuit[14] = true;
     globals.circuitNumber[14] = 3;
     globals.sets[14] = true;
-    globals.description[14] = "Lunges require no equipment.\n\n";
+    globals.description[14] = "Lunges require no equipment.\n\nStart position is standing upright with hands on your hips. Under control, lunge one leg forward and lower your body down until just before your back knee touches the ground. Ensure that the knee of the front leg does not go further forward than the toes. Stand back upright, and bring your foot back so they are back together ready for more";
     globals.core[14] = false;
     globals.biceps[14] = false;
     globals.triceps[14] = false;
@@ -328,7 +328,7 @@ class Initialise {
     globals.circuit[15] = true;
     globals.circuitNumber[15] = 3;
     globals.sets[15] = true;
-    globals.description[15] = "Mil Press requires a barbell.\n\n";
+    globals.description[15] = "Mil Press requires a barbell.\n\nMil press is similar to a shoulder press, but instead of pushing the bar straight above your head, you push it up and out at approx 45 degrees.\n\nStart position is standing upright with bar across your chest. Pushing up and out at 45 degrees, press the weight until your arms are fully extended, then under control, bring the weight back to the starting position";
     globals.core[15] = false;
     globals.biceps[15] = false;
     globals.triceps[15] = false;
@@ -349,7 +349,7 @@ class Initialise {
     globals.circuit[16] = true;
     globals.circuitNumber[16] = 3;
     globals.sets[16] = true;
-    globals.description[16] = "Pistol Squats require no equipment.\n\n";
+    globals.description[16] = "Pistol Squats require no equipment.\n\nPistol squat is a one-legged squat.\n\nStart position is standing upright on one leg with the other leg out front of your body. Under control, lower your body conducting a squat on the one leg until your thigh is parallel to the ground, trying to keep the leg out front as straight as you can. Push back up off that leg and back up to the starting position.\n\nEnsure your heel remains on the ground the entire time and don't go up onto your toes";
     globals.core[16] = false;
     globals.biceps[16] = false;
     globals.triceps[16] = false;
@@ -370,7 +370,7 @@ class Initialise {
     globals.circuit[17] = true;
     globals.circuitNumber[17] = 4;
     globals.sets[17] = true;
-    globals.description[17] = "Plank requires no equipment.\n\n";
+    globals.description[17] = "Plank requires no equipment.\n\nPlank involves laying on the ground with only your forearms and toes touching the ground. The rest of your body is in a straight line making a 'plank'. Hold this for the duration of the exercise\n\nConcentrate on keeping the straight line and not lifting or lowering your bum";
     globals.core[17] = true;
     globals.biceps[17] = false;
     globals.triceps[17] = false;
@@ -391,7 +391,7 @@ class Initialise {
     globals.circuit[18] = true;
     globals.circuitNumber[18] = 1;
     globals.sets[18] = true;
-    globals.description[18] = "Pullups require a heave beam.\n\n";
+    globals.description[18] = "Pullups require a heave beam.\n\nPull ups are heaves with your palms facing you.\n\nGrab the heave beam with your palms facing yourself and hang with arms outstretched. Pull yourself up until your chin reaches the bar, squeeze, and lower back down under control until your arms are at full extension again";
     globals.core[18] = false;
     globals.biceps[18] = true;
     globals.triceps[18] = false;
@@ -412,7 +412,7 @@ class Initialise {
     globals.circuit[19] = true;
     globals.circuitNumber[19] = 3;
     globals.sets[19] = true;
-    globals.description[19] = "Pushups require no equipment.\n\n";
+    globals.description[19] = "Pushups require no equipment.\n\nLay on the ground on your stomach with hands about shoulder width apart either side of your chest. Maintaing a straight line throughout your whole body, push yourself off the ground, until your arms are at full extension and shoulders to heels is in a straight line. Lower yourself back down under control until your upper arms are parallel to the ground, then go again\n\nAlternative to this is to do pushups on your knees. You still maintain the straight line in your body, but just from your shoulders to your knees for this variety";
     globals.core[19] = false;
     globals.biceps[19] = false;
     globals.triceps[19] = false;
@@ -433,7 +433,7 @@ class Initialise {
     globals.circuit[20] = true;
     globals.circuitNumber[20] = 3;
     globals.sets[20] = true;
-    globals.description[20] = "Russian Twists require a dumbbell or no weight as an alternative.\n\n";
+    globals.description[20] = "Russian Twists require a dumbbell or no weight as an alternative.\n\nSitting upright with your feet up off the ground in front of your body, touch the ground on one side of your body with the weight. Rotate through until your body is now facing the opposite direction and tap the weight on the ground. Concentrate on keeping the weight in front of your body and rotating at your hips as opposed to just moving your arms and tapping the weights either side";
     globals.core[20] = true;
     globals.biceps[20] = false;
     globals.triceps[20] = false;
@@ -454,7 +454,7 @@ class Initialise {
     globals.circuit[21] = true;
     globals.circuitNumber[21] = 3;
     globals.sets[21] = true;
-    globals.description[21] = "Shoulder Front Raises require weight of some description.\n\n";
+    globals.description[21] = "Shoulder Front Raises require weight of some description.\n\nStanding upright, holding weight in both hands, keep your arms straight. Without swaying your body and under control, raise your arms and weight from the shoulder until the weight is in front of your face with arms still straight, then under control, lower the weight back to the start position";
     globals.core[21] = false;
     globals.biceps[21] = false;
     globals.triceps[21] = false;
@@ -475,7 +475,7 @@ class Initialise {
     globals.circuit[22] = true;
     globals.circuitNumber[22] = 3;
     globals.sets[22] = true;
-    globals.description[22] = "Shoulder Press requires a pair of dumbbells or a barbell.\n\n";
+    globals.description[22] = "Shoulder Press requires a pair of dumbbells or a barbell.\n\nStanding upright with bar across your chest. Push the weight up, until the bar is directly above your head with arms out straight. Under control, lower the weight back down to your chest";
     globals.core[22] = false;
     globals.biceps[22] = false;
     globals.triceps[22] = false;
@@ -496,7 +496,7 @@ class Initialise {
     globals.circuit[23] = true;
     globals.circuitNumber[23] = 3;
     globals.sets[23] = true;
-    globals.description[23] = "Shoulder Side Raises require a dumbbell.\n\n";
+    globals.description[23] = "Shoulder Side Raises require a dumbbell.\n\nStanding upright with weights in each hand to your side. At the same time, raise both arms out, keeping elbows straight, out to the side until your arms are parallel to the ground and you have made a 'T' shape. Under control, lower weights back down until your arms are back down at your side";
     globals.core[23] = false;
     globals.biceps[23] = false;
     globals.triceps[23] = false;
@@ -506,8 +506,8 @@ class Initialise {
     globals.calves[23] = false;
     globals.fullBody[23] = false;
     globals.chest[23] = false;
-    globals.exerciseImageText[24] = "shouldersideraise";
-    globals.numberOfExerciseImages[24] = 2;
+    globals.exerciseImageText[23] = "shouldersideraise";
+    globals.numberOfExerciseImages[23] = 2;
 
     globals.exerciseName[24] = "Situp";
     globals.exerciseNamePlural[24] = "Situps";
@@ -517,7 +517,7 @@ class Initialise {
     globals.circuit[24] = true;
     globals.circuitNumber[24] = 3;
     globals.sets[24] = true;
-    globals.description[24] = "Situps require no equipment.\n\n";
+    globals.description[24] = "Situps require no equipment.\n\nStarting position is laying on your back, legs bent at 90 degrees, hands on your thighs. Raise your upper body up until your wrists touch your knees. Then under control, lower your body back to the ground to the start position";
     globals.core[24] = true;
     globals.biceps[24] = false;
     globals.triceps[24] = false;
@@ -538,7 +538,7 @@ class Initialise {
     globals.circuit[25] = false;
     globals.circuitNumber[25] = 0;
     globals.sets[25] = false;
-    globals.description[25] = "Sprints require no equipment, but an uninterrupted space of 25m or thereabouts.\n\n";
+    globals.description[25] = "Sprints require no equipment, but an uninterrupted space of up to 25m.\n\nStarting at one end of the track, run AS HARD AS YOU CAN for the length of your track. When you get to the finish line, slow right down and walk back to the start line and repeat";
     globals.core[25] = false;
     globals.biceps[25] = false;
     globals.triceps[25] = false;
@@ -559,7 +559,7 @@ class Initialise {
     globals.circuit[26] = true;
     globals.circuitNumber[26] = 3;
     globals.sets[26] = true;
-    globals.description[26] = "Squats with press require a pair of dumbbells.\n\n";
+    globals.description[26] = "Squats with press require a pair of dumbbells.\n\nStart position is standing upright with dumbbells against your shoulders in front of your body.\n\nSTEP 1\nLower your body into a squat. Ensure that your knees stay behind your toes. Go as low as you can aiming for thighs parallel to the ground\n\nSTEP 2\nPushing up through the legs, Straighten your body so that you are back in the starting position. Weights still just in front of your shoulders.\n\nSTEP3\nKeeping your body straight, push the weights up above your head until your arms are at full extension\n\nSTEP 4\nUnder control, lower weights back to the starting position just in front of your shoulders";
     globals.core[26] = true;
     globals.biceps[26] = false;
     globals.triceps[26] = false;
@@ -580,7 +580,7 @@ class Initialise {
     globals.circuit[27] = true;
     globals.circuitNumber[27] = 3;
     globals.sets[27] = true;
-    globals.description[27] = "Squats require no equipment.\n\n";
+    globals.description[27] = "Squats require no equipment.\n\nStarting position is standing upright, feet shoulder width apart.\n\nKeeping your back straight, conduct a squat, ensuring to keep your chest up, back straight, knees behind your toes. Lower yourself until your thighs are parallel to the ground then push back up through your legs until you are back n the starting position";
     globals.core[27] = false;
     globals.biceps[27] = false;
     globals.triceps[27] = false;
@@ -601,7 +601,7 @@ class Initialise {
     globals.circuit[28] = true;
     globals.circuitNumber[28] = 3;
     globals.sets[28] = true;
-    globals.description[28] = "Tricep Extensions require a dumbbell.\n\n";
+    globals.description[28] = "Tricep Extensions require a barbell or 2 x dumbbells.\n\nStarting position is standing upright with bar above your head, arms straight. \n\nBreaking at the elbows, lower the weight behind your head. Push weight back up until you are back in the starting position";
     globals.core[28] = false;
     globals.biceps[28] = false;
     globals.triceps[28] = true;
@@ -622,7 +622,7 @@ class Initialise {
     globals.circuit[29] = true;
     globals.circuitNumber[29] = 4;
     globals.sets[29] = true;
-    globals.description[29] = "Wall Sit requires a wall or something vertical that can support your weight.\n\n";
+    globals.description[29] = "Wall Sit requires a wall or something vertical that can support you leaning against it.\n\nWall sit is done by sitting on an imaginary chair, leaning against a wall. Sit low enough that your thighs are parallel to the ground and just hold the position for the duration of the exercise. Don't use your hand for support on the wall or your legs or anything";
     globals.core[29] = false;
     globals.biceps[29] = false;
     globals.triceps[29] = false;
@@ -643,7 +643,7 @@ class Initialise {
     globals.circuit[30] = true;
     globals.circuitNumber[30] = 3;
     globals.sets[30] = true;
-    globals.description[30] = "Weighted Squats require either dumbbells or a barbell.\n\n";
+    globals.description[30] = "Weighted Squats require either dumbbells or a barbell.\n\nWeighted squats are conducted like regular squats, except made harder with a weights across your shoulders.";
     globals.core[30] = false;
     globals.biceps[30] = false;
     globals.triceps[30] = false;

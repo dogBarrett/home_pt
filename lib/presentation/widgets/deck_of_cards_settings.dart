@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:home_pt/presentation/widgets/select_exercises_for_deck_of_cards.dart';
+import 'package:home_pt/presentation/widgets/deck_of_cards_select_exercises.dart';
 
 class DeckOfCardsSettings extends StatefulWidget {
   //DeckOfCardsPage({Key key}) : super(key: key);
@@ -16,33 +16,14 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
   bool isPicture10 = false;
   bool isPicturePicture = true;
 
-  Future<bool> _onWillPop() async {
-    return (await showDialog(
-      context: context,
-      builder: (context) => new AlertDialog(
-        title: new Text('Are you sure?'),
-        content: new Text('Do you want to exit an App'),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('No'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: new Text('Yes'),
-          ),
-        ],
-      ),
-    )) ?? false;
-  }
-
   Widget build(BuildContext context) {
     getBooleans();
     return new Scaffold(
 
       appBar: new AppBar(
 
-        title: new Text('Home PT'),
+        backgroundColor: Colors.transparent,
+        title: new Text('Deck of Cards'),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
@@ -213,7 +194,7 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
   void proceed(){
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => SelectExercisesForDeckOfCards(),
+        builder: (context) => DeckOfCardsSelectExercises(),
       ),
     );
   }

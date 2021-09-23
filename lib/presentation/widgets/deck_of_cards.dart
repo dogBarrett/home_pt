@@ -3,12 +3,13 @@ import 'dart:math';
 import 'package:home_pt/globals.dart' as globals;
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:home_pt/helpers/ad_helper.dart';
 import 'package:home_pt/helpers/getCard.dart';
 import 'package:home_pt/presentation/widgets/congratulations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:wakelock/wakelock.dart';
 
 class DeckOfCards extends StatefulWidget {
   //DeckOfCardsPage({Key key}) : super(key: key);
@@ -33,13 +34,10 @@ class _DeckOfCards extends State<DeckOfCards> {
 
   var randomNumber = new Random();
 
-
-
-
   Widget build(BuildContext context) {
-    getPreferences();
     return new Scaffold(
       appBar: new AppBar(
+        backgroundColor: Colors.transparent,
         title: new Text('Deck of Cards'),
         leading: IconButton(
           icon: Icon(
@@ -59,7 +57,7 @@ class _DeckOfCards extends State<DeckOfCards> {
             children: <Widget>[
               _getCardsLeftText(),
               new Container(
-                height: 10,
+                height: 30,
               ),
               new InkWell(
                 child: Container(
@@ -67,7 +65,7 @@ class _DeckOfCards extends State<DeckOfCards> {
                   height: MediaQuery.of(context).size.height * 0.5,
                 ),
                 onTap: () {
-                  if(numberOfCardsLeft > 1) {
+                  if (numberOfCardsLeft > 1) {
                     do {
                       currentCard = randomNumber.nextInt(52);
                     } while (hasBeenUsed[currentCard]);
@@ -75,13 +73,12 @@ class _DeckOfCards extends State<DeckOfCards> {
                     hasBeenUsed[currentCard] = true;
 
                     setState(() {});
-                  }
-                  else
+                  } else
                     finishDeckOfCards();
                 },
               ),
               new Container(
-                height: 10,
+                height: 30,
               ),
               _getExercisesLeft(),
             ]),
@@ -97,7 +94,7 @@ class _DeckOfCards extends State<DeckOfCards> {
     );
   }
 
-  void finishDeckOfCards(){
+  void finishDeckOfCards() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => Congratulations(),
@@ -105,14 +102,13 @@ class _DeckOfCards extends State<DeckOfCards> {
     );
   }
 
-
   Widget _getCardsLeftText() {
     return Text(
       numerousOrSingleCardLeft(),
       style: new TextStyle(
           fontSize: 24.0,
           color: const Color(0xFF000000),
-          fontWeight: FontWeight.w200,
+          fontWeight: FontWeight.w400,
           fontFamily: "Roboto"),
     );
   }
@@ -128,9 +124,6 @@ class _DeckOfCards extends State<DeckOfCards> {
     }
   }
 
-
-
-
   Widget _getCardImage() {
     return Image.asset(
       getCardImageText(currentCard),
@@ -144,7 +137,7 @@ class _DeckOfCards extends State<DeckOfCards> {
       style: new TextStyle(
           fontSize: 24.0,
           color: const Color(0xFF000000),
-          fontWeight: FontWeight.w200,
+          fontWeight: FontWeight.w400,
           fontFamily: "Roboto"),
     );
   }
@@ -185,5 +178,15 @@ class _DeckOfCards extends State<DeckOfCards> {
 
   // TODO: Implement _loadInterstitialAd()
 
+  void initState() {
+    Wakelock.enable();
+    getPreferences();
+    setState((){});
+  }
 
+  void dispose() {
+    Wakelock.disable();
+    super.dispose;
+
+  }
 }

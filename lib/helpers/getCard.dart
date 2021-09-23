@@ -104,8 +104,6 @@ String getCardImageText(int cardNumber){
   }
 
   cardImageString = cardImageString + getCardSuit(cardNumber);
-
-
   return "assets/cards/" + cardImageString + ".png";
 }
 
@@ -120,7 +118,7 @@ String getCardSuit(int cardNumber){
     return "D";
   }
   else if (cardNumber >= 37 && cardNumber <= 51) {
-    return "D";
+    return "H";
   }
   else {
     return "";

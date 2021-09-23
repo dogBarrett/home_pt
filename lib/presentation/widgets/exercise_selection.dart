@@ -10,15 +10,15 @@ class ExerciseSelection extends StatefulWidget {
 
 class _ExerciseSelection extends State<ExerciseSelection> {
   @override
-  List<bool> isSelected = List.filled(numberOfExercisesToChooseFrom, false);
+  List<bool> isSelected = List.filled(numberOfExercisesToChooseFrom, true);
 
   int imageViewing = 1;
   String currentExerciseImageAsset = "";
 
   Widget build(BuildContext context) {
-    getPreferences();
     return new Scaffold(
       appBar: new AppBar(
+        backgroundColor: Colors.transparent,
         title: new Text('Select inclusions'),
         leading: IconButton(
           icon: Icon(
@@ -58,12 +58,17 @@ class _ExerciseSelection extends State<ExerciseSelection> {
                   value: isSelected[index],
                   onChanged: (bool value) {
                     isSelected[index] = value;
-                    setPreferences();
+                    //setPreferences();
                     setState(() {});
                   });
             },
           )),
     );
+  }
+
+  void initState(){
+    getPreferences();
+    setState((){});
   }
 
   void setPreferences() async {
@@ -72,7 +77,6 @@ class _ExerciseSelection extends State<ExerciseSelection> {
 
     do {
       if (isSelected[i]) {
-        print(exerciseNamePlural[i]);
         prefs.setString("isSelected" + i.toString(), "1");
       } else {
         prefs.setString("isSelected" + i.toString(), "0");
@@ -88,7 +92,8 @@ class _ExerciseSelection extends State<ExerciseSelection> {
     do {
       if (prefs.getString("isSelected" + i.toString()) == "1") {
         isSelected[i] = true;
-      } else {
+      }
+      else {
         isSelected[i] = false;
       }
       i++;
@@ -137,35 +142,33 @@ class _ExerciseSelection extends State<ExerciseSelection> {
                           height: MediaQuery.of(context).size.height * 0.3,
                         ),
                         onTap: () {
-                              imageViewing++;
-                              if (imageViewing <= numberOfExerciseImages[index]) {
-                                print("button tapped");
+                          imageViewing++;
+                          if (imageViewing <= numberOfExerciseImages[index]) {
+                          } else {
+                            imageViewing = 1;
+                          }
 
-                            } else {
-                              imageViewing = 1;
-                            }
-
-                            currentExerciseImageAsset = "assets/exercises/" +
-                                exerciseImageText[index] +
-                                imageViewing.toString() +
-                                ".png";
-                            setState(() {});
+                          currentExerciseImageAsset = "assets/exercises/" +
+                              exerciseImageText[index] +
+                              imageViewing.toString() +
+                              ".png";
+                          setState(() {});
                         },
                       ),
 
                       new Container(
-                        child: SingleChildScrollView(
-                          child: new Text(
-                            description[index],
-                            style: new TextStyle(
-                              fontSize: 16.0, color: Colors.black87,
+                          child: SingleChildScrollView(
+                            child: new Text(
+                              description[index],
+                              style: new TextStyle(
+                                fontSize: 16.0, color: Colors.black87,
+                              ),
                             ),
                           ),
-                        ),
 
-                        padding: const EdgeInsets.all(0.0),
-                        alignment: Alignment.topCenter,
-                        height: MediaQuery.of(context).size.height * 0.4
+                          padding: const EdgeInsets.all(0.0),
+                          alignment: Alignment.topCenter,
+                          height: MediaQuery.of(context).size.height * 0.4
                       )
                     ]),
                 padding: const EdgeInsets.all(0.0),

@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tess.home_pt">
    <application
-        android:label="home_pt"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Home PT"
+        android:icon="@mipmap/icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
