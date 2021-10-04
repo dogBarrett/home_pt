@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'circuit_select_exercises.dart';
 import 'exercise_selection.dart';
+import 'hiit_select_exercises.dart';
 
 
 class MainMenu extends StatefulWidget {
@@ -114,7 +115,9 @@ class _MainMenu extends State<MainMenu> {
                           borderRadius: BorderRadius.circular(18.0),
                           side:
                           BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {},
+              onPressed: () {
+                openHIIT();
+              },
               child: Container(
                 height: MediaQuery.of(context).size.height / 7,
                 padding: const EdgeInsets.all(5.0),
@@ -122,7 +125,7 @@ class _MainMenu extends State<MainMenu> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'HIIT Circuit',
+                      'HIIT Session',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -204,6 +207,14 @@ class _MainMenu extends State<MainMenu> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => SetsSelectExercises(),
+      ),
+    );
+  }
+
+  void openHIIT(){
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => HIITSelectExercises(),
       ),
     );
   }

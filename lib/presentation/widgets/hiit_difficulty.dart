@@ -1,29 +1,19 @@
 import 'dart:async';
 import 'dart:core';
-import 'dart:math';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:home_pt/globals.dart' as globals;
 
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:home_pt/helpers/ad_helper.dart';
-import 'package:home_pt/helpers/getCard.dart';
-import 'package:home_pt/presentation/widgets/deck_of_cards_select_exercises.dart';
-import 'package:home_pt/presentation/widgets/sets_select_exercises2.dart';
-import 'package:home_pt/presentation/widgets/sets_session.dart';
-//import 'package:home_pt/presentation/widgets/sets_select_exercises.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'circuit_session.dart';
-import 'exercise_selection.dart';
+import 'hiit_session.dart';
 
 
-class CircuitDifficulty extends StatefulWidget {
-  //MainMenu({Key key}) : super(key: key);
+class HIITDifficulty extends StatefulWidget {
   @override
-  _CircuitDifficulty createState() => new _CircuitDifficulty();
+  _HIITDifficulty createState() => new _HIITDifficulty();
 }
 
-class _CircuitDifficulty extends State<CircuitDifficulty> {
+class _HIITDifficulty extends State<HIITDifficulty> {
   @override
 
   bool isInitialised = false;
@@ -44,7 +34,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.transparent,
-        title: new Text('Circuit'),
+        title: new Text('HIIT'),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
@@ -69,7 +59,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                           side:
                               BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
-                startSession(1);
+                startSession(0);
 
               },
               child: Container(
@@ -79,7 +69,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Beginner (e.g. 2 burpees)',
+                      'Beginner 10 on / 20 off x6',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -102,7 +92,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                           side:
                               BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
-                startSession(2);
+                startSession(1);
 
               },
               child: Container(
@@ -112,7 +102,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Easy (e.g. 5 burpees)',
+                      'Easy  10 on / 10 off x6',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -139,7 +129,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                           side:
                           BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
-                startSession(3);
+                startSession(2);
 
               },
               child: Container(
@@ -149,7 +139,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Medium (e.g. 10 burpees)',
+                      'Medium  20 on / 10 off x8',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -173,7 +163,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                           side:
                           BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
-                startSession(4);
+                startSession(3);
 
               },
               child: Container(
@@ -183,7 +173,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Hard (e.g. 20 burpees)',
+                      'Hard  20 on / 10 off x10',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -206,7 +196,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                           side:
                           BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
-                startSession(5);
+                startSession(4);
 
               },
               child: Container(
@@ -216,7 +206,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
-                      'Insane (e.g. 25 burpees)',
+                      'Insane  20 on / 10 off x15',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
@@ -250,9 +240,9 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     if (!_isInterstitialAdReady) {
       _loadInterstitialAd();
     }
-    setState(() {
+    //setState(() {
 
-    });
+    //});
   }
 
   void _loadInterstitialAd() {
@@ -288,7 +278,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
 
   void startSession(int levelNumber) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt("circuitDifficulty", levelNumber);
+    prefs.setInt("hiitDifficulty", levelNumber);
 
     // TODO: Display an Interstitial Ad
     if (_isInterstitialAdReady) {
@@ -297,7 +287,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
 
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => CircuitSession(),
+        builder: (context) => HIITSession(),
       ),
     );
   }

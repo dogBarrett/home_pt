@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wakelock/wakelock.dart';
 
 class DeckOfCards extends StatefulWidget {
-  //DeckOfCardsPage({Key key}) : super(key: key);
+  DeckOfCards({Key? key}) : super(key: key);
   @override
   _DeckOfCards createState() => new _DeckOfCards();
 }
@@ -25,10 +25,6 @@ class _DeckOfCards extends State<DeckOfCards> {
   String ex2 = "";
   String ex3 = "";
   String ex4 = "";
-  String ex1Plural = "";
-  String ex2Plural = "";
-  String ex3Plural = "";
-  String ex4Plural = "";
 
   List<bool> hasBeenUsed = List.filled(52, false);
 

@@ -114,7 +114,7 @@ String getCardSuit(int cardNumber){
   else if (cardNumber >= 13 && cardNumber <= 25) {
     return "C";
   }
-  else if (cardNumber >= 26 && cardNumber <= 36) {
+  else if (cardNumber >= 26 && cardNumber <= 38) {
     return "D";
   }
   else if (cardNumber >= 37 && cardNumber <= 51) {

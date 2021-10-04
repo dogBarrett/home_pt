@@ -1,22 +1,14 @@
 import 'dart:async';
 import 'dart:core';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:home_pt/globals.dart';
-import 'package:home_pt/helpers/getCard.dart';
-import 'package:home_pt/presentation/widgets/deck_of_cards_select_exercises.dart';
 import 'package:home_pt/presentation/widgets/sets_select_exercises2.dart';
-//import 'package:home_pt/presentation/widgets/sets_select_exercises.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:wakelock/wakelock.dart';
-
 import 'congratulations.dart';
-import 'exercise_selection.dart';
 
 class SetsSession extends StatefulWidget {
-  //MainMenu({Key key}) : super(key: key);
   @override
   _SetsSession createState() => new _SetsSession();
 }
@@ -52,14 +44,7 @@ class _SetsSession extends State<SetsSession> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              new Text(
-                "5 SETS OF EACH",
-                style: new TextStyle(
-                    fontSize: 32.0,
-                    color: const Color(0xFF000000),
-                    fontWeight: FontWeight.w800,
-                    fontFamily: "Roboto"),
-              ),
+              singleLineText("5 SETS OF EACH", 32.0),
               Container(
                 height: 10,
               ),
@@ -84,14 +69,8 @@ class _SetsSession extends State<SetsSession> {
                             finishSetsSession();
                           },
                           color: const Color(0xFFe0e0e0),
-                          child: new Text(
-                            "Finish Session",
-                            style: new TextStyle(
-                                fontSize: 12.0,
-                                color: const Color(0xFF000000),
-                                fontWeight: FontWeight.w400,
-                                fontFamily: "Roboto"),
-                          )),
+                          child: singleLineText("Finish Session", 12.0)
+                          ),
                     ]),
               ),
             ]),
@@ -109,7 +88,7 @@ class _SetsSession extends State<SetsSession> {
   initState() {
     Wakelock.enable();
     getPrefs();
-    setState(() {});
+    //setState(() {});
   }
 
   void getSessionDif(int setsNumber){
@@ -183,6 +162,18 @@ class _SetsSession extends State<SetsSession> {
 
   }
 
+  Text singleLineText(String thisText, double textSize) {
+    return Text(
+        thisText,
+        style: new TextStyle(
+            fontSize: textSize,
+            color: const Color(0xFF000000),
+            fontWeight: FontWeight.w400,
+            fontFamily: "Roboto"),
+
+    );
+  }
+
   Container getText(int exNumber){
     String textHere = "";
     int circuitNo = 0;
@@ -200,14 +191,8 @@ class _SetsSession extends State<SetsSession> {
 
 
     return Container(
-      child: Text(
-      textHere,
-      style: new TextStyle(
-          fontSize: 16.0,
-          color: const Color(0xFF000000),
-          fontWeight: FontWeight.w400,
-          fontFamily: "Roboto"),
-    ),
+      child: singleLineText(textHere, 16.0)
+
     );
   }
 

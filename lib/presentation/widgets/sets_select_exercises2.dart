@@ -24,14 +24,7 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
   int numberOfExercises = 0;
   int numberOfExerciseSets = 4;
 
-  String exercise1 = "";
-  String exercise2 = "";
-  String exercise3 = "";
-  String exercise4 = "";
-  String exercise5 = "";
-  String exercise6 = "";
-  String exercise7 = "";
-  String exercise8 = "";
+  List<String> exercises = ["", "", "", "", "", "", "", ""];
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +38,7 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
               size: 16,
             ),
             onPressed: () {
+              savePrefs();
               Navigator.of(context).pop();
             },
           ),
@@ -104,35 +98,35 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
                 new Container(
                   child: SingleChildScrollView(
                     child: Column(children: <Widget>[
-                      getDropdownMenu(exercise1, 1),
+                      getDropdownMenu(exercises[0], 1),
                       new Container(
                         height: 10,
                       ),
-                      getDropdownMenu(exercise2, 2),
+                      getDropdownMenu(exercises[1], 2),
                       new Container(
                         height: 10,
                       ),
-                      getDropdownMenu(exercise3, 3),
+                      getDropdownMenu(exercises[2], 3),
                       new Container(
                         height: 10,
                       ),
-                      getDropdownMenu(exercise4, 4),
+                      getDropdownMenu(exercises[3], 4),
                       new Container(
                         height: 10,
                       ),
-                      checkDropdownMenu(exercise5, 5),
+                      checkDropdownMenu(exercises[4], 5),
                       new Container(
                         height: 10,
                       ),
-                      checkDropdownMenu(exercise6, 6),
+                      checkDropdownMenu(exercises[5], 6),
                       new Container(
                         height: 10,
                       ),
-                      checkDropdownMenu(exercise7, 7),
+                      checkDropdownMenu(exercises[6], 7),
                       new Container(
                         height: 10,
                       ),
-                      checkDropdownMenu(exercise8, 8),
+                      checkDropdownMenu(exercises[7], 8),
                     ]),
                   ),
                   height: MediaQuery.of(context).size.height * 0.5,
@@ -181,23 +175,27 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
         ));
   }
 
-  void continueButton() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('setsSessionExercise1', exercise1);
-    prefs.setString('setsSessionExercise2', exercise2);
-    prefs.setString('setsSessionExercise3', exercise3);
-    prefs.setString('setsSessionExercise4', exercise4);
-    prefs.setString('setsSessionExercise5', exercise5);
-    prefs.setString('setsSessionExercise6', exercise6);
-    prefs.setString('setsSessionExercise7', exercise7);
-    prefs.setString('setsSessionExercise8', exercise8);
-    prefs.setInt('setsSessionExercises', numberOfExerciseSets);
+  void continueButton(){
+    savePrefs();
 
     Navigator.of(context)
         .push(MaterialPageRoute(
-          builder: (context) => SetsSessionDifficulty(),
-        ))
+      builder: (context) => SetsSessionDifficulty(),
+    ))
         .then((value) => setState(() {}));
+  }
+
+  void savePrefs() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('setsSessionExercise1', exercises[0]);
+    prefs.setString('setsSessionExercise2', exercises[1]);
+    prefs.setString('setsSessionExercise3', exercises[2]);
+    prefs.setString('setsSessionExercise4', exercises[3]);
+    prefs.setString('setsSessionExercise5', exercises[4]);
+    prefs.setString('setsSessionExercise6', exercises[5]);
+    prefs.setString('setsSessionExercise7', exercises[6]);
+    prefs.setString('setsSessionExercise8', exercises[7]);
+    prefs.setInt('setsSessionExercises', numberOfExerciseSets);
   }
 
   void initState() {
@@ -215,11 +213,10 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
       }
       i++;
     } while (i < numberOfExercisesToChooseFrom);
-    numberOfExerciseSets = prefs.getInt("setsExercises")!;
+    numberOfExerciseSets = prefs.getInt("setsSessionExercises")?? 4;
 
     numberOfExercises = exerciseListHere.length;
     randomiseExercises();
-
     setState(() {});
   }
 
@@ -266,14 +263,11 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
         ex[7] == ex[5] ||
         ex[7] == ex[6]);
 
-    exercise1 = exerciseListHere[ex[0]];
-    exercise2 = exerciseListHere[ex[1]];
-    exercise3 = exerciseListHere[ex[2]];
-    exercise4 = exerciseListHere[ex[3]];
-    exercise5 = exerciseListHere[ex[4]];
-    exercise6 = exerciseListHere[ex[5]];
-    exercise7 = exerciseListHere[ex[6]];
-    exercise8 = exerciseListHere[ex[7]];
+    int numberHere = 0;
+    do{
+      exercises[numberHere] = exerciseListHere[ex[numberHere]];
+      numberHere++;
+    }while (numberHere < 8);
 
     setState(() {});
   }
@@ -303,26 +297,7 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
       onChanged: (String? newValue) {
         print(exerciseNumber);
         exerciseNumber = newValue!;
-        print(exerciseNumber);
-        if (dropdownNumber == 1) {
-          exercise1 = exerciseNumber;
-        } else if (dropdownNumber == 2) {
-          exercise2 = exerciseNumber;
-        } else if (dropdownNumber == 3) {
-          exercise3 = exerciseNumber;
-        } else if (dropdownNumber == 4) {
-          exercise4 = exerciseNumber;
-        } else if (dropdownNumber == 5) {
-          exercise5 = exerciseNumber;
-        } else if (dropdownNumber == 6) {
-          exercise6 = exerciseNumber;
-        } else if (dropdownNumber == 7) {
-          exercise7 = exerciseNumber;
-        } else if (dropdownNumber == 8) {
-          exercise8 = exerciseNumber;
-        }
-
-        //updateValues();
+        exercises[dropdownNumber -1] = exerciseNumber;
         setState(() {});
       },
       //items: deckOfCardsExercises()

@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:home_pt/helpers/initialise.dart';
-import 'package:home_pt/presentation/widgets/exercise_selection.dart';
-import 'package:home_pt/presentation/widgets/deck_of_cards.dart';
-import 'package:home_pt/presentation/widgets/deck_of_cards_settings.dart';
+
 import 'package:home_pt/presentation/widgets/loading_page.dart';
-import 'package:home_pt/presentation/widgets/main_menu.dart';
-import 'package:home_pt/presentation/widgets/deck_of_cards_select_exercises.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 
@@ -28,6 +23,7 @@ class MyApp extends StatelessWidget {
     Initialise();
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Home PT',
       theme: ThemeData(
         // This is the theme of your application.

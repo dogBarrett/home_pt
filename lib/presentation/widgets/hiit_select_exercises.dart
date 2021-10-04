@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:home_pt/globals.dart';
 
 import 'circuit_difficulty.dart';
+import 'hiit_difficulty.dart';
 
 class HIITSelectExercises extends StatefulWidget {
   //DeckOfCardsPage({Key key}) : super(key: key);
@@ -21,19 +22,11 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
   var randomNumber = new Random();
 
   // ignore: deprecated_member_use
-  List<String> exerciseListHere = <String>[];
+  List<String> exerciseList = <String>[];
   int numberOfExercises = 0;
   int numberOfExerciseSets = 4;
 
-
-  String exercise1 = "";
-  String exercise2 = "";
-  String exercise3 = "";
-  String exercise4 = "";
-  String exercise5 = "";
-  String exercise6 = "";
-  String exercise7 = "";
-  String exercise8 = "";
+  List<String> exercises = ["", "", "", "", "", "", "", ""];
 
   @override
 
@@ -50,6 +43,7 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
               size: 16,
             ),
             onPressed: () {
+              setPrefs();
               Navigator.of(context).pop();
             },
           ),
@@ -111,35 +105,35 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
                       child: Column(
                       children: <Widget>[
 
-                        getDropdownMenu(exercise1, 1),
+                        getDropdownMenu(exercises[0], 1),
                         new Container(
                           height: 10,
                         ),
-                        getDropdownMenu(exercise2, 2),
+                        getDropdownMenu(exercises[1], 2),
                         new Container(
                           height: 10,
                         ),
-                        getDropdownMenu(exercise3, 3),
+                        getDropdownMenu(exercises[2], 3),
                         new Container(
                           height: 10,
                         ),
-                        getDropdownMenu(exercise4, 4),
+                        getDropdownMenu(exercises[3], 4),
                         new Container(
                           height: 10,
                         ),
-                        checkDropdownMenu(exercise5, 5),
+                        checkDropdownMenu(exercises[4], 5),
                         new Container(
                           height: 10,
                         ),
-                        checkDropdownMenu(exercise6, 6),
+                        checkDropdownMenu(exercises[5], 6),
                         new Container(
                           height: 10,
                         ),
-                        checkDropdownMenu(exercise7, 7),
+                        checkDropdownMenu(exercises[6], 7),
                         new Container(
                           height: 10,
                         ),
-                        checkDropdownMenu(exercise8, 8),
+                        checkDropdownMenu(exercises[7], 8),
                       ]
 
                       ),
@@ -192,22 +186,26 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
   }
 
   void continueButton() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('hiitExercise1', exercise1);
-    prefs.setString('hiitExercise2', exercise2);
-    prefs.setString('hiitExercise3', exercise3);
-    prefs.setString('hiitExercise4', exercise4);
-    prefs.setString('hiitExercise5', exercise5);
-    prefs.setString('hiitExercise6', exercise6);
-    prefs.setString('hiitExercise7', exercise7);
-    prefs.setString('hiitExercise8', exercise8);
-    prefs.setInt('hiitExercises', numberOfExerciseSets);
-
+    setPrefs();
     Navigator.of(context)
         .push(MaterialPageRoute(
-          builder: (context) => CircuitDifficulty(),
+          builder: (context) => HIITDifficulty(),
         ))
         .then((value) => setState(() {}));
+  }
+
+  void setPrefs()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('hiitExercise1', exercises[0]);
+    prefs.setString('hiitExercise2', exercises[1]);
+    prefs.setString('hiitExercise3', exercises[2]);
+    prefs.setString('hiitExercise4', exercises[3]);
+    prefs.setString('hiitExercise5', exercises[4]);
+    prefs.setString('hiitExercise6', exercises[5]);
+    prefs.setString('hiitExercise7', exercises[6]);
+    prefs.setString('hiitExercise8', exercises[7]);
+    prefs.setInt('hiitExercises', numberOfExerciseSets);
+
   }
 
   void initState() {
@@ -222,12 +220,12 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
     do {
       if (prefs.getString("isSelected" + i.toString()) == "1" &&
           HIIT[i]) {
-        exerciseListHere.add(exerciseNamePlural[i]);
+        exerciseList.add(exerciseNamePlural[i]);
       }
       i++;
     } while (i < numberOfExercisesToChooseFrom);
-    numberOfExerciseSets = prefs.getInt("hiitExercises")!;
-    numberOfExercises = exerciseListHere.length;
+    numberOfExerciseSets = prefs.getInt("hiitExercises")?? 4;
+    numberOfExercises = exerciseList.length;
     randomiseExercises();
 
     setState(() {});
@@ -260,14 +258,11 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
       ex[7] = randomNumber.nextInt(count);
     } while (ex[7] == ex[0] || ex[7] == ex[1] || ex[7] == ex[2] || ex[7] == ex[3] || ex[7] == ex[4] || ex[7] == ex[5] || ex[7] == ex[6]);
 
-    exercise1 = exerciseListHere[ex[0]];
-    exercise2 = exerciseListHere[ex[1]];
-    exercise3 = exerciseListHere[ex[2]];
-    exercise4 = exerciseListHere[ex[3]];
-    exercise5 = exerciseListHere[ex[4]];
-    exercise6 = exerciseListHere[ex[5]];
-    exercise7 = exerciseListHere[ex[6]];
-    exercise8 = exerciseListHere[ex[7]];
+    int numberHere = 0;
+    do{
+      exercises[numberHere] = exerciseList[ex[numberHere]];
+      numberHere++;
+    }while (numberHere < 8);
 
     setState(() {});
   }
@@ -297,29 +292,12 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
       ),
       onChanged: (String? newValue) {
         exerciseNumber = newValue!;
-        if (dropdownNumber == 1) {
-          exercise1 = exerciseNumber;
-        } else if (dropdownNumber == 2) {
-          exercise2 = exerciseNumber;
-        } else if (dropdownNumber == 3) {
-          exercise3 = exerciseNumber;
-        } else if (dropdownNumber == 4) {
-          exercise4 = exerciseNumber;
-        } else if (dropdownNumber == 5) {
-          exercise5 = exerciseNumber;
-        } else if (dropdownNumber == 6) {
-          exercise6 = exerciseNumber;
-        } else if (dropdownNumber == 7) {
-          exercise7 = exerciseNumber;
-        } else if (dropdownNumber == 8) {
-          exercise8 = exerciseNumber;
-        }
+        exercises[(dropdownNumber - 1)] = exerciseNumber;
 
-        //updateValues();
         setState(() {});
       },
       //items: deckOfCardsExercises()
-      items: exerciseListHere.map<DropdownMenuItem<String>>((String value) {
+      items: exerciseList.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),

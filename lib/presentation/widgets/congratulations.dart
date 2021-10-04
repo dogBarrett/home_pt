@@ -1,12 +1,9 @@
 import 'dart:core';
-import 'dart:math';
-import 'package:home_pt/globals.dart' as globals;
 
 import 'package:flutter/material.dart';
-import 'package:home_pt/helpers/getCard.dart';
+
 import 'package:home_pt/presentation/widgets/main_menu.dart';
-import 'package:home_pt/presentation/widgets/deck_of_cards_select_exercises.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class Congratulations extends StatefulWidget {
   //DeckOfCardsPage({Key key}) : super(key: key);

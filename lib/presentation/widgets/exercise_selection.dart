@@ -93,7 +93,7 @@ class _ExerciseSelection extends State<ExerciseSelection> {
       if (prefs.getString("isSelected" + i.toString()) == "1") {
         isSelected[i] = true;
       }
-      else {
+      else if (prefs.getString("isSelected" + i.toString()) == "0") {
         isSelected[i] = false;
       }
       i++;

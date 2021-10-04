@@ -16,7 +16,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'circuit_session.dart';
 import 'exercise_selection.dart';
 
-
 class CircuitDifficulty extends StatefulWidget {
   //MainMenu({Key key}) : super(key: key);
   @override
@@ -25,7 +24,6 @@ class CircuitDifficulty extends StatefulWidget {
 
 class _CircuitDifficulty extends State<CircuitDifficulty> {
   @override
-
   bool isInitialised = false;
 
   Future<InitializationStatus> _initGoogleMobileAds() {
@@ -40,7 +38,6 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
   bool _isInterstitialAdReady = false;
 
   Widget build(BuildContext context) {
-
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.transparent,
@@ -62,174 +59,44 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
+              style: getButtonStyle(),
               onPressed: () {
                 startSession(1);
-
               },
-              child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Beginner (e.g. 2 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Image.asset(
-                      "assets/images/bronze.png",
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ],
-                ),
-              ),
+              child: getButtonContainer(
+                  "Beginner (e.g. 2 burpees)", "assets/images/bronze.png"),
             ),
             ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
+              style: getButtonStyle(),
               onPressed: () {
                 startSession(2);
-
               },
-              child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Easy (e.g. 5 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Image.asset(
-                      "assets/images/silver.png",
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ],
-                ),
-              ),
+              child: getButtonContainer(
+                  "Easy (e.g. 5 burpees)", "assets/images/silver.png"),
             ),
-
             ElevatedButton(
-
-              style: ButtonStyle(
-
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
+              style: getButtonStyle(),
               onPressed: () {
                 startSession(3);
-
               },
-              child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Medium (e.g. 10 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Image.asset(
-                      "assets/images/gold.png",
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ],
-                ),
-              ),
+              child: getButtonContainer(
+                  "Medium (e.g. 10 burpees)", "assets/images/gold.png"),
             ),
-
             ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
+              style: getButtonStyle(),
               onPressed: () {
                 startSession(4);
-
               },
-              child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Hard (e.g. 20 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Image.asset(
-                      "assets/images/trophy_star.png",
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ],
-                ),
-              ),
+              child: getButtonContainer(
+                  "Hard (e.g. 20 burpees)", "assets/images/trophy_star.png"),
             ),
             ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
+              style: getButtonStyle(),
               onPressed: () {
                 startSession(5);
-
               },
-              child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Insane (e.g. 25 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Image.asset(
-                      "assets/images/trophy_normal.png",
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ],
-                ),
-              ),
+              child: getButtonContainer("Insane (e.g. 25 burpees)",
+                  "assets/images/trophy_normal.png"),
             ),
           ],
         ),
@@ -241,18 +108,42 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
         ),
         padding: const EdgeInsets.all(10.0),
       ),
-
     );
   }
 
-  initState(){
+  void initState() {
     // TODO: Load an Interstitial Ad
     if (!_isInterstitialAdReady) {
       _loadInterstitialAd();
     }
-    setState(() {
+    //setState(() {
 
-    });
+    //});
+  }
+
+  Container getButtonContainer(String textLine, String imageAsset) {
+    return Container(
+      height: MediaQuery.of(context).size.height / 9,
+      padding: const EdgeInsets.all(5.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          singleLineTextContainer(textLine, 16.0),
+          Image.asset(
+            imageAsset,
+            fit: BoxFit.fitHeight,
+          ),
+        ],
+      ),
+    );
+  }
+
+  ButtonStyle getButtonStyle() {
+    return ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.blueGrey, width: 2.0))));
   }
 
   void _loadInterstitialAd() {
@@ -286,7 +177,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     super.dispose();
   }
 
-  void startSession(int levelNumber) async{
+  void startSession(int levelNumber) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt("circuitDifficulty", levelNumber);
 
@@ -298,6 +189,19 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CircuitSession(),
+      ),
+    );
+  }
+
+  Container singleLineTextContainer(String thisText, double textSize) {
+    return Container(
+      child: Text(
+        thisText,
+        style: new TextStyle(
+            fontSize: textSize,
+            color: Colors.white,
+            fontWeight: FontWeight.w700,
+            fontFamily: "Roboto"),
       ),
     );
   }

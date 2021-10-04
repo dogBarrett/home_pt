@@ -1,18 +1,14 @@
 import 'dart:async';
 import 'dart:core';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:home_pt/globals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:wakelock/wakelock.dart';
-
 import 'circuit_select_exercises.dart';
 import 'congratulations.dart';
 
 class CircuitSession extends StatefulWidget {
-  //MainMenu({Key key}) : super(key: key);
   @override
   _CircuitSession createState() => new _CircuitSession();
 }
@@ -24,13 +20,13 @@ class _CircuitSession extends State<CircuitSession> {
 
   List<String> sessionDif = ["", "", "", ""];
 
-  List <String> exercise = ["", "", "", "", "", "", "", ""];
+  List<String> exercise = ["", "", "", "", "", "", "", ""];
 
   static const countdownDuration = Duration(minutes: 0);
   Duration duration = Duration();
   Timer? timer;
 
-  bool countDown =true;
+  bool countDown = true;
 
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -45,7 +41,7 @@ class _CircuitSession extends State<CircuitSession> {
           onPressed: () {
             reset();
             stopTimer();
-            dispose();
+            //dispose();
             Navigator.of(context).pop();
           },
         ),
@@ -76,7 +72,9 @@ class _CircuitSession extends State<CircuitSession> {
               checkText(7),
               checkText(8),
               buildTime(),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               buildButtons(),
               new Container(
                 child: Row(
@@ -84,10 +82,9 @@ class _CircuitSession extends State<CircuitSession> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-
                       new RaisedButton(
                           key: null,
-                          onPressed: (){
+                          onPressed: () {
                             finishSetsSession();
                           },
                           color: const Color(0xFFe0e0e0),
@@ -115,66 +112,61 @@ class _CircuitSession extends State<CircuitSession> {
 
   @override
   void initState() {
-    //super.initState();
+    super.initState();
     Wakelock.enable();
     reset();
 
     getPrefs();
-    setState(() {});
+    //setState(() {});
   }
 
-  @mustCallSuper
-  void dispose(){
+  @override
+  void dispose() {
     Wakelock.disable();
-    //super.dispose;
+    super.dispose;
   }
 
-  void reset(){
-    if (countDown){
-      setState(() =>
-      duration = countdownDuration);
-    } else{
-      setState(() =>
-      duration = Duration());
+  void reset() {
+    if (countDown) {
+      setState(() => duration = countdownDuration);
+    } else {
+      setState(() => duration = Duration());
     }
   }
 
-  void startTimer(){
-    timer = Timer.periodic(Duration(seconds: 1),(_) => addTime());
+  void startTimer() {
+    timer = Timer.periodic(Duration(seconds: 1), (_) => addTime());
   }
 
-  void addTime(){
+  void addTime() {
     final addSeconds = countDown ? 1 : 1;
     setState(() {
       final seconds = duration.inSeconds + addSeconds;
-        duration = Duration(seconds: seconds);
-
-
+      duration = Duration(seconds: seconds);
     });
   }
 
-  void stopTimer({bool resets = true}){
-    if (resets){
+  void stopTimer({bool resets = true}) {
+    if (resets) {
       reset();
     }
     setState(() => timer?.cancel());
   }
 
-  Widget buildTime(){
-    String twoDigits(int n) => n.toString().padLeft(2,'0');
-    final hours =twoDigits(duration.inHours);
-    final minutes =twoDigits(duration.inMinutes.remainder(60));
-    final seconds =twoDigits(duration.inSeconds.remainder(60));
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          //buildTimeCard(time: hours, header:'HOURS'),
-          //SizedBox(width: 8,),
-          buildTimeCard(time: minutes, header:'MINUTES'),
-          SizedBox(width: 8,),
-          buildTimeCard(time: seconds, header:'SECONDS'),
-        ]
-    );
+  Widget buildTime() {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final hours = twoDigits(duration.inHours);
+    final minutes = twoDigits(duration.inMinutes.remainder(60));
+    final seconds = twoDigits(duration.inSeconds.remainder(60));
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      //buildTimeCard(time: hours, header:'HOURS'),
+      //SizedBox(width: 8,),
+      buildTimeCard(time: minutes, header: 'MINUTES'),
+      SizedBox(
+        width: 8,
+      ),
+      buildTimeCard(time: seconds, header: 'SECONDS'),
+    ]);
   }
 
   Widget buildTimeCard({required String time, required String header}) =>
@@ -184,104 +176,93 @@ class _CircuitSession extends State<CircuitSession> {
           Container(
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20)
-            ),
+                color: Colors.white, borderRadius: BorderRadius.circular(20)),
             child: Text(
-              time, style: TextStyle(fontWeight: FontWeight.bold,
-                color: Colors.black,fontSize: 50),),
+              time,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 50),
+            ),
           ),
-          SizedBox(height: 10,),
-          Text(header,style: TextStyle(color: Colors.black45)),
+          SizedBox(
+            height: 10,
+          ),
+          Text(header, style: TextStyle(color: Colors.black45)),
         ],
       );
 
-  Widget buildButtons(){
-    final isRunning = timer == null? false: timer!.isActive;
-    //final isCompleted = duration.inSeconds == 0;
+  Widget buildButtons() {
+    final isRunning = timer == null ? false : timer!.isActive;
     final isCompleted = false;
     return isRunning || isCompleted
         ? Row(
-      //return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ButtonWidget(
-            text:'STOP',
-            onClicked: (){
-              if (isRunning){
-                stopTimer(resets: false);
-              }
-            }),
-        //SizedBox(width: 12,),
-        //ButtonWidget(
-        //    text: "CANCEL",
-        //    onClicked: stopTimer
-        //),
-      ],
-    )
+            //return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ButtonWidget(
+                  text: 'STOP',
+                  onClicked: () {
+                    if (isRunning) {
+                      stopTimer(resets: false);
+                    }
+                  }),
+            ],
+          )
         : ButtonWidget(
-        text: "Start Timer!",
-        color: Colors.black,
-        backgroundColor: Colors.white,
-        onClicked: (){
-          startTimer();
-        });
-
+            text: "Start Timer!",
+            color: Colors.black,
+            backgroundColor: Colors.white,
+            onClicked: () {
+              startTimer();
+            });
   }
 
-
-
-  void getSessionDif(int setsNumber){
-    if (sessionDifficulty == 1){
+  void getSessionDif(int setsNumber) {
+    if (sessionDifficulty == 1) {
       sessionDif[0] = "1 x ";
       sessionDif[1] = "2 x ";
       sessionDif[2] = "5 x ";
       sessionDif[3] = "10 sec ";
-    }
-    else if (sessionDifficulty == 2){
+    } else if (sessionDifficulty == 2) {
       sessionDif[0] = "2 x ";
       sessionDif[1] = "5 x ";
       sessionDif[2] = "10 x ";
       sessionDif[3] = "15 sec ";
-    }
-    else if (sessionDifficulty == 3){
+    } else if (sessionDifficulty == 3) {
       sessionDif[0] = "5 x ";
       sessionDif[1] = "10 x ";
       sessionDif[2] = "20 x ";
       sessionDif[3] = "30 sec ";
-    }
-    else if (sessionDifficulty == 4){
+    } else if (sessionDifficulty == 4) {
       sessionDif[0] = "10 x ";
       sessionDif[1] = "20 x ";
       sessionDif[2] = "30 x ";
       sessionDif[3] = "60 sec ";
-    }
-    else if (sessionDifficulty == 5){
+    } else if (sessionDifficulty == 5) {
       sessionDif[0] = "15 x ";
       sessionDif[1] = "25 x ";
       sessionDif[2] = "50 x ";
       sessionDif[3] = "90 sec ";
     }
-}
+  }
 
   Future getPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     exerciseNumber = prefs.getInt("circuitExercises") ?? 0;
     sessionDifficulty = prefs.getInt("circuitDifficulty") ?? 0;
-    exercise[0] = prefs.getString("circuitExercise1")?? "";
-    exercise[1] = prefs.getString("circuitExercise2")?? "";
-    exercise[2] = prefs.getString("circuitExercise3")?? "";
-    exercise[3] = prefs.getString("circuitExercise4")?? "";
-    exercise[4] = prefs.getString("circuitExercise5")?? "";
-    exercise[5] = prefs.getString("circuitExercise6")?? "";
-    exercise[6] = prefs.getString("circuitExercise7")?? "";
-    exercise[7] = prefs.getString("circuitExercise8")?? "";
+    exercise[0] = prefs.getString("circuitExercise1") ?? "";
+    exercise[1] = prefs.getString("circuitExercise2") ?? "";
+    exercise[2] = prefs.getString("circuitExercise3") ?? "";
+    exercise[3] = prefs.getString("circuitExercise4") ?? "";
+    exercise[4] = prefs.getString("circuitExercise5") ?? "";
+    exercise[5] = prefs.getString("circuitExercise6") ?? "";
+    exercise[6] = prefs.getString("circuitExercise7") ?? "";
+    exercise[7] = prefs.getString("circuitExercise8") ?? "";
 
     getSessionDif(exerciseNumber);
 
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   void openSets() {
@@ -292,45 +273,44 @@ class _CircuitSession extends State<CircuitSession> {
     );
   }
 
-  Container checkText(int exNumber){
-      if (exerciseNumber >= exNumber){
-        return getText(exNumber);
-      }
-      else{
-        return Container();
-      }
-
+  Container checkText(int exNumber) {
+    if (exerciseNumber >= exNumber) {
+      return getText(exNumber);
+    } else {
+      return Container();
+    }
   }
 
-  Container getText(int exNumber){
+  Container getText(int exNumber) {
     String textHere = "";
     int circuitNo = 0;
-  int thisCctNumber = 0;
+    int thisCctNumber = 0;
 
     int i = 0;
     do {
-      if (exerciseNamePlural[i] == exercise[exNumber-1]){
+      if (exerciseNamePlural[i] == exercise[exNumber - 1]) {
         thisCctNumber = i;
         circuitNo = circuitNumber[thisCctNumber];
-      }i++;
-    }while (i != numberOfExercisesToChooseFrom);
+      }
+      i++;
+    } while (i != numberOfExercisesToChooseFrom);
 
-    textHere = sessionDif[circuitNo-1] + exercise[exNumber -1];;
+    textHere = sessionDif[circuitNo - 1] + exercise[exNumber - 1];
 
 
     return Container(
       child: Text(
-      textHere,
-      style: new TextStyle(
-          fontSize: 16.0,
-          color: const Color(0xFF000000),
-          fontWeight: FontWeight.w400,
-          fontFamily: "Roboto"),
-    ),
+        textHere,
+        style: new TextStyle(
+            fontSize: 16.0,
+            color: const Color(0xFF000000),
+            fontWeight: FontWeight.w400,
+            fontFamily: "Roboto"),
+      ),
     );
   }
 
-  void finishSetsSession(){
+  void finishSetsSession() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => Congratulations(),
@@ -345,16 +325,21 @@ class ButtonWidget extends StatelessWidget {
   final Color backgroundColor;
   final VoidCallback onClicked;
 
-  const ButtonWidget({Key? key, required this.text, required this.onClicked,
-    this.color = Colors.white, this.backgroundColor = Colors.black}) : super(key: key);
+  const ButtonWidget(
+      {Key? key,
+      required this.text,
+      required this.onClicked,
+      this.color = Colors.white,
+      this.backgroundColor = Colors.black})
+      : super(key: key);
   @override
   Widget build(BuildContext context) => ElevatedButton(
       style: ElevatedButton.styleFrom(
           primary: backgroundColor,
-          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16)
-      ),
+          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
       onPressed: onClicked,
-      child: Text(text,style: TextStyle(fontSize: 20,color: color),)
-  );
-
+      child: Text(
+        text,
+        style: TextStyle(fontSize: 20, color: color),
+      ));
 }

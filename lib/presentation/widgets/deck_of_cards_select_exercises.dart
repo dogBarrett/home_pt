@@ -10,7 +10,7 @@ import 'package:home_pt/globals.dart';
 import 'deck_of_cards.dart';
 
 class DeckOfCardsSelectExercises extends StatefulWidget {
-  //DeckOfCardsPage({Key key}) : super(key: key);
+  DeckOfCardsSelectExercises({Key? key}) : super(key: key);
   @override
   _DeckOfCardsSelectExercises createState() =>
       new _DeckOfCardsSelectExercises();
@@ -25,10 +25,7 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
   bool isInitialised = false;
 
-  String exercise1 = "";
-  String exercise2 = "";
-  String exercise3 = "";
-  String exercise4 = "";
+  List<String> exercises = ["", "", "", ""];
 
   @override
   Future<InitializationStatus> _initGoogleMobileAds() {
@@ -50,10 +47,6 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
     return new Scaffold(
         appBar: new AppBar(
-          /*flexibleSpace: Image(
-            image: AssetImage('assets/gradient_background.png'),
-            fit: BoxFit.cover,
-          ),*/
           backgroundColor: Colors.transparent,
           title: new Text('Deck of Cards'),
           leading: IconButton(
@@ -76,19 +69,19 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
                 new Container(
                   height: 40,
                 ),
-                getDropdownMenu(exercise1, 1),
+                getDropdownMenu(exercises[0], 1),
                 new Container(
                   height: 10,
                 ),
-                getDropdownMenu(exercise2, 2),
+                getDropdownMenu(exercises[1], 2),
                 new Container(
                   height: 10,
                 ),
-                getDropdownMenu(exercise3, 3),
+                getDropdownMenu(exercises[2], 3),
                 new Container(
                   height: 10,
                 ),
-                getDropdownMenu(exercise4, 4),
+                getDropdownMenu(exercises[3], 4),
                 new Container(
                   height: 40,
                 ),
@@ -173,10 +166,10 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
   void updateValues() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('deckOfCardsExercise1', exercise1);
-    prefs.setString('deckOfCardsExercise2', exercise2);
-    prefs.setString('deckOfCardsExercise3', exercise3);
-    prefs.setString('deckOfCardsExercise4', exercise4);
+    prefs.setString('deckOfCardsExercise1', exercises[0]);
+    prefs.setString('deckOfCardsExercise2', exercises[1]);
+    prefs.setString('deckOfCardsExercise3', exercises[2]);
+    prefs.setString('deckOfCardsExercise4', exercises[3]);
     setState(() {});
   }
 
@@ -219,12 +212,11 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
       ex[3] = randomNumber.nextInt(count);
     } while (ex[3] == ex[0] || ex[3] == ex[1] || ex[3] == ex[2]);
 
-    exercise1 = exerciseListHere[ex[0]];
-    exercise2 = exerciseListHere[ex[1]];
-    exercise3 = exerciseListHere[ex[2]];
-    exercise4 = exerciseListHere[ex[3]];
-
-    //updateValues();
+    int numberHere = 0;
+    do {
+      exercises[numberHere] = exerciseListHere[ex[numberHere]];
+      numberHere++;
+    } while (numberHere < 4);
     setState(() {});
   }
 
@@ -239,44 +231,29 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
     String cardSuit = "";
 
     return Container(
-
-            child: DropdownButton<String>(
-              value: exerciseNumber,
-              isExpanded: true,
-              icon: const Icon(Icons.arrow_drop_down),
-              iconSize: 24,
-              elevation: 16,
-              style: const TextStyle(color: Colors.deepPurple),
-              underline: Container(
-                height: 2,
-                color: Colors.deepPurpleAccent,
-              ),
-              onChanged: (String? newValue) {
-                exerciseNumber = newValue!;
-                if (dropdownNumber == 1) {
-                  exercise1 = exerciseNumber;
-                } else if (dropdownNumber == 2) {
-                  exercise2 = exerciseNumber;
-                } else if (dropdownNumber == 3) {
-                  exercise3 = exerciseNumber;
-                } else if (dropdownNumber == 4) {
-                  exercise4 = exerciseNumber;
-                }
-
-                //updateValues();
-                setState(() {});
-              },
-              //items: deckOfCardsExercises()
-              items: exerciseListHere
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-
-
-
+        child: DropdownButton<String>(
+      value: exerciseNumber,
+      isExpanded: true,
+      icon: const Icon(Icons.arrow_drop_down),
+      iconSize: 24,
+      elevation: 16,
+      style: const TextStyle(color: Colors.deepPurple),
+      underline: Container(
+        height: 2,
+        color: Colors.deepPurpleAccent,
+      ),
+      onChanged: (String? newValue) {
+        exerciseNumber = newValue!;
+        exercises[dropdownNumber - 1] = exerciseNumber;
+        setState(() {});
+      },
+      //items: deckOfCardsExercises()
+      items: exerciseListHere.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
     ));
   }
 }
