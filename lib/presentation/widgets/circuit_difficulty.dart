@@ -1,20 +1,15 @@
 import 'dart:async';
 import 'dart:core';
-import 'dart:math';
+
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:home_pt/globals.dart' as globals;
+
 
 import 'package:flutter/material.dart';
 import 'package:home_pt/helpers/ad_helper.dart';
-import 'package:home_pt/helpers/getCard.dart';
-import 'package:home_pt/presentation/widgets/deck_of_cards_select_exercises.dart';
-import 'package:home_pt/presentation/widgets/sets_select_exercises2.dart';
-import 'package:home_pt/presentation/widgets/sets_session.dart';
-//import 'package:home_pt/presentation/widgets/sets_select_exercises.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'circuit_session.dart';
-import 'exercise_selection.dart';
 
 class CircuitDifficulty extends StatefulWidget {
   //MainMenu({Key key}) : super(key: key);
@@ -116,6 +111,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     if (!_isInterstitialAdReady) {
       _loadInterstitialAd();
     }
+    //_initGoogleMobileAds();
     //setState(() {
 
     //});

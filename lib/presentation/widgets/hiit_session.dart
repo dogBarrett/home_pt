@@ -248,8 +248,8 @@ class _HIITSession extends State<HIITSession> {
           "/" +
           totalExercise.toString();
     }
-    return singleLineTextContainer(returnString1 + "    |    " + returnString2, 16.0);
-
+    return singleLineTextContainer(
+        returnString1 + "    |    " + returnString2, 16.0);
   }
 
   Container getExerciseLine() {
@@ -261,7 +261,6 @@ class _HIITSession extends State<HIITSession> {
       returnString1 = exercise[currentExercise];
     }
     return singleLineTextContainer(returnString1, 32.0);
-
   }
 
   Container getTitleLine() {
@@ -277,7 +276,6 @@ class _HIITSession extends State<HIITSession> {
       }
     }
     return singleLineTextContainer(returnString1, 40.0);
-
   }
 
   Container getNextExerciseLine() {
@@ -287,7 +285,7 @@ class _HIITSession extends State<HIITSession> {
       return Container(
         height: 20,
       );
-    } else if (currentExercise < totalExercise) {
+    } else if (currentExercise < (totalExercise - 1)) {
       returnString1 = exercise[currentExercise + 1];
 
       return singleLineTextContainer("Next: " + returnString1, 16.0);

@@ -1,9 +1,10 @@
 import 'package:home_pt/globals.dart' as globals;
-
-import '../globals.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Initialise {
   Initialise(){
+
+    setPreferences();
 
     globals.exerciseName[0] = "Window Wiper";
     globals.exerciseNamePlural[0] = "Window Wipers";
@@ -658,5 +659,16 @@ class Initialise {
 
     globals.numberOfDeckOfCardsExercises = 0;
 
+  }
+
+  void setPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int i = 0;
+
+    do {
+      prefs.setString("isSelected" + i.toString(), "1");
+
+      i++;
+    } while (i < globals.numberOfExercisesToChooseFrom);
   }
 }

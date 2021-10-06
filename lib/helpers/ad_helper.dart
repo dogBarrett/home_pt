@@ -3,7 +3,7 @@ import 'dart:io';
 
 class AdHelper {
 
-  /*static String get bannerAdUnitId {
+  static String get bannerAdUnitId {
     if (Platform.isAndroid) {
       return '<YOUR_ANDROID_BANNER_AD_UNIT_ID>';
     } else if (Platform.isIOS) {
@@ -31,7 +31,8 @@ class AdHelper {
     } else {
       throw new UnsupportedError('Unsupported platform');
     }
-  }*/
+  }
+  /*
 
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
@@ -63,7 +64,7 @@ class AdHelper {
     }
   }
 
-
+*/
 
 
 }

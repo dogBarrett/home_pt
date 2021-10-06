@@ -3,6 +3,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'main_menu.dart';
+import 'package:home_pt/globals.dart' as globals;
 
 class LoadingPage extends StatefulWidget {
   @override

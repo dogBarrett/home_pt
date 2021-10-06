@@ -175,6 +175,13 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
         ));
   }
 
+  DropdownMenuItem getMenuItems(int thisNumber) {
+    return DropdownMenuItem(
+      child: Text(thisNumber.toString()),
+      value: thisNumber,
+    );
+  }
+
   void continueButton(){
     savePrefs();
 
