@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:core';
 import 'dart:math';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_pt/globals.dart' as globals;
 
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class _MainMenu extends State<MainMenu> {
                               BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {openDeckOfCards();},
               child: Container(
-                height: MediaQuery.of(context).size.height / 7,
+                height: 0.15.sh,
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,7 +65,7 @@ class _MainMenu extends State<MainMenu> {
                     Text(
                       'Deck of Cards',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                       ),
@@ -86,7 +87,8 @@ class _MainMenu extends State<MainMenu> {
                               BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {openCircuit();},
               child: Container(
-                height: MediaQuery.of(context).size.height / 7,
+                //height: MediaQuery.of(context).size.height / 7,
+                height: 0.15.sh,
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,7 +96,7 @@ class _MainMenu extends State<MainMenu> {
                     Text(
                       'Circuit',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                       ),
@@ -119,7 +121,7 @@ class _MainMenu extends State<MainMenu> {
                 openHIIT();
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 7,
+                height: 0.15.sh,
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,7 +129,7 @@ class _MainMenu extends State<MainMenu> {
                     Text(
                       'HIIT Session',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                       ),
@@ -152,7 +154,7 @@ class _MainMenu extends State<MainMenu> {
                 openSets();
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 7,
+                height: 0.15.sh,
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -160,7 +162,7 @@ class _MainMenu extends State<MainMenu> {
                     Text(
                       'Sets',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                       ),

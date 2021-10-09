@@ -2,6 +2,7 @@ import 'dart:core';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:home_pt/helpers/ad_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -67,15 +68,15 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
               children: <Widget>[
                 new Text("Exercise Selection"),
                 new Container(
-                  height: 40,
+                  height: 0.40.sh,
                 ),
                 getDropdownMenu(exercises[0], 1),
                 new Container(
-                  height: 10,
+                  height: 0.10.sh,
                 ),
                 getDropdownMenu(exercises[1], 2),
                 new Container(
-                  height: 10,
+                  height: 0.10.sh,
                 ),
                 getDropdownMenu(exercises[2], 3),
                 new Container(
@@ -143,6 +144,7 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
   }
 
   void initState() {
+    super.initState();
     getExerciseList();
     setState(() {});
   }
@@ -235,7 +237,7 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
       value: exerciseNumber,
       isExpanded: true,
       icon: const Icon(Icons.arrow_drop_down),
-      iconSize: 24,
+      iconSize: 24.sp,
       elevation: 16,
       style: const TextStyle(color: Colors.deepPurple),
       underline: Container(

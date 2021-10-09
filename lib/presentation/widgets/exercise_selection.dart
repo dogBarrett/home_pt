@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:home_pt/globals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ExerciseSelection extends StatefulWidget {
   //SponsorsPage({Key key}) : super(key: key);
@@ -53,7 +54,7 @@ class _ExerciseSelection extends State<ExerciseSelection> {
                       transform: Matrix4.translationValues(-24, 0.0, 0.0),
                       child: Text(
                         exerciseNamePlural[index],
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 18.sp),
                       )),
                   value: isSelected[index],
                   onChanged: (bool value) {
@@ -67,8 +68,10 @@ class _ExerciseSelection extends State<ExerciseSelection> {
   }
 
   void initState(){
+    super.initState();
     getPreferences();
     setState((){});
+
   }
 
   void setPreferences() async {
