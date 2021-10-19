@@ -29,7 +29,9 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
             Icons.arrow_back_ios,
             size: 16,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
       ),
       body: new Container(
@@ -149,9 +151,9 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
   void getBooleans() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     isAce1 = prefs.getBool('boolAce1') ?? false;
-    isAce11 = prefs.getBool('boolAce11') ?? false;
+    isAce11 = prefs.getBool('boolAce11') ?? true;
     isPicture10 = prefs.getBool('boolPicture10') ?? false;
-    isPicturePicture = prefs.getBool('boolPicturePicture') ?? false;
+    isPicturePicture = prefs.getBool('boolPicturePicture') ?? true;
   }
 
 

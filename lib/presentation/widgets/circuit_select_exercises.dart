@@ -198,6 +198,7 @@ class _CircuitSelectExercises extends State<CircuitSelectExercises> {
   }
 
   void initState() {
+    super.initState();
     getExerciseList();
     setState(() {});
   }
@@ -287,10 +288,10 @@ class _CircuitSelectExercises extends State<CircuitSelectExercises> {
         child: DropdownButton<String>(
       value: exerciseNumber,
       isExpanded: true,
-      icon: const Icon(Icons.arrow_drop_down),
+      icon: Icon(Icons.arrow_drop_down),
       iconSize: 24,
       elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
+      style: TextStyle(color: Colors.deepPurple),
       underline: Container(
         height: 2,
         color: Colors.deepPurpleAccent,

@@ -36,13 +36,13 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primarySwatch: Colors.indigo,
-          //primarySwatch: Colors.transparent,
+          //primarySwatch: Colors.indigo,
+          primarySwatch: Colors.grey,
         ),
         home: LoadingPage(),
         debugShowCheckedModeBanner: false,
       ));
-    /*
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Home PT',
@@ -57,11 +57,11 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.indigo,
-        //primarySwatch: Colors.transparent,
+        //primarySwatch: Colors.red[900],
       ),
       home: LoadingPage(),
     );
-    */
+
 
   }
 }

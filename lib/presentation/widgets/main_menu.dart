@@ -12,6 +12,7 @@ import 'package:home_pt/presentation/widgets/sets_select_exercises2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'circuit_select_exercises.dart';
+import 'deck_of_cards_settings.dart';
 import 'exercise_selection.dart';
 import 'hiit_select_exercises.dart';
 
@@ -54,10 +55,17 @@ class _MainMenu extends State<MainMenu> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
+                              BorderSide(color: Colors.black, width: 2.0)))),
               onPressed: () {openDeckOfCards();},
               child: Container(
                 height: 0.15.sh,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/button4.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                  //color: Colors.black,
+                ),
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,10 +78,10 @@ class _MainMenu extends State<MainMenu> {
                         color: Colors.white,
                       ),
                     ),
-                    Image.asset(
+                    /*Image.asset(
                       "assets/images/manone.png",
                       fit: BoxFit.fitHeight,
-                    ),
+                    ),*/
                   ],
                 ),
               ),
@@ -84,12 +92,20 @@ class _MainMenu extends State<MainMenu> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
+                              BorderSide(color: Colors.black, width: 2.0)))),
               onPressed: () {openCircuit();},
               child: Container(
                 //height: MediaQuery.of(context).size.height / 7,
                 height: 0.15.sh,
+                width: 1.sw,
                 padding: const EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/button3.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                  //color: Colors.black,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -101,10 +117,10 @@ class _MainMenu extends State<MainMenu> {
                         color: Colors.white,
                       ),
                     ),
-                    Image.asset(
+                    /*Image.asset(
                       "assets/images/mantwo.png",
                       fit: BoxFit.fitHeight,
-                    ),
+                    ),*/
                   ],
                 ),
               ),
@@ -116,12 +132,19 @@ class _MainMenu extends State<MainMenu> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
+                          BorderSide(color: Colors.black, width: 2.0)))),
               onPressed: () {
                 openHIIT();
               },
               child: Container(
                 height: 0.15.sh,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/button2.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                  //color: Colors.black,
+                ),
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -134,10 +157,10 @@ class _MainMenu extends State<MainMenu> {
                         color: Colors.white,
                       ),
                     ),
-                    Image.asset(
+                    /*Image.asset(
                       "assets/images/manthree.png",
                       fit: BoxFit.fitHeight,
-                    ),
+                    ),*/
                   ],
                 ),
               ),
@@ -149,12 +172,19 @@ class _MainMenu extends State<MainMenu> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
+                          BorderSide(color: Colors.black, width: 2.0)))),
               onPressed: () {
                 openSets();
               },
               child: Container(
                 height: 0.15.sh,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/button1.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                  //color: Colors.black,
+                ),
                 padding: const EdgeInsets.all(5.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -167,10 +197,10 @@ class _MainMenu extends State<MainMenu> {
                         color: Colors.white,
                       ),
                     ),
-                    Image.asset(
+                    /*Image.asset(
                       "assets/images/manfour.png",
                       fit: BoxFit.fitHeight,
-                    ),
+                    ),*/
                   ],
                 ),
               ),

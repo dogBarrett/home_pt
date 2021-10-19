@@ -20,7 +20,6 @@ class DeckOfCardsSelectExercises extends StatefulWidget {
 class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
   var randomNumber = new Random();
 
-  // ignore: deprecated_member_use
   List<String> exerciseListHere = <String>[];
   int numberOfExercises = 0;
 
@@ -68,15 +67,15 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
               children: <Widget>[
                 new Text("Exercise Selection"),
                 new Container(
-                  height: 0.40.sh,
+                  height: 0.040.sh,
                 ),
                 getDropdownMenu(exercises[0], 1),
                 new Container(
-                  height: 0.10.sh,
+                  height: 0.010.sh,
                 ),
                 getDropdownMenu(exercises[1], 2),
                 new Container(
-                  height: 0.10.sh,
+                  height: 0.010.sh,
                 ),
                 getDropdownMenu(exercises[2], 3),
                 new Container(
@@ -248,6 +247,7 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
         exerciseNumber = newValue!;
         exercises[dropdownNumber - 1] = exerciseNumber;
         setState(() {});
+
       },
       //items: deckOfCardsExercises()
       items: exerciseListHere.map<DropdownMenuItem<String>>((String value) {

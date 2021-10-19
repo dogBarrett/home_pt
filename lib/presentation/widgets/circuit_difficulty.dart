@@ -3,16 +3,16 @@ import 'dart:core';
 
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-
 import 'package:flutter/material.dart';
 import 'package:home_pt/helpers/ad_helper.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'circuit_session.dart';
 
 class CircuitDifficulty extends StatefulWidget {
-  //MainMenu({Key key}) : super(key: key);
+  CircuitDifficulty({Key? key}) : super(key: key);
   @override
   _CircuitDifficulty createState() => new _CircuitDifficulty();
 }
@@ -53,46 +53,11 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              style: getButtonStyle(),
-              onPressed: () {
-                startSession(1);
-              },
-              child: getButtonContainer(
-                  "Beginner (e.g. 2 burpees)", "assets/images/bronze.png"),
-            ),
-            ElevatedButton(
-              style: getButtonStyle(),
-              onPressed: () {
-                startSession(2);
-              },
-              child: getButtonContainer(
-                  "Easy (e.g. 5 burpees)", "assets/images/silver.png"),
-            ),
-            ElevatedButton(
-              style: getButtonStyle(),
-              onPressed: () {
-                startSession(3);
-              },
-              child: getButtonContainer(
-                  "Medium (e.g. 10 burpees)", "assets/images/gold.png"),
-            ),
-            ElevatedButton(
-              style: getButtonStyle(),
-              onPressed: () {
-                startSession(4);
-              },
-              child: getButtonContainer(
-                  "Hard (e.g. 20 burpees)", "assets/images/trophy_star.png"),
-            ),
-            ElevatedButton(
-              style: getButtonStyle(),
-              onPressed: () {
-                startSession(5);
-              },
-              child: getButtonContainer("Insane (e.g. 25 burpees)",
-                  "assets/images/trophy_normal.png"),
-            ),
+            getElevatedButton(1, "Beginner (e.g. 2 burpees)", "bronze.png"),
+            getElevatedButton(2, "Easy (e.g. 5 burpees)", "silver.png"),
+            getElevatedButton(3, "Medium (e.g. 10 burpees)", "gold.png"),
+            getElevatedButton(4, "Hard (e.g. 20 burpees)", "trophy_star.png"),
+            getElevatedButton(5, "Insane (e.g. 25 burpees)", "trophy_normal.png"),
           ],
         ),
         decoration: BoxDecoration(
@@ -103,6 +68,17 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
         ),
         padding: const EdgeInsets.all(10.0),
       ),
+    );
+  }
+
+  ElevatedButton getElevatedButton(int thisNumber, String thisString, String thisImage){
+    return ElevatedButton(
+      style: getButtonStyle(),
+      onPressed: () {
+        startSession(thisNumber);
+      },
+      child: getButtonContainer(thisString,
+          "assets/images/" + thisImage),
     );
   }
 
@@ -119,7 +95,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
 
   Container getButtonContainer(String textLine, String imageAsset) {
     return Container(
-      height: MediaQuery.of(context).size.height / 9,
+      height: 0.1.sh,
       padding: const EdgeInsets.all(5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,7 +170,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
       child: Text(
         thisText,
         style: new TextStyle(
-            fontSize: textSize,
+            fontSize: textSize.sp,
             color: Colors.white,
             fontWeight: FontWeight.w700,
             fontFamily: "Roboto"),
