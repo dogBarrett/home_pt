@@ -1,8 +1,7 @@
-
 import 'dart:io';
 
 class AdHelper {
-
+  /*
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
       return '<YOUR_ANDROID_BANNER_AD_UNIT_ID>';
@@ -16,6 +15,8 @@ class AdHelper {
   static String get interstitialAdUnitId {
     if (Platform.isAndroid) {
       return 'ca-app-pub-3132437849583414/4575265838';
+      // Test add from google: https://developers.google.com/admob/android/test-ads#sample%5C_ad%5C_units
+      // return 'ca-app-pub-3940256099942544/1033173712';
     } else if (Platform.isIOS) {
       return 'ca-app-pub-3132437849583414/2775577938';
     } else {
@@ -32,7 +33,8 @@ class AdHelper {
       throw new UnsupportedError('Unsupported platform');
     }
   }
-  /*
+
+  */
 
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
@@ -63,8 +65,4 @@ class AdHelper {
       throw new UnsupportedError("Unsupported platform");
     }
   }
-
-*/
-
-
 }

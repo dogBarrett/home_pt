@@ -7,7 +7,6 @@ import 'package:home_pt/helpers/ad_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'hiit_session.dart';
 
-
 class HIITDifficulty extends StatefulWidget {
   @override
   _HIITDifficulty createState() => new _HIITDifficulty();
@@ -15,7 +14,6 @@ class HIITDifficulty extends StatefulWidget {
 
 class _HIITDifficulty extends State<HIITDifficulty> {
   @override
-
   bool isInitialised = false;
 
   Future<InitializationStatus> _initGoogleMobileAds() {
@@ -30,7 +28,6 @@ class _HIITDifficulty extends State<HIITDifficulty> {
   bool _isInterstitialAdReady = false;
 
   Widget build(BuildContext context) {
-
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.transparent,
@@ -60,7 +57,6 @@ class _HIITDifficulty extends State<HIITDifficulty> {
                               BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
                 startSession(0);
-
               },
               child: Container(
                 height: MediaQuery.of(context).size.height / 9,
@@ -93,7 +89,6 @@ class _HIITDifficulty extends State<HIITDifficulty> {
                               BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
                 startSession(1);
-
               },
               child: Container(
                 height: MediaQuery.of(context).size.height / 9,
@@ -117,20 +112,15 @@ class _HIITDifficulty extends State<HIITDifficulty> {
                 ),
               ),
             ),
-
             ElevatedButton(
-
               style: ButtonStyle(
-
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
+                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
                 startSession(2);
-
               },
               child: Container(
                 height: MediaQuery.of(context).size.height / 9,
@@ -154,17 +144,15 @@ class _HIITDifficulty extends State<HIITDifficulty> {
                 ),
               ),
             ),
-
             ElevatedButton(
               style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
+                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
                 startSession(3);
-
               },
               child: Container(
                 height: MediaQuery.of(context).size.height / 9,
@@ -194,10 +182,9 @@ class _HIITDifficulty extends State<HIITDifficulty> {
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                           side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
+                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
               onPressed: () {
                 startSession(4);
-
               },
               child: Container(
                 height: MediaQuery.of(context).size.height / 9,
@@ -231,15 +218,15 @@ class _HIITDifficulty extends State<HIITDifficulty> {
         ),
         padding: const EdgeInsets.all(10.0),
       ),
-
     );
   }
 
-  initState(){
+  void initState() {
     // TODO: Load an Interstitial Ad
     if (!_isInterstitialAdReady) {
       _loadInterstitialAd();
     }
+    super.initState();
     //setState(() {
 
     //});
@@ -276,7 +263,7 @@ class _HIITDifficulty extends State<HIITDifficulty> {
     super.dispose();
   }
 
-  void startSession(int levelNumber) async{
+  void startSession(int levelNumber) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt("hiitDifficulty", levelNumber);
 

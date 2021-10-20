@@ -19,9 +19,7 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
   Widget build(BuildContext context) {
     getBooleans();
     return new Scaffold(
-
       appBar: new AppBar(
-
         backgroundColor: Colors.transparent,
         title: new Text('Deck of Cards'),
         leading: IconButton(
@@ -143,7 +141,6 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
         alignment: Alignment.center,
       ),
     );
-
   }
 
   void buttonPressed() {}
@@ -155,7 +152,6 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
     isPicture10 = prefs.getBool('boolPicture10') ?? false;
     isPicturePicture = prefs.getBool('boolPicturePicture') ?? true;
   }
-
 
   void setBooleans() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -174,9 +170,7 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
       isAce11 = false;
     }
     setBooleans();
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   void flipPicture() {
@@ -188,17 +182,14 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
       isPicturePicture = false;
     }
     setBooleans();
-    setState(() {
-
-    });
+    setState(() {});
   }
 
-  void proceed(){
+  void proceed() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => DeckOfCardsSelectExercises(),
       ),
     );
   }
-
 }

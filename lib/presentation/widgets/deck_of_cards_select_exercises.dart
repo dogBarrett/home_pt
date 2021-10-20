@@ -41,9 +41,9 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
   Widget build(BuildContext context) {
     // TODO: Load an Interstitial Ad
-    if (!_isInterstitialAdReady) {
-      _loadInterstitialAd();
-    }
+    // if (!_isInterstitialAdReady) {
+    //   _loadInterstitialAd();
+    // }
 
     return new Scaffold(
         appBar: new AppBar(
@@ -103,10 +103,10 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
                                   fontWeight: FontWeight.w400,
                                   fontFamily: "Roboto"),
                             )),
-                        new RaisedButton(
+                        new ElevatedButton(
                             key: null,
                             onPressed: continueButton,
-                            color: const Color(0xFFe0e0e0),
+                            // color: const Color(0xFFe0e0e0),
                             child: new Text(
                               "Continue",
                               style: new TextStyle(
@@ -131,21 +131,35 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
   void continueButton() {
     // TODO: Display an Interstitial Ad
+
     if (_isInterstitialAdReady) {
       _interstitialAd?.show();
     }
     updateValues();
     Navigator.of(context)
         .push(MaterialPageRoute(
-          builder: (context) => DeckOfCards(),
-        ))
-        .then((value) => setState(() {}));
+      builder: (context) => DeckOfCards(),
+    ))
+        .then((value) {
+      _loadInterstitialAd();
+    });
   }
 
+  @override
   void initState() {
     super.initState();
+    // Loading interstitialad when initstate
+    _loadInterstitialAd();
     getExerciseList();
     setState(() {});
+  }
+
+  @override
+  void dispose() {
+    // COMPLETE: Dispose an InterstitialAd object
+    _interstitialAd!.dispose();
+
+    super.dispose();
   }
 
   void getExerciseList() async {
@@ -175,6 +189,7 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
   }
 
   void _loadInterstitialAd() {
+    print("Inside loading ad");
     InterstitialAd.load(
       adUnitId: AdHelper.interstitialAdUnitId,
       request: AdRequest(),
@@ -221,13 +236,6 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
     setState(() {});
   }
 
-  void dispose() {
-    // COMPLETE: Dispose an InterstitialAd object
-    _interstitialAd?.dispose();
-
-    super.dispose();
-  }
-
   Container getDropdownMenu(String exerciseNumber, int dropdownNumber) {
     String cardSuit = "";
 
@@ -247,7 +255,6 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
         exerciseNumber = newValue!;
         exercises[dropdownNumber - 1] = exerciseNumber;
         setState(() {});
-
       },
       //items: deckOfCardsExercises()
       items: exerciseListHere.map<DropdownMenuItem<String>>((String value) {

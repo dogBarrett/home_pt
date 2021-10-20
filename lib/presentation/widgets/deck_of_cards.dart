@@ -177,12 +177,11 @@ class _DeckOfCards extends State<DeckOfCards> {
   void initState() {
     Wakelock.enable();
     getPreferences();
-    setState((){});
+    setState(() {});
   }
 
   void dispose() {
     Wakelock.disable();
-    super.dispose;
-
+    super.dispose();
   }
 }

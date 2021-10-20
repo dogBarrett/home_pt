@@ -123,7 +123,7 @@ class _CircuitSession extends State<CircuitSession> {
   @override
   void dispose() {
     Wakelock.disable();
-    super.dispose;
+    super.dispose();
   }
 
   void reset() {
@@ -296,7 +296,6 @@ class _CircuitSession extends State<CircuitSession> {
     } while (i != numberOfExercisesToChooseFrom);
 
     textHere = sessionDif[circuitNo - 1] + exercise[exNumber - 1];
-
 
     return Container(
       child: Text(

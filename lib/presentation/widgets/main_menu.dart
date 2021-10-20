@@ -16,7 +16,6 @@ import 'deck_of_cards_settings.dart';
 import 'exercise_selection.dart';
 import 'hiit_select_exercises.dart';
 
-
 class MainMenu extends StatefulWidget {
   MainMenu({Key? key}) : super(key: key);
   @override
@@ -26,6 +25,7 @@ class MainMenu extends StatefulWidget {
 class _MainMenu extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
+    double appBarHeight = MediaQuery.of(context).padding.top;
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Colors.transparent,
@@ -44,168 +44,186 @@ class _MainMenu extends State<MainMenu> {
         ),
       ),
       body: new Container(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.black, width: 2.0)))),
-              onPressed: () {openDeckOfCards();},
-              child: Container(
-                height: 0.15.sh,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/button4.jpg"),
-                    fit: BoxFit.cover,
-                  ),
-                  //color: Colors.black,
-                ),
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Deck of Cards',
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
+        height: 1.sh,
+        width: 1.sw,
+        child: SingleChildScrollView(
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              GestureDetector(
+                // style: ButtonStyle(
+                //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                //         RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.circular(18.0),
+                //             side: BorderSide(color: Colors.black, width: 2.0)))),
+                onTap: () {
+                  openDeckOfCards();
+                },
+                child: Container(
+                  height: 0.2.sh,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/button4.jpg"),
+                      fit: BoxFit.cover,
                     ),
-                    /*Image.asset(
-                      "assets/images/manone.png",
-                      fit: BoxFit.fitHeight,
-                    ),*/
-                  ],
-                ),
-              ),
-            ),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.black, width: 2.0)))),
-              onPressed: () {openCircuit();},
-              child: Container(
-                //height: MediaQuery.of(context).size.height / 7,
-                height: 0.15.sh,
-                width: 1.sw,
-                padding: const EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/button3.jpg"),
-                    fit: BoxFit.cover,
-                  ),
-                  //color: Colors.black,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Circuit',
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                    ),
-                    /*Image.asset(
-                      "assets/images/mantwo.png",
-                      fit: BoxFit.fitHeight,
-                    ),*/
-                  ],
-                ),
-              ),
-            ),
+                    borderRadius: BorderRadius.circular(18.0),
 
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                          BorderSide(color: Colors.black, width: 2.0)))),
-              onPressed: () {
-                openHIIT();
-              },
-              child: Container(
-                height: 0.15.sh,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/button2.jpg"),
-                    fit: BoxFit.cover,
+                    //color: Colors.black,
                   ),
-                  //color: Colors.black,
-                ),
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'HIIT Session',
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                  padding: const EdgeInsets.all(15.0),
+                  margin: EdgeInsets.only(bottom: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Deck of Cards',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    /*Image.asset(
-                      "assets/images/manthree.png",
-                      fit: BoxFit.fitHeight,
-                    ),*/
-                  ],
+                      /*Image.asset(
+                        "assets/images/manone.png",
+                        fit: BoxFit.fitHeight,
+                      ),*/
+                    ],
+                  ),
                 ),
               ),
-            ),
-
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                          BorderSide(color: Colors.black, width: 2.0)))),
-              onPressed: () {
-                openSets();
-              },
-              child: Container(
-                height: 0.15.sh,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/button1.jpg"),
-                    fit: BoxFit.cover,
-                  ),
-                  //color: Colors.black,
-                ),
-                padding: const EdgeInsets.all(5.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      'Sets',
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
+              GestureDetector(
+                // style: ButtonStyle(
+                //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                //         RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.circular(18.0),
+                //             side: BorderSide(color: Colors.black, width: 2.0)))),
+                onTap: () {
+                  openCircuit();
+                },
+                child: Container(
+                  //height: MediaQuery.of(context).size.height / 7,
+                  height: 0.2.sh,
+                  width: 1.sw,
+                  padding: const EdgeInsets.all(15.0),
+                  margin: EdgeInsets.only(bottom: 15.0),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/button3.jpg"),
+                      fit: BoxFit.cover,
                     ),
-                    /*Image.asset(
-                      "assets/images/manfour.png",
-                      fit: BoxFit.fitHeight,
-                    ),*/
-                  ],
+                    borderRadius: BorderRadius.circular(18.0),
+                    //color: Colors.black,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Circuit',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                      /*Image.asset(
+                        "assets/images/mantwo.png",
+                        fit: BoxFit.fitHeight,
+                      ),*/
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+              GestureDetector(
+                // style: ButtonStyle(
+                //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                //     RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(18.0),
+                //       side: BorderSide(color: Colors.black, width: 2.0),
+                //     ),
+                //   ),
+                // ),
+                onTap: () {
+                  openHIIT();
+                },
+                child: Container(
+                  height: 0.2.sh,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/button2.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(18.0),
+                    // border: Border.all(
+                    //   color: Colors.black,
+                    //   width: 2.0,
+                    // ),
+                    //color: Colors.black,
+                  ),
+                  padding: const EdgeInsets.all(15.0),
+                  margin: EdgeInsets.only(bottom: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'HIIT Session',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                      /*Image.asset(
+                        "assets/images/manthree.png",
+                        fit: BoxFit.fitHeight,
+                      ),*/
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                // style: ButtonStyle(
+                //     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                //         RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.circular(18.0),
+                //             side: BorderSide(color: Colors.black, width: 2.0)))),
+                onTap: () {
+                  openSets();
+                },
+                child: Container(
+                  height: 0.2.sh,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/button1.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(18.0),
+                    //color: Colors.black,
+                  ),
+                  padding: const EdgeInsets.all(15.0),
+                  margin: EdgeInsets.only(bottom: 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Sets',
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                      /*Image.asset(
+                        "assets/images/manfour.png",
+                        fit: BoxFit.fitHeight,
+                      ),*/
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -213,9 +231,8 @@ class _MainMenu extends State<MainMenu> {
             fit: BoxFit.fill,
           ),
         ),
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.only(top: 15.0, left: 15, right: 15),
       ),
-
     );
   }
 
@@ -227,7 +244,7 @@ class _MainMenu extends State<MainMenu> {
     );
   }*/
 
-  void openDeckOfCards(){
+  void openDeckOfCards() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => DeckOfCardsSelectExercises(),
@@ -235,7 +252,7 @@ class _MainMenu extends State<MainMenu> {
     );
   }
 
-  void openSets(){
+  void openSets() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => SetsSelectExercises(),
@@ -243,7 +260,7 @@ class _MainMenu extends State<MainMenu> {
     );
   }
 
-  void openHIIT(){
+  void openHIIT() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => HIITSelectExercises(),
@@ -251,7 +268,7 @@ class _MainMenu extends State<MainMenu> {
     );
   }
 
-  void openCircuit(){
+  void openCircuit() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CircuitSelectExercises(),

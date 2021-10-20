@@ -182,17 +182,17 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
     );
   }
 
-  void continueButton(){
+  void continueButton() {
     savePrefs();
 
     Navigator.of(context)
         .push(MaterialPageRoute(
-      builder: (context) => SetsSessionDifficulty(),
-    ))
+          builder: (context) => SetsSessionDifficulty(),
+        ))
         .then((value) => setState(() {}));
   }
 
-  void savePrefs() async{
+  void savePrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('setsSessionExercise1', exercises[0]);
     prefs.setString('setsSessionExercise2', exercises[1]);
@@ -208,6 +208,7 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
   void initState() {
     getExerciseList();
     setState(() {});
+    super.initState();
   }
 
   void getExerciseList() async {
@@ -220,7 +221,7 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
       }
       i++;
     } while (i < numberOfExercisesToChooseFrom);
-    numberOfExerciseSets = prefs.getInt("setsSessionExercises")?? 4;
+    numberOfExerciseSets = prefs.getInt("setsSessionExercises") ?? 4;
 
     numberOfExercises = exerciseListHere.length;
     randomiseExercises();
@@ -271,10 +272,10 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
         ex[7] == ex[6]);
 
     int numberHere = 0;
-    do{
+    do {
       exercises[numberHere] = exerciseListHere[ex[numberHere]];
       numberHere++;
-    }while (numberHere < 8);
+    } while (numberHere < 8);
 
     setState(() {});
   }
@@ -304,7 +305,7 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
       onChanged: (String? newValue) {
         print(exerciseNumber);
         exerciseNumber = newValue!;
-        exercises[dropdownNumber -1] = exerciseNumber;
+        exercises[dropdownNumber - 1] = exerciseNumber;
         setState(() {});
       },
       //items: deckOfCardsExercises()

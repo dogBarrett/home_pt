@@ -57,7 +57,8 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
             getElevatedButton(2, "Easy (e.g. 5 burpees)", "silver.png"),
             getElevatedButton(3, "Medium (e.g. 10 burpees)", "gold.png"),
             getElevatedButton(4, "Hard (e.g. 20 burpees)", "trophy_star.png"),
-            getElevatedButton(5, "Insane (e.g. 25 burpees)", "trophy_normal.png"),
+            getElevatedButton(
+                5, "Insane (e.g. 25 burpees)", "trophy_normal.png"),
           ],
         ),
         decoration: BoxDecoration(
@@ -71,14 +72,14 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     );
   }
 
-  ElevatedButton getElevatedButton(int thisNumber, String thisString, String thisImage){
+  ElevatedButton getElevatedButton(
+      int thisNumber, String thisString, String thisImage) {
     return ElevatedButton(
       style: getButtonStyle(),
       onPressed: () {
         startSession(thisNumber);
       },
-      child: getButtonContainer(thisString,
-          "assets/images/" + thisImage),
+      child: getButtonContainer(thisString, "assets/images/" + thisImage),
     );
   }
 
@@ -87,6 +88,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     if (!_isInterstitialAdReady) {
       _loadInterstitialAd();
     }
+    super.initState();
     //_initGoogleMobileAds();
     //setState(() {
 
