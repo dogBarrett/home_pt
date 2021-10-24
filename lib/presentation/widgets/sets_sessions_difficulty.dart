@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:core';
 import 'dart:math';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:home_pt/globals.dart' as globals;
 
@@ -15,7 +17,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'exercise_selection.dart';
 
-
 class SetsSessionDifficulty extends StatefulWidget {
   //MainMenu({Key key}) : super(key: key);
   @override
@@ -24,7 +25,6 @@ class SetsSessionDifficulty extends StatefulWidget {
 
 class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
   @override
-
   bool isInitialised = false;
 
   Future<InitializationStatus> _initGoogleMobileAds() {
@@ -39,15 +39,20 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
   bool _isInterstitialAdReady = false;
 
   Widget build(BuildContext context) {
-
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.transparent,
-        title: new Text('Sets Session'),
+        backgroundColor: Colors.blueGrey.shade900,
+        title: new Text(
+          'Sets Session',
+          style: GoogleFonts.merriweather(
+            color: Colors.white,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            size: 16,
+            color: Colors.white,
+            size: 0.024.sh,
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -60,29 +65,26 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(1);
-
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Beginner (e.g. 2 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(
@@ -93,29 +95,26 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
                 ),
               ),
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(2);
-
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Easy (e.g. 5 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(
@@ -126,30 +125,26 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
                 ),
               ),
             ),
-
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(3);
-
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Medium (e.g. 10 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(
@@ -160,30 +155,26 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
                 ),
               ),
             ),
-
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(4);
-
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Hard (e.g. 20 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(
@@ -194,29 +185,26 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
                 ),
               ),
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                          BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(5);
-
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Insane (e.g. 25 burpees)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(
@@ -237,18 +225,15 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
         ),
         padding: const EdgeInsets.all(10.0),
       ),
-
     );
   }
 
-  initState(){
+  initState() {
     // TODO: Load an Interstitial Ad
     if (!_isInterstitialAdReady) {
       _loadInterstitialAd();
     }
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   void _loadInterstitialAd() {
@@ -282,7 +267,7 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
     super.dispose();
   }
 
-  void startSession(int levelNumber) async{
+  void startSession(int levelNumber) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt("setsSessionDifficulty", levelNumber);
 

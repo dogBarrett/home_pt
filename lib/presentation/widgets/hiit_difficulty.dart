@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:core';
 
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:home_pt/helpers/ad_helper.dart';
@@ -30,12 +32,18 @@ class _HIITDifficulty extends State<HIITDifficulty> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.transparent,
-        title: new Text('HIIT'),
+        backgroundColor: Colors.blueGrey.shade900,
+        title: new Text(
+          'HIIT',
+          style: GoogleFonts.merriweather(
+            color: Colors.white,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            size: 16,
+            color: Colors.white,
+            size: 0.024.sh,
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -48,28 +56,26 @@ class _HIITDifficulty extends State<HIITDifficulty> {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(0);
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Beginner 10 on / 20 off x6',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(
@@ -80,28 +86,26 @@ class _HIITDifficulty extends State<HIITDifficulty> {
                 ),
               ),
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(1);
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Easy  10 on / 10 off x6',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(
@@ -112,28 +116,26 @@ class _HIITDifficulty extends State<HIITDifficulty> {
                 ),
               ),
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(2);
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Medium  20 on / 10 off x8',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(
@@ -144,28 +146,26 @@ class _HIITDifficulty extends State<HIITDifficulty> {
                 ),
               ),
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(3);
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Hard  20 on / 10 off x10',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(
@@ -176,28 +176,26 @@ class _HIITDifficulty extends State<HIITDifficulty> {
                 ),
               ),
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          side:
-                              BorderSide(color: Colors.blueGrey, width: 2.0)))),
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 startSession(4);
               },
               child: Container(
-                height: MediaQuery.of(context).size.height / 9,
-                padding: const EdgeInsets.all(5.0),
+                height: 0.1.sh,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.035.sw),
+                  border: Border.all(color: Colors.blueGrey, width: 2.0),
+                  color: Colors.transparent,
+                ),
+                padding: EdgeInsets.all(0.03.sw),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text(
                       'Insane  20 on / 10 off x15',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                      style: GoogleFonts.merriweather(
+                        fontSize: 16.sp,
+                        color: Colors.black,
                       ),
                     ),
                     Image.asset(

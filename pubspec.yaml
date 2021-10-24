@@ -32,8 +32,10 @@ dependencies:
   shared_preferences:
   google_mobile_ads:
   wakelock:
+  google_fonts:
   audioplayers:
   flutter_screenutil:
+  font_awesome_flutter:
   #cupertino_icons: ^1.0.2
   #shared_preferences: ^2.0.7
   #google_mobile_ads: ^0.13.0

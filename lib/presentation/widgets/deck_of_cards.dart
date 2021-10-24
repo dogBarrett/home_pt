@@ -1,5 +1,7 @@
 import 'dart:core';
 import 'dart:math';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:home_pt/globals.dart' as globals;
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -33,18 +35,25 @@ class _DeckOfCards extends State<DeckOfCards> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.transparent,
-        title: new Text('Deck of Cards'),
+        backgroundColor: Colors.blueGrey.shade900,
+        title: new Text(
+          'Deck of Cards',
+          style: GoogleFonts.merriweather(
+            color: Colors.white,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            size: 16,
+            color: Colors.white,
+            size: 0.024.sh,
           ),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
       ),
+      extendBodyBehindAppBar: true,
       body: new Container(
         child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +62,7 @@ class _DeckOfCards extends State<DeckOfCards> {
             children: <Widget>[
               _getCardsLeftText(),
               new Container(
-                height: 30,
+                height: 0.035.sh,
               ),
               new InkWell(
                 child: Container(
@@ -74,7 +83,7 @@ class _DeckOfCards extends State<DeckOfCards> {
                 },
               ),
               new Container(
-                height: 30,
+                height: 0.035.sh,
               ),
               _getExercisesLeft(),
             ]),
@@ -84,7 +93,7 @@ class _DeckOfCards extends State<DeckOfCards> {
             fit: BoxFit.fill,
           ),
         ),
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(0.04.sw),
         alignment: Alignment.center,
       ),
     );
@@ -101,11 +110,11 @@ class _DeckOfCards extends State<DeckOfCards> {
   Widget _getCardsLeftText() {
     return Text(
       numerousOrSingleCardLeft(),
-      style: new TextStyle(
-          fontSize: 24.0,
-          color: const Color(0xFF000000),
-          fontWeight: FontWeight.w400,
-          fontFamily: "Roboto"),
+      style: GoogleFonts.merriweather(
+        fontSize: 20.sp,
+        color: Colors.black,
+        fontWeight: FontWeight.w800,
+      ),
     );
   }
 
@@ -130,11 +139,11 @@ class _DeckOfCards extends State<DeckOfCards> {
   Widget _getExercisesLeft() {
     return Text(
       getTextForBottomText(),
-      style: new TextStyle(
-          fontSize: 24.0,
-          color: const Color(0xFF000000),
-          fontWeight: FontWeight.w400,
-          fontFamily: "Roboto"),
+      style: GoogleFonts.merriweather(
+        fontSize: 20.sp,
+        color: Colors.black,
+        fontWeight: FontWeight.w800,
+      ),
     );
   }
 

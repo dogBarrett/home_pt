@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:core';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:home_pt/globals.dart';
 import 'package:home_pt/presentation/widgets/sets_select_exercises2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,52 +27,105 @@ class _SetsSession extends State<SetsSession> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.transparent,
-        title: new Text('Sets Session'),
+        backgroundColor: Colors.blueGrey.shade900,
+        title: new Text(
+          'Sets Session',
+          style: GoogleFonts.merriweather(
+            color: Colors.white,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            size: 16,
+            color: Colors.white,
+            size: 0.024.sh,
           ),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
       ),
+      extendBodyBehindAppBar: true,
       body: new Container(
         child: new Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              singleLineText("5 SETS OF EACH", 32.0),
-              Container(
-                height: 10,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            singleLineText("5 SETS OF EACH", 32.0),
+            Container(
+              height: 0.05.sh,
+            ),
+            checkText(1),
+            SizedBox(
+              height: 0.03.sh,
+            ),
+            checkText(2),
+            SizedBox(
+              height: 0.03.sh,
+            ),
+            checkText(3),
+            SizedBox(
+              height: 0.03.sh,
+            ),
+            checkText(4),
+            SizedBox(
+              height: 0.03.sh,
+            ),
+            checkText(5),
+            SizedBox(
+              height: 0.03.sh,
+            ),
+            checkText(6),
+            SizedBox(
+              height: 0.03.sh,
+            ),
+            checkText(7),
+            SizedBox(
+              height: 0.03.sh,
+            ),
+            checkText(8),
+            SizedBox(
+              height: 0.03.sh,
+            ),
+            new Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  new GestureDetector(
+                    onTap: () {
+                      finishSetsSession();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 0.015.sh,
+                        horizontal: 0.04.sw,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey.shade900,
+                        borderRadius: BorderRadius.circular(
+                          0.03.sw,
+                        ),
+                      ),
+                      width: 0.35.sw,
+                      child: new Text(
+                        "Finish Session",
+                        textAlign: TextAlign.center,
+                        style: new TextStyle(
+                          fontSize: 0.038.sw,
+                          color: Colors.white,
+                          fontFamily: "Roboto",
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              checkText(1),
-              checkText(2),
-              checkText(3),
-              checkText(4),
-              checkText(5),
-              checkText(6),
-              checkText(7),
-              checkText(8),
-              new Container(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      new RaisedButton(
-                          key: null,
-                          onPressed: () {
-                            finishSetsSession();
-                          },
-                          color: const Color(0xFFe0e0e0),
-                          child: singleLineText("Finish Session", 12.0)),
-                    ]),
-              ),
-            ]),
+            ),
+          ],
+        ),
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/light_background2.jpg"),
@@ -154,11 +209,11 @@ class _SetsSession extends State<SetsSession> {
   Text singleLineText(String thisText, double textSize) {
     return Text(
       thisText,
-      style: new TextStyle(
-          fontSize: textSize,
-          color: const Color(0xFF000000),
-          fontWeight: FontWeight.w400,
-          fontFamily: "Roboto"),
+      style: GoogleFonts.merriweather(
+        fontSize: textSize.sp,
+        color: Colors.black,
+        fontWeight: FontWeight.w800,
+      ),
     );
   }
 
@@ -179,7 +234,13 @@ class _SetsSession extends State<SetsSession> {
     textHere = sessionDif[circuitNo - 1] + exercise[exNumber - 1];
     ;
 
-    return Container(child: singleLineText(textHere, 16.0));
+    return Container(
+        child: Text(
+      textHere,
+      style: GoogleFonts.actor(
+        fontSize: 0.05.sw,
+      ),
+    ));
   }
 
   void finishSetsSession() {

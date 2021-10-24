@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:core';
 
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import 'package:flutter/material.dart';
@@ -35,12 +36,18 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.transparent,
-        title: new Text('Circuit'),
+        backgroundColor: Colors.blueGrey.shade900,
+        title: new Text(
+          'Select Difficulty',
+          style: GoogleFonts.merriweather(
+            color: Colors.white,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            size: 16,
+            color: Colors.white,
+            size: 0.024.sh,
           ),
           onPressed: () {
             Navigator.of(context).pop();
@@ -72,11 +79,11 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     );
   }
 
-  ElevatedButton getElevatedButton(
+  Widget getElevatedButton(
       int thisNumber, String thisString, String thisImage) {
-    return ElevatedButton(
-      style: getButtonStyle(),
-      onPressed: () {
+    return GestureDetector(
+      // style: getButtonStyle(),
+      onTap: () {
         startSession(thisNumber);
       },
       child: getButtonContainer(thisString, "assets/images/" + thisImage),
@@ -98,11 +105,16 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
   Container getButtonContainer(String textLine, String imageAsset) {
     return Container(
       height: 0.1.sh,
-      padding: const EdgeInsets.all(5.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(0.035.sw),
+        border: Border.all(color: Colors.blueGrey, width: 2.0),
+        color: Colors.transparent,
+      ),
+      padding: EdgeInsets.all(0.03.sw),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          singleLineTextContainer(textLine, 16.0),
+          singleLineTextContainer(textLine, 0.04.sw),
           Image.asset(
             imageAsset,
             fit: BoxFit.fitHeight,
@@ -114,10 +126,13 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
 
   ButtonStyle getButtonStyle() {
     return ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(color: Colors.blueGrey, width: 2.0))));
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+          side: BorderSide(color: Colors.blueGrey, width: 2.0),
+        ),
+      ),
+    );
   }
 
   void _loadInterstitialAd() {
@@ -171,11 +186,10 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     return Container(
       child: Text(
         thisText,
-        style: new TextStyle(
-            fontSize: textSize.sp,
-            color: Colors.white,
-            fontWeight: FontWeight.w700,
-            fontFamily: "Roboto"),
+        style: GoogleFonts.merriweather(
+          fontSize: 16.sp,
+          color: Colors.black,
+        ),
       ),
     );
   }

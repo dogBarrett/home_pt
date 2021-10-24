@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:core';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'main_menu.dart';
 import 'package:home_pt/globals.dart' as globals;
 
@@ -19,6 +20,7 @@ class _LoadingPage extends State<LoadingPage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -26,7 +28,7 @@ class _LoadingPage extends State<LoadingPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                height: 300,
+                height: 0.4.sh,
                 child: new Image.asset(
                   "assets/images/logo.png",
                   fit: BoxFit.fill,

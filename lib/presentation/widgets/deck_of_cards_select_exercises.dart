@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:home_pt/helpers/ad_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,26 +49,47 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
     return new Scaffold(
         appBar: new AppBar(
-          backgroundColor: Colors.transparent,
-          title: new Text('Deck of Cards'),
+          backgroundColor: Colors.blueGrey.shade900,
+          elevation: 0.0,
+          title: new Text(
+            'Deck of Cards',
+            style: GoogleFonts.merriweather(
+              color: Colors.white,
+            ),
+          ),
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
-              size: 16,
+              color: Colors.white,
             ),
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
         ),
+        extendBodyBehindAppBar: true,
         body: new Container(
+          height: 1.sh,
+          width: 1.sw,
           child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                new Text("Exercise Selection"),
-                new Container(
+                Container(
+                  margin: EdgeInsets.only(
+                    bottom: 0.01.sh,
+                  ),
+                  child: Text(
+                    "Exercise Selection",
+                    style: GoogleFonts.merriweather(
+                      fontSize: 25.sp,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
+                new SizedBox(
                   height: 0.040.sh,
                 ),
                 getDropdownMenu(exercises[0], 1),
@@ -87,33 +110,57 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
                 ),
                 new Container(
                   child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        new RaisedButton(
-                            key: null,
-                            onPressed: randomiseExercises,
-                            color: const Color(0xFFe0e0e0),
-                            child: new Text(
-                              "Randomise",
-                              style: new TextStyle(
-                                  fontSize: 12.0,
-                                  color: const Color(0xFF000000),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: "Roboto"),
+                        new GestureDetector(
+                            onTap: randomiseExercises,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 0.015.sh,
+                                horizontal: 0.04.sw,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.blueGrey.shade900,
+                                borderRadius: BorderRadius.circular(
+                                  0.03.sw,
+                                ),
+                              ),
+                              width: 0.3.sw,
+                              child: Text(
+                                "Randomise",
+                                textAlign: TextAlign.center,
+                                style: new TextStyle(
+                                  fontSize: 0.038.sw,
+                                  color: Colors.white,
+                                  fontFamily: "Roboto",
+                                ),
+                              ),
                             )),
-                        new ElevatedButton(
-                            key: null,
-                            onPressed: continueButton,
-                            // color: const Color(0xFFe0e0e0),
-                            child: new Text(
-                              "Continue",
-                              style: new TextStyle(
-                                  fontSize: 12.0,
-                                  color: const Color(0xFF000000),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: "Roboto"),
+                        new GestureDetector(
+                            onTap: continueButton,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 0.015.sh,
+                                horizontal: 0.04.sw,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.blueGrey.shade900,
+                                borderRadius: BorderRadius.circular(
+                                  0.03.sw,
+                                ),
+                              ),
+                              width: 0.3.sw,
+                              child: new Text(
+                                "Continue",
+                                textAlign: TextAlign.center,
+                                style: new TextStyle(
+                                  fontSize: 0.038.sw,
+                                  color: Colors.white,
+                                  fontFamily: "Roboto",
+                                ),
+                              ),
                             )),
                       ]),
                 ),
@@ -157,7 +204,7 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
   @override
   void dispose() {
     // COMPLETE: Dispose an InterstitialAd object
-    _interstitialAd!.dispose();
+    _interstitialAd?.dispose();
 
     super.dispose();
   }
@@ -240,29 +287,46 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
     String cardSuit = "";
 
     return Container(
-        child: DropdownButton<String>(
-      value: exerciseNumber,
-      isExpanded: true,
-      icon: const Icon(Icons.arrow_drop_down),
-      iconSize: 24.sp,
-      elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
-      onChanged: (String? newValue) {
-        exerciseNumber = newValue!;
-        exercises[dropdownNumber - 1] = exerciseNumber;
-        setState(() {});
-      },
-      //items: deckOfCardsExercises()
-      items: exerciseListHere.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-    ));
+        padding: EdgeInsets.symmetric(
+          horizontal: 0.03.sw,
+          vertical: 0.00.sh,
+        ),
+        margin: EdgeInsets.only(top: 0.015.sh),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(0.03.sw),
+          border: Border.all(
+            width: 0.002.sw,
+            color: Colors.blueGrey.shade900,
+          ),
+        ),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+            value: exerciseNumber,
+            isExpanded: true,
+            icon: const Icon(Icons.arrow_drop_down),
+            iconSize: 24.sp,
+            elevation: 16,
+            style: TextStyle(color: Colors.blueGrey.shade900),
+
+            onChanged: (String? newValue) {
+              exerciseNumber = newValue!;
+              exercises[dropdownNumber - 1] = exerciseNumber;
+              setState(() {});
+            },
+            //items: deckOfCardsExercises()
+            items:
+                exerciseListHere.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(
+                  value,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        ));
   }
 }
