@@ -3,6 +3,8 @@ import 'dart:core';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wakelock/wakelock.dart';
 import 'congratulations.dart';
@@ -57,12 +59,18 @@ class _HIITSession extends State<HIITSession> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          backgroundColor: Colors.transparent,
-          title: new Text('HIIT'),
+          backgroundColor: Colors.blueGrey.shade900,
+          title: new Text(
+            'HIIT',
+            style: GoogleFonts.merriweather(
+              color: Colors.white,
+            ),
+          ),
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
-              size: 16,
+              color: Colors.white,
+              size: 0.024.sh,
             ),
             onPressed: () {
               reset();
@@ -71,20 +79,43 @@ class _HIITSession extends State<HIITSession> {
             },
           ),
         ),
+        extendBodyBehindAppBar: true,
         body: Container(
-          child: new Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                buildTime(),
-                getTitleLine(),
-                getExerciseLine(),
-                getNextExerciseLine(),
-                getSetNumberLine(),
-                buildTimeTotal(),
-                buildButtons(),
-              ]),
+          height: 1.sh,
+          width: 1.sw,
+          child: SingleChildScrollView(
+            child: new Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: 0.15.sh,
+                  ),
+                  buildTime(),
+                  SizedBox(
+                    height: 0.04.sh,
+                  ),
+                  getTitleLine(),
+                  getExerciseLine(),
+                  SizedBox(
+                    height: 0.02.sh,
+                  ),
+                  getNextExerciseLine(),
+                  SizedBox(
+                    height: 0.02.sh,
+                  ),
+                  getSetNumberLine(),
+                  SizedBox(
+                    height: 0.02.sh,
+                  ),
+                  buildTimeTotal(),
+                  SizedBox(
+                    height: 0.02.sh,
+                  ),
+                  buildButtons(),
+                ]),
+          ),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/light_background2.jpg"),
@@ -249,7 +280,7 @@ class _HIITSession extends State<HIITSession> {
           totalExercise.toString();
     }
     return singleLineTextContainer(
-        returnString1 + "    |    " + returnString2, 16.0);
+        returnString1 + "    |    " + returnString2, 0.05.sw);
   }
 
   Container getExerciseLine() {
@@ -260,7 +291,7 @@ class _HIITSession extends State<HIITSession> {
     } else {
       returnString1 = exercise[currentExercise];
     }
-    return singleLineTextContainer(returnString1, 32.0);
+    return singleLineTextContainer(returnString1, 0.1.sw);
   }
 
   Container getTitleLine() {
@@ -275,7 +306,7 @@ class _HIITSession extends State<HIITSession> {
         returnString1 = "REST";
       }
     }
-    return singleLineTextContainer(returnString1, 40.0);
+    return singleLineTextContainer(returnString1, 0.13.sw);
   }
 
   Container getNextExerciseLine() {
@@ -298,11 +329,10 @@ class _HIITSession extends State<HIITSession> {
     return Container(
       child: Text(
         thisText,
-        style: new TextStyle(
-            fontSize: textSize,
-            color: const Color(0xFF000000),
-            fontWeight: FontWeight.w400,
-            fontFamily: "Roboto"),
+        style: GoogleFonts.actor(
+          fontSize: textSize,
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }
@@ -352,7 +382,7 @@ class _HIITSession extends State<HIITSession> {
               time,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: total ? Colors.white : Colors.black,
                 fontSize: getTextSize(total),
               ),
             ),
@@ -377,7 +407,11 @@ class _HIITSession extends State<HIITSession> {
       }
     } else {
       return BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(20));
+        color: Colors.blueGrey.shade900,
+        borderRadius: BorderRadius.circular(
+          0.035.sw,
+        ),
+      );
     }
   }
 
@@ -407,26 +441,58 @@ class _HIITSession extends State<HIITSession> {
     final isCompleted = duration.inSeconds <= 0;
     //final isCompleted = false;
     return isRunning || isCompleted
-        ? Row(
-            //return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ButtonWidget(
-                  text: 'STOP',
-                  onClicked: () {
-                    if (isRunning) {
-                      stopTimer(resets: false);
-                    }
-                  }),
-            ],
+        ? new GestureDetector(
+            onTap: () {
+              if (isRunning) {
+                stopTimer(resets: false);
+              }
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 0.02.sh,
+                horizontal: 0.06.sw,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blueGrey.shade900,
+                borderRadius: BorderRadius.circular(
+                  0.02.sw,
+                ),
+              ),
+              width: 0.45.sw,
+              child: new Text(
+                "Stop!",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.merriweather(
+                  fontSize: 0.05.sw,
+                  color: Colors.white,
+                ),
+              ),
+            ),
           )
-        : ButtonWidget(
-            text: "Start Timer!",
-            color: Colors.black,
-            backgroundColor: Colors.white,
-            onClicked: () {
-              startTimer();
-            });
+        : new GestureDetector(
+            onTap: startTimer,
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 0.02.sh,
+                horizontal: 0.06.sw,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.blueGrey.shade900,
+                borderRadius: BorderRadius.circular(
+                  0.02.sw,
+                ),
+              ),
+              width: 0.45.sw,
+              child: new Text(
+                "Start Timer!",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.merriweather(
+                  fontSize: 0.05.sw,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          );
   }
 }
 

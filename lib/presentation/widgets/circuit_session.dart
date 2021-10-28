@@ -56,101 +56,105 @@ class _CircuitSession extends State<CircuitSession> {
       ),
       extendBodyBehindAppBar: true,
       body: new Container(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 0.06.sh,
-            ),
-            new Text(
-              "5 TIMES THROUGH",
-              textAlign: TextAlign.center,
-              style: GoogleFonts.merriweather(
-                fontSize: 25.sp,
-                color: Colors.black,
-                fontWeight: FontWeight.w800,
+        height: 1.sh,
+        width: 1.sw,
+        child: SingleChildScrollView(
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 0.1.sh,
               ),
-            ),
-            SizedBox(
-              height: 0.06.sh,
-            ),
-            checkText(1),
-            SizedBox(
-              height: 0.02.sh,
-            ),
-            checkText(2),
-            SizedBox(
-              height: 0.02.sh,
-            ),
-            checkText(3),
-            SizedBox(
-              height: 0.02.sh,
-            ),
-            checkText(4),
-            SizedBox(
-              height: 0.02.sh,
-            ),
-            checkText(5),
-            SizedBox(
-              height: 0.02.sh,
-            ),
-            checkText(6),
-            SizedBox(
-              height: 0.02.sh,
-            ),
-            checkText(7),
-            SizedBox(
-              height: 0.02.sh,
-            ),
-            checkText(8),
-            SizedBox(
-              height: 0.06.sh,
-            ),
-            buildTime(),
-            SizedBox(
-              height: 0.03.sh,
-            ),
-            buildButtons(),
-            SizedBox(
-              height: 0.035.sh,
-            ),
-            new Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  new GestureDetector(
-                      onTap: finishSetsSession,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 0.015.sh,
-                          horizontal: 0.04.sw,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(
-                            0.02.sw,
-                          ),
-                        ),
-                        width: 0.35.sw,
-                        child: new Text(
-                          "Finish Session",
-                          textAlign: TextAlign.center,
-                          style: new TextStyle(
-                            fontSize: 0.038.sw,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
-                            fontFamily: "Roboto",
-                          ),
-                        ),
-                      )),
-                ],
+              new Text(
+                "5 TIMES THROUGH",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.merriweather(
+                  fontSize: 25.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: 0.06.sh,
+              ),
+              checkText(1),
+              SizedBox(
+                height: 0.02.sh,
+              ),
+              checkText(2),
+              SizedBox(
+                height: 0.02.sh,
+              ),
+              checkText(3),
+              SizedBox(
+                height: 0.02.sh,
+              ),
+              checkText(4),
+              SizedBox(
+                height: 0.02.sh,
+              ),
+              checkText(5),
+              SizedBox(
+                height: 0.02.sh,
+              ),
+              checkText(6),
+              SizedBox(
+                height: 0.02.sh,
+              ),
+              checkText(7),
+              SizedBox(
+                height: 0.02.sh,
+              ),
+              checkText(8),
+              SizedBox(
+                height: 0.06.sh,
+              ),
+              buildTime(),
+              SizedBox(
+                height: 0.03.sh,
+              ),
+              buildButtons(),
+              SizedBox(
+                height: 0.035.sh,
+              ),
+              new Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    new GestureDetector(
+                        onTap: finishSetsSession,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 0.015.sh,
+                            horizontal: 0.04.sw,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(
+                              0.02.sw,
+                            ),
+                          ),
+                          width: 0.35.sw,
+                          child: new Text(
+                            "Finish Session",
+                            textAlign: TextAlign.center,
+                            style: new TextStyle(
+                              fontSize: 0.038.sw,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                              fontFamily: "Roboto",
+                            ),
+                          ),
+                        )),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
         decoration: BoxDecoration(
           image: DecorationImage(

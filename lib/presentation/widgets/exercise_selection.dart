@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:home_pt/globals.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,12 +20,19 @@ class _ExerciseSelection extends State<ExerciseSelection> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.transparent,
-        title: new Text('Select inclusions'),
+        backgroundColor: Colors.blueGrey.shade900,
+        title: new Text(
+          'Select inclusions',
+          style: GoogleFonts.merriweather(
+            color: Colors.white,
+          ),
+        ),
+        elevation: 0.0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            size: 16,
+            color: Colors.white,
+            size: 0.024.sh,
           ),
           onPressed: () {
             setPreferences();
@@ -48,15 +56,23 @@ class _ExerciseSelection extends State<ExerciseSelection> {
                       imageViewing = 1;
                       openExercise(index);
                     },
-                    child: const Icon(Icons.help),
+                    child: Icon(
+                      Icons.info_outline_rounded,
+                      color: Colors.blueGrey.shade900,
+                      size: 0.06.sw,
+                    ),
                   ),
                   title: Transform(
-                      transform: Matrix4.translationValues(-24, 0.0, 0.0),
+                      transform: Matrix4.translationValues(-0.05.sw, 0.0, 0.0),
                       child: Text(
                         exerciseNamePlural[index],
-                        style: TextStyle(fontSize: 18.sp),
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          fontFamily: "Roboto",
+                        ),
                       )),
                   value: isSelected[index],
+                  activeColor: Colors.blueGrey.shade900,
                   onChanged: (bool value) {
                     isSelected[index] = value;
                     //setPreferences();
@@ -67,11 +83,10 @@ class _ExerciseSelection extends State<ExerciseSelection> {
     );
   }
 
-  void initState(){
+  void initState() {
     super.initState();
     getPreferences();
-    setState((){});
-
+    setState(() {});
   }
 
   void setPreferences() async {
@@ -95,8 +110,7 @@ class _ExerciseSelection extends State<ExerciseSelection> {
     do {
       if (prefs.getString("isSelected" + i.toString()) == "1") {
         isSelected[i] = true;
-      }
-      else if (prefs.getString("isSelected" + i.toString()) == "0") {
+      } else if (prefs.getString("isSelected" + i.toString()) == "0") {
         isSelected[i] = false;
       }
       i++;
@@ -115,65 +129,89 @@ class _ExerciseSelection extends State<ExerciseSelection> {
       builder: (BuildContext context) {
         return StatefulBuilder(
           builder: (context, setState) {
-            return AlertDialog(
-              content: Container(
-                child: new Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      new Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          IconButton(
-                            icon: const Icon(Icons.close),
-                            color: const Color(0xFF000000),
-                            onPressed: () {
-                              Navigator.of(context).pop();
+            return Dialog(
+              backgroundColor: Colors.transparent,
+              child: Container(
+                width: 1.sw,
+                child: new Stack(
+                  children: [
+                    SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          InkWell(
+                            child: Container(
+                              width: 1.sw,
+                              child: new Image.asset(
+                                currentExerciseImageAsset,
+                                fit: BoxFit.fitWidth,
+                              ),
+                              // height: MediaQuery.of(context).size.height * 0.5,
+                            ),
+                            onTap: () {
+                              imageViewing++;
+                              if (imageViewing <=
+                                  numberOfExerciseImages[index]) {
+                              } else {
+                                imageViewing = 1;
+                              }
+
+                              currentExerciseImageAsset = "assets/exercises/" +
+                                  exerciseImageText[index] +
+                                  imageViewing.toString() +
+                                  ".png";
+                              setState(() {});
                             },
                           ),
-                        ],
-                      ),
-                      new InkWell(
-                        child: Container(
-                          child: new Image.asset(
-                            currentExerciseImageAsset,
-                            fit: BoxFit.contain,
-                          ),
-                          height: MediaQuery.of(context).size.height * 0.3,
-                        ),
-                        onTap: () {
-                          imageViewing++;
-                          if (imageViewing <= numberOfExerciseImages[index]) {
-                          } else {
-                            imageViewing = 1;
-                          }
-
-                          currentExerciseImageAsset = "assets/exercises/" +
-                              exerciseImageText[index] +
-                              imageViewing.toString() +
-                              ".png";
-                          setState(() {});
-                        },
-                      ),
-
-                      new Container(
-                          child: SingleChildScrollView(
-                            child: new Text(
-                              description[index],
-                              style: new TextStyle(
-                                fontSize: 16.0, color: Colors.black87,
+                          Container(
+                            width: 1.sw,
+                            color: Colors.white,
+                            child: Padding(
+                              padding: EdgeInsets.all(0.035.sw),
+                              child: Text(
+                                "( Tap on the Image to show continuation )",
+                                textAlign: TextAlign.center,
                               ),
                             ),
                           ),
-
-                          padding: const EdgeInsets.all(0.0),
-                          alignment: Alignment.topCenter,
-                          height: MediaQuery.of(context).size.height * 0.4
-                      )
-                    ]),
+                          new Container(
+                            width: 1.sw,
+                            color: Colors.white,
+                            child: new Text(
+                              description[index],
+                              softWrap: true,
+                              style: new TextStyle(
+                                fontSize: 0.035.sw,
+                                color: Colors.black87,
+                              ),
+                            ),
+                            padding: EdgeInsets.all(0.035.sw),
+                            alignment: Alignment.topCenter,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Positioned(
+                      top: 10,
+                      right: 10,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.6),
+                          borderRadius: BorderRadius.circular(
+                            0.1.sw,
+                          ),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.close),
+                          color: const Color(0xFF000000),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 padding: const EdgeInsets.all(0.0),
                 alignment: Alignment.center,
               ),
