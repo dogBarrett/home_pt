@@ -87,7 +87,7 @@ class _MainMenu extends State<MainMenu> {
                           height: 0.4.sh,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("assets/images/button4.jpg"),
+                              image: AssetImage("assets/images/button4_result.jpg"),
                               fit: BoxFit.cover,
                               colorFilter: ColorFilter.mode(
                                 Colors.black.withOpacity(0.3),
@@ -156,7 +156,7 @@ class _MainMenu extends State<MainMenu> {
                           height: 0.4.sh,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("assets/images/button3.jpg"),
+                              image: AssetImage("assets/images/button3_result.jpg"),
                               fit: BoxFit.cover,
                               colorFilter: ColorFilter.mode(
                                   Colors.black.withOpacity(0.3),
@@ -224,7 +224,7 @@ class _MainMenu extends State<MainMenu> {
                           height: 0.4.sh,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("assets/images/button2.jpg"),
+                              image: AssetImage("assets/images/button2_result.jpg"),
                               fit: BoxFit.cover,
                               colorFilter: ColorFilter.mode(
                                   Colors.black.withOpacity(0.3),
@@ -292,7 +292,7 @@ class _MainMenu extends State<MainMenu> {
                           height: 0.4.sh,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("assets/images/button1.jpg"),
+                              image: AssetImage("assets/images/button1_result.jpg"),
                               fit: BoxFit.cover,
                               colorFilter: ColorFilter.mode(
                                   Colors.black.withOpacity(0.3),
