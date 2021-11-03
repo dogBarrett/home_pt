@@ -196,6 +196,7 @@ class _CircuitSelectExercises extends State<CircuitSelectExercises> {
                             height: 0.010.sh,
                           ),
                           checkDropdownMenu(exercises[7], 8),
+
                         ]),
                       ),
                     ),

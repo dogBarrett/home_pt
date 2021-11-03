@@ -197,12 +197,16 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
                             height: 10,
                           ),
                           checkDropdownMenu(exercises[7], 8),
+
                         ]),
                       ),
                     ),
                   ),
                 ),
                 new Container(
+                  margin: EdgeInsets.only(top: 0.03.sh),
+                  width: 1.sw,
+
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,

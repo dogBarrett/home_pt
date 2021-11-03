@@ -122,7 +122,7 @@ class _MainMenu extends State<MainMenu> {
                           margin:
                               EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
                           child: Text(
-                            'Here goes the description of the type of workout which the user will do here!',
+                            '52 cards. 4 exercises. Surprise order. Surprise number of reps. Max effort.',
                             style: TextStyle(
                               fontSize: 11.sp,
                               letterSpacing: 0.3,
@@ -190,7 +190,7 @@ class _MainMenu extends State<MainMenu> {
                           margin:
                               EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
                           child: Text(
-                            'Here goes the description of the type of workout which the user will do here!',
+                            'Circuit is a list of exercises to do in order going from top to bottom, then back to the top 5 times through.',
                             style: TextStyle(
                               fontSize: 11.sp,
                               letterSpacing: 0.3,
@@ -258,7 +258,7 @@ class _MainMenu extends State<MainMenu> {
                           margin:
                               EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
                           child: Text(
-                            'Here goes the description of the type of workout which the user will do here!',
+                            'High Intensity Interval Training is max effort during work period, rest during rest period. MAX effort ',
                             style: TextStyle(
                               fontSize: 11.sp,
                               letterSpacing: 0.3,
@@ -326,7 +326,7 @@ class _MainMenu extends State<MainMenu> {
                           margin:
                               EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
                           child: Text(
-                            'Here goes the description of the type of workout which the user will do here!',
+                            'Repeat the same exercise the given number of times before moving to the next exercise.',
                             style: TextStyle(
                               fontSize: 11.sp,
                               letterSpacing: 0.3,
