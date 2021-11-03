@@ -114,6 +114,9 @@ class _HIITSession extends State<HIITSession> {
                     height: 0.02.sh,
                   ),
                   buildButtons(),
+                  SizedBox(
+                    height: 0.02.sh,
+                  ),
                 ]),
           ),
           decoration: BoxDecoration(
@@ -362,7 +365,7 @@ class _HIITSession extends State<HIITSession> {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       buildTimeCard(time: minutes, header: 'MINUTES', total: true),
       SizedBox(
-        width: 8,
+        width: 0.04.sw,
       ),
       buildTimeCard(time: seconds, header: 'SECONDS', total: true),
     ]);
@@ -376,7 +379,7 @@ class _HIITSession extends State<HIITSession> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(0.03.sw),
             decoration: getCardColour(total),
             child: Text(
               time,
@@ -511,12 +514,13 @@ class ButtonWidget extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) => ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          primary: backgroundColor,
-          padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
-      onPressed: onClicked,
-      child: Text(
-        text,
-        style: TextStyle(fontSize: 20, color: color),
-      ));
+        style: ElevatedButton.styleFrom(
+            primary: backgroundColor,
+            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
+        onPressed: onClicked,
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 20, color: color),
+        ),
+      );
 }
