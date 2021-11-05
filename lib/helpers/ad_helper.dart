@@ -1,38 +1,35 @@
 import 'dart:io';
 
 class AdHelper {
+  // static String get bannerAdUnitId {
+  //   if (Platform.isAndroid) {
+  //     return '<YOUR_ANDROID_BANNER_AD_UNIT_ID>';
+  //   } else if (Platform.isIOS) {
+  //     return '<YOUR_IOS_BANNER_AD_UNIT_ID>';
+  //   } else {
+  //     throw new UnsupportedError('Unsupported platform');
+  //   }
+  // }
 
-  static String get bannerAdUnitId {
-    if (Platform.isAndroid) {
-      return '<YOUR_ANDROID_BANNER_AD_UNIT_ID>';
-    } else if (Platform.isIOS) {
-      return '<YOUR_IOS_BANNER_AD_UNIT_ID>';
-    } else {
-      throw new UnsupportedError('Unsupported platform');
-    }
-  }
+  // static String get interstitialAdUnitId {
+  //   if (Platform.isAndroid) {
+  //     return 'ca-app-pub-3132437849583414/4575265838';
+  //   } else if (Platform.isIOS) {
+  //     return 'ca-app-pub-3132437849583414/2775577938';
+  //   } else {
+  //     throw new UnsupportedError('Unsupported platform');
+  //   }
+  // }
 
-  static String get interstitialAdUnitId {
-    if (Platform.isAndroid) {
-      return 'ca-app-pub-3132437849583414/4575265838';
-    } else if (Platform.isIOS) {
-      return 'ca-app-pub-3132437849583414/2775577938';
-    } else {
-      throw new UnsupportedError('Unsupported platform');
-    }
-  }
-
-  static String get rewardedAdUnitId {
-    if (Platform.isAndroid) {
-      return '<YOUR_ANDROID_INTERSTITIAL_AD_UNIT_ID>';
-    } else if (Platform.isIOS) {
-      return '<YOUR_IOS_INTERSTITIAL_AD_UNIT_ID>';
-    } else {
-      throw new UnsupportedError('Unsupported platform');
-    }
-  }
-
-  /*
+  // static String get rewardedAdUnitId {
+  //   if (Platform.isAndroid) {
+  //     return '<YOUR_ANDROID_INTERSTITIAL_AD_UNIT_ID>';
+  //   } else if (Platform.isIOS) {
+  //     return '<YOUR_IOS_INTERSTITIAL_AD_UNIT_ID>';
+  //   } else {
+  //     throw new UnsupportedError('Unsupported platform');
+  //   }
+  // }
 
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
@@ -62,5 +59,5 @@ class AdHelper {
     } else {
       throw new UnsupportedError("Unsupported platform");
     }
-  }*/
+  }
 }
