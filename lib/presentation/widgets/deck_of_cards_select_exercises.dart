@@ -248,6 +248,7 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
   void _loadInterstitialAd() {
     print("Inside loading ad");
+
     InterstitialAd.load(
       adUnitId: AdHelper.interstitialAdUnitId,
       request: AdRequest(),

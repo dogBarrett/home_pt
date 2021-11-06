@@ -14,7 +14,8 @@ class AdHelper {
 
   static String get interstitialAdUnitId {
     if (Platform.isAndroid) {
-      return 'ca-app-pub-3132437849583414/4575265838';
+      //return 'ca-app-pub-3132437849583414/4575265838';
+      return 'ca-app-pub-3132437849583414/1955862384';
     } else if (Platform.isIOS) {
       return 'ca-app-pub-3132437849583414/2775577938';
     } else {
@@ -31,8 +32,8 @@ class AdHelper {
       throw new UnsupportedError('Unsupported platform');
     }
   }
+/*
 
-  /*
 
   static String get bannerAdUnitId {
     if (Platform.isAndroid) {
