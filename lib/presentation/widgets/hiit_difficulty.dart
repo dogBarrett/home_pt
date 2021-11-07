@@ -236,7 +236,8 @@ class _HIITDifficulty extends State<HIITDifficulty> {
       request: AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
-          this._interstitialAd = ad;
+          // changed this._interstitialAd to _interstitialAd
+          _interstitialAd = ad;
 
           ad.fullScreenContentCallback = FullScreenContentCallback(
             onAdDismissedFullScreenContent: (ad) {
@@ -252,6 +253,7 @@ class _HIITDifficulty extends State<HIITDifficulty> {
         },
       ),
     );
+    setState(() {});
   }
 
   void dispose() {
