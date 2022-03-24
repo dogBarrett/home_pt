@@ -11,6 +11,7 @@ import 'package:home_pt/presentation/widgets/sets_select_exercises2.dart';
 import 'circuit_select_exercises.dart';
 import 'exercise_selection.dart';
 import 'hiit_select_exercises.dart';
+import 'hiit_timer_setup.dart';
 
 class MainMenu extends StatefulWidget {
   MainMenu({Key? key}) : super(key: key);
@@ -71,274 +72,33 @@ class _MainMenu extends State<MainMenu> {
                 onTap: () {
                   openDeckOfCards();
                 },
-                child: Container(
-                  height: 0.4.sh,
-                  width: 1.sw,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(1),
-                    borderRadius: BorderRadius.circular(0.05.sw),
-                  ),
-                  margin: EdgeInsets.only(bottom: 0.02.sh),
-                  child: Stack(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.05.sw),
-                        child: Container(
-                          height: 0.4.sh,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/button4_result.jpg"),
-                              fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                Colors.black.withOpacity(0.3),
-                                BlendMode.srcOver,
-                              ),
-                            ),
-                          ),
-                          width: 1.sw,
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 0.05.sw, bottom: 0.08.sh),
-                          child: Text(
-                            'Deck of Cards',
-                            style: GoogleFonts.merriweather(
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          width: 0.8.sw,
-                          margin:
-                              EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
-                          child: Text(
-                            '52 cards. 4 exercises. Surprise order. Surprise number of reps. Max effort.',
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              letterSpacing: 0.3,
-                              wordSpacing: 1,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                child: getTile(0),
+
               ),
               GestureDetector(
                 onTap: () {
                   openCircuit();
                 },
-                child: Container(
-                  height: 0.4.sh,
-                  width: 1.sw,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(1),
-                    borderRadius: BorderRadius.circular(0.05.sw),
-                  ),
-                  margin: EdgeInsets.only(bottom: 0.02.sh),
-                  child: Stack(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.05.sw),
-                        child: Container(
-                          height: 0.4.sh,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/button3_result.jpg"),
-                              fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                  Colors.black.withOpacity(0.3),
-                                  BlendMode.srcOver),
-                            ),
-                          ),
-                          width: 1.sw,
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 0.05.sw, bottom: 0.08.sh),
-                          child: Text(
-                            'Circuit',
-                            style: GoogleFonts.merriweather(
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          width: 0.8.sw,
-                          margin:
-                              EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
-                          child: Text(
-                            'Circuit is a list of exercises to do in order going from top to bottom, then back to the top 5 times through.',
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              letterSpacing: 0.3,
-                              wordSpacing: 1,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                child: getTile(1),
+
               ),
               GestureDetector(
                 onTap: () {
                   openHIIT();
                 },
-                child: Container(
-                  height: 0.4.sh,
-                  width: 1.sw,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(1),
-                    borderRadius: BorderRadius.circular(0.05.sw),
-                  ),
-                  margin: EdgeInsets.only(bottom: 0.02.sh),
-                  child: Stack(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.05.sw),
-                        child: Container(
-                          height: 0.4.sh,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/button2_result.jpg"),
-                              fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                  Colors.black.withOpacity(0.3),
-                                  BlendMode.srcOver),
-                            ),
-                          ),
-                          width: 1.sw,
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 0.05.sw, bottom: 0.08.sh),
-                          child: Text(
-                            'HIIT Session',
-                            style: GoogleFonts.merriweather(
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          width: 0.8.sw,
-                          margin:
-                              EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
-                          child: Text(
-                            'High Intensity Interval Training is max effort during work period, rest during rest period. MAX effort ',
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              letterSpacing: 0.3,
-                              wordSpacing: 1,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                child: getTile(2),
               ),
               GestureDetector(
                 onTap: () {
                   openSets();
                 },
-                child: Container(
-                  height: 0.4.sh,
-                  width: 1.sw,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(1),
-                    borderRadius: BorderRadius.circular(0.05.sw),
-                  ),
-                  margin: EdgeInsets.only(bottom: 0.02.sh),
-                  child: Stack(
-                    children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(0.05.sw),
-                        child: Container(
-                          height: 0.4.sh,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/button1_result.jpg"),
-                              fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                  Colors.black.withOpacity(0.3),
-                                  BlendMode.srcOver),
-                            ),
-                          ),
-                          width: 1.sw,
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 0.05.sw, bottom: 0.08.sh),
-                          child: Text(
-                            'Sets',
-                            style: GoogleFonts.merriweather(
-                              fontSize: 20.sp,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          width: 0.8.sw,
-                          margin:
-                              EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
-                          child: Text(
-                            'Repeat the same exercise the given number of times before moving to the next exercise.',
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              letterSpacing: 0.3,
-                              wordSpacing: 1,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                child: getTile(3),
+              ),
+              GestureDetector(
+                onTap: () {
+                  openHIITTimer();
+                },
+                child: getTile(4),
               ),
             ],
           ),
@@ -386,6 +146,14 @@ class _MainMenu extends State<MainMenu> {
     );
   }
 
+  void openHIITTimer() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => HIITTimerSetup(),
+      ),
+    );
+  }
+
   void openCircuit() {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -393,4 +161,101 @@ class _MainMenu extends State<MainMenu> {
       ),
     );
   }
+
+  Container getTile(int thisNumber) {
+    String imageFile = "";
+    String thisTitle = "";
+    String thisExplanation = "";
+
+    if (thisNumber == 0){
+      imageFile = "assets/images/button4_result.jpg";
+      thisTitle = "Deck of Cards";
+      thisExplanation = "52 cards. 4 exercises. Surprise order. Surprise number of reps. Max effort.";
+    }
+    else if(thisNumber == 1){
+      imageFile = "assets/images/button3_result.jpg";
+      thisTitle = "Circuit";
+      thisExplanation = "Circuit is a list of exercises to do in order going from top to bottom, then back to the top 5 times through.";
+    }
+    else if(thisNumber == 2){
+      imageFile = "assets/images/button2_result.jpg";
+      thisTitle = "HIIT Session";
+      thisExplanation = "High Intensity Interval Training is max effort during work period, rest during rest period. MAX effort.";
+    }
+    else if(thisNumber == 3){
+      imageFile = "assets/images/button1_result.jpg";
+      thisTitle = "Sets";
+      thisExplanation = "Repeat the same exercise the given number of times before moving to the next exercise.";
+    }
+    else if(thisNumber == 4){
+      imageFile = "assets/images/button5_result.jpg";
+      thisTitle = "HIIT Timer";
+      thisExplanation = "Select your own HIIT timer values, and do your own HIIT session using the apps HIIT countdown timer.";
+    }
+    return Container(
+      height: 0.4.sh,
+      width: 1.sw,
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(1),
+        borderRadius: BorderRadius.circular(0.05.sw),
+      ),
+      margin: EdgeInsets.only(bottom: 0.02.sh),
+      child: Stack(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(0.05.sw),
+            child: Container(
+              height: 0.4.sh,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(imageFile),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.3),
+                    BlendMode.srcOver,
+                  ),
+                ),
+              ),
+              width: 1.sw,
+            ),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            child: Container(
+              margin:
+              EdgeInsets.only(left: 0.05.sw, top: 0.035.sh),
+              child: Text(
+                thisTitle,
+                style: GoogleFonts.merriweather(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            child: Container(
+              width: 0.8.sw,
+              margin:
+              EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
+              child: Text(
+                thisExplanation,
+                style: TextStyle(
+                  fontSize: 11.sp,
+                  letterSpacing: 0.3,
+                  wordSpacing: 1,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
 }
