@@ -36,7 +36,11 @@ dependencies:
   audioplayers:
   flutter_screenutil:
   font_awesome_flutter:
-
+  file: ^6.1.4
+  intl:
+  fluttertoast: ^8.2.1
+  charts_flutter_new:
+  syncfusion_flutter_charts: ^20.4.52
 
 
 dev_dependencies:

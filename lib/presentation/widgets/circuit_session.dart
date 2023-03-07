@@ -65,7 +65,7 @@ class _CircuitSession extends State<CircuitSession> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(
-                height: 0.1.sh,
+                height: 0.125.sh,
               ),
               new Text(
                 "5 TIMES THROUGH",
@@ -259,57 +259,57 @@ class _CircuitSession extends State<CircuitSession> {
     final isCompleted = false;
     return isRunning || isCompleted
         ? new GestureDetector(
-            onTap: () {
-              if (isRunning) {
-                stopTimer(resets: false);
-              }
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 0.02.sh,
-                horizontal: 0.06.sw,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey.shade900,
-                borderRadius: BorderRadius.circular(
-                  0.02.sw,
-                ),
-              ),
-              width: 0.45.sw,
-              child: new Text(
-                "Stop!",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.merriweather(
-                  fontSize: 0.05.sw,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          )
+      onTap: () {
+        if (isRunning) {
+          stopTimer(resets: false);
+        }
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 0.02.sh,
+          horizontal: 0.06.sw,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.blueGrey.shade900,
+          borderRadius: BorderRadius.circular(
+            0.02.sw,
+          ),
+        ),
+        width: 0.45.sw,
+        child: new Text(
+          "Stop!",
+          textAlign: TextAlign.center,
+          style: GoogleFonts.merriweather(
+            fontSize: 0.05.sw,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    )
         : new GestureDetector(
-            onTap: startTimer,
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 0.02.sh,
-                horizontal: 0.06.sw,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey.shade900,
-                borderRadius: BorderRadius.circular(
-                  0.02.sw,
-                ),
-              ),
-              width: 0.45.sw,
-              child: new Text(
-                "Start Timer!",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.merriweather(
-                  fontSize: 0.05.sw,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          );
+      onTap: startTimer,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 0.02.sh,
+          horizontal: 0.06.sw,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.blueGrey.shade900,
+          borderRadius: BorderRadius.circular(
+            0.02.sw,
+          ),
+        ),
+        width: 0.45.sw,
+        child: new Text(
+          "Start Timer!",
+          textAlign: TextAlign.center,
+          style: GoogleFonts.merriweather(
+            fontSize: 0.05.sw,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
   }
 
   void getSessionDif(int setsNumber) {
@@ -382,14 +382,15 @@ class _CircuitSession extends State<CircuitSession> {
 
     int i = 0;
     do {
-      if (exerciseNamePlural[i] == exercise[exNumber - 1]) {
+      if (exerciseList[i].exerciseNamePlural == exercise[exNumber - 1]) {
         thisCctNumber = i;
-        circuitNo = circuitNumber[thisCctNumber];
+        circuitNo = exerciseList[thisCctNumber].circuitNumber!;
       }
       i++;
     } while (i != numberOfExercisesToChooseFrom);
 
     textHere = sessionDif[circuitNo - 1] + exercise[exNumber - 1];
+
 
     return Container(
       child: Text(
@@ -419,20 +420,20 @@ class ButtonWidget extends StatelessWidget {
 
   const ButtonWidget(
       {Key? key,
-      required this.text,
-      required this.onClicked,
-      this.color = Colors.white,
-      this.backgroundColor = Colors.black})
+        required this.text,
+        required this.onClicked,
+        this.color = Colors.white,
+        this.backgroundColor = Colors.black})
       : super(key: key);
   @override
   Widget build(BuildContext context) => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            primary: backgroundColor,
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
-        onPressed: onClicked,
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 20, color: color),
-        ),
-      );
+    style: ElevatedButton.styleFrom(
+        primary: backgroundColor,
+        padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
+    onPressed: onClicked,
+    child: Text(
+      text,
+      style: TextStyle(fontSize: 20, color: color),
+    ),
+  );
 }

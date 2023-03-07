@@ -137,7 +137,7 @@ class _SetsSession extends State<SetsSession> {
     );
   }
 
-  initState() {
+  void initState() {
     Wakelock.enable();
     getPrefs();
     //setState(() {});
@@ -224,23 +224,23 @@ class _SetsSession extends State<SetsSession> {
 
     int i = 0;
     do {
-      if (exerciseNamePlural[i] == exercise[exNumber - 1]) {
+      if (exerciseList[i].exerciseNamePlural == exercise[exNumber - 1]) {
         thisCctNumber = i;
-        circuitNo = circuitNumber[thisCctNumber];
+        circuitNo = exerciseList[thisCctNumber].circuitNumber!;
       }
       i++;
     } while (i != numberOfExercisesToChooseFrom);
 
     textHere = sessionDif[circuitNo - 1] + exercise[exNumber - 1];
-    ;
+
 
     return Container(
         child: Text(
-      textHere,
-      style: GoogleFonts.actor(
-        fontSize: 0.05.sw,
-      ),
-    ));
+          textHere,
+          style: GoogleFonts.actor(
+            fontSize: 0.05.sw,
+          ),
+        ));
   }
 
   void finishSetsSession() {

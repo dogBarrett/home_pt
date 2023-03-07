@@ -288,8 +288,8 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
 
     Navigator.of(context)
         .push(MaterialPageRoute(
-          builder: (context) => SetsSessionDifficulty(),
-        ))
+      builder: (context) => SetsSessionDifficulty(),
+    ))
         .then((value) => setState(() {}));
   }
 
@@ -312,19 +312,28 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
     super.initState();
   }
 
+  @override
+  void dispose() {
+    interstitialAd?.dispose();
+    super.dispose();
+  }
+
   void getExerciseList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int i = 0;
 
     do {
-      if (prefs.getString("isSelected" + i.toString()) == "1" && sets[i]) {
-        exerciseListHere.add(exerciseNamePlural[i]);
+      if (prefs.getString("isSelected" + i.toString()) == "1" && exerciseList[i].sets) {
+        exerciseListHere.add(exerciseList[i].exerciseNamePlural);
       }
       i++;
     } while (i < numberOfExercisesToChooseFrom);
     numberOfExerciseSets = prefs.getInt("setsSessionExercises") ?? 4;
 
     numberOfExercises = exerciseListHere.length;
+
+    exerciseListHere.sort((a, b) => a.toString().compareTo(b.toString()));
+
     randomiseExercises();
     setState(() {});
   }
@@ -346,7 +355,7 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
     do {
       ex[4] = randomNumber.nextInt(count);
     } while (
-        ex[4] == ex[0] || ex[4] == ex[1] || ex[4] == ex[2] || ex[4] == ex[3]);
+    ex[4] == ex[0] || ex[4] == ex[1] || ex[4] == ex[2] || ex[4] == ex[3]);
     do {
       ex[5] = randomNumber.nextInt(count);
     } while (ex[5] == ex[0] ||
@@ -421,7 +430,7 @@ class _SetsSelectExercises extends State<SetsSelectExercises> {
             },
             //items: deckOfCardsExercises()
             items:
-                exerciseListHere.map<DropdownMenuItem<String>>((String value) {
+            exerciseListHere.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),

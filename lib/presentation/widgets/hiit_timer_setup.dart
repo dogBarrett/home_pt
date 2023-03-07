@@ -163,8 +163,8 @@ class _HIITTimerSetup extends State<HIITTimerSetup> {
     setPrefs();
     Navigator.of(context)
         .push(MaterialPageRoute(
-          builder: (context) => HIITTimer(),
-        ))
+      builder: (context) => HIITTimer(),
+    ))
         .then((value) => setState(() {}));
   }
 
@@ -179,8 +179,9 @@ class _HIITTimerSetup extends State<HIITTimerSetup> {
     prefs.setInt('hiitTimerTimeSetup', time[2]);
 
   }
-
+@override
   void initState() {
+    super.initState();
     getPrefs();
     setState(() {});
   }

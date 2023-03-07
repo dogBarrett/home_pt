@@ -28,24 +28,7 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
   List<String> exercises = ["", "", "", ""];
 
-  @override
-  Future<InitializationStatus> _initGoogleMobileAds() {
-    // TODO: Initialize Google Mobile Ads SDK
-    return MobileAds.instance.initialize();
-  }
-
-  // TODO: Add _interstitialAd
-  InterstitialAd? _interstitialAd;
-
-  // TODO: Add _isInterstitialAdReady
-  bool _isInterstitialAdReady = false;
-
   Widget build(BuildContext context) {
-    // TODO: Load an Interstitial Ad
-    // if (!_isInterstitialAdReady) {
-    //   _loadInterstitialAd();
-    // }
-
     return new Scaffold(
         appBar: new AppBar(
           backgroundColor: Colors.blueGrey.shade900,
@@ -91,7 +74,6 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
                       isAlwaysShown: true,
                       child: SingleChildScrollView(
                         child: Column(children: <Widget>[
-
                           new Container(
                             height: 0.040.sh,
                           ),
@@ -108,7 +90,6 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
                             height: 0.010.sh,
                           ),
                           getDropdownMenu(exercises[3], 4),
-
                         ]),
                       ),
                     ),
@@ -188,35 +169,25 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
   }
 
   void continueButton() {
-    // TODO: Display an Interstitial Ad
-
-    if (_isInterstitialAdReady) {
-      _interstitialAd?.show();
-    }
     updateValues();
+    showAd();
+
     Navigator.of(context)
         .push(MaterialPageRoute(
       builder: (context) => DeckOfCards(),
     ))
-        .then((value) {
-      _loadInterstitialAd();
-    });
+        .then((value) {});
   }
 
   @override
   void initState() {
     super.initState();
-    // Loading interstitialad when initstate
-    _loadInterstitialAd();
     getExerciseList();
-    setState(() {});
   }
 
   @override
   void dispose() {
-    // COMPLETE: Dispose an InterstitialAd object
-    _interstitialAd!.dispose();
-
+    interstitialAd?.dispose();
     super.dispose();
   }
 
@@ -226,12 +197,15 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
     do {
       if (prefs.getString("isSelected" + i.toString()) == "1" &&
-          deckOfCards[i]) {
-        exerciseListHere.add(exerciseNamePlural[i]);
+          exerciseList[i].deckOfCards) {
+        exerciseListHere.add(exerciseList[i].exerciseNamePlural);
       }
       i++;
     } while (i < numberOfExercisesToChooseFrom);
     numberOfExercises = exerciseListHere.length;
+
+    exerciseListHere.sort((a, b) => a.toString().compareTo(b.toString()));
+
     randomiseExercises();
 
     setState(() {});
@@ -244,32 +218,6 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
     prefs.setString('deckOfCardsExercise3', exercises[2]);
     prefs.setString('deckOfCardsExercise4', exercises[3]);
     setState(() {});
-  }
-
-  void _loadInterstitialAd() {
-    print("Inside loading ad");
-
-    InterstitialAd.load(
-      adUnitId: AdHelper.interstitialAdUnitId,
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
-          this._interstitialAd = ad;
-
-          ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) {
-              setState(() {});
-            },
-          );
-
-          _isInterstitialAdReady = true;
-        },
-        onAdFailedToLoad: (err) {
-          print('Failed to load an interstitial ad: ${err.message}');
-          _isInterstitialAdReady = false;
-        },
-      ),
-    );
   }
 
   void randomiseExercises() {
@@ -300,41 +248,42 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
 
     return Container(
         padding: EdgeInsets.symmetric(
-        horizontal: 0.03.sw,
-        vertical: 0.00.sh,
-    ),
-    margin: EdgeInsets.only(top: 0.015.sh),
-    decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(0.03.sw),
-    border: Border.all(
-    width: 0.002.sw,
-    color: Colors.blueGrey.shade900,
-    ),
-    ),
-    child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-      value: exerciseNumber,
-      isExpanded: true,
-      icon: const Icon(Icons.arrow_drop_down),
-      iconSize: 24.sp,
-      elevation: 16,
-      style: TextStyle(color: Colors.blueGrey.shade900),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
-      onChanged: (String? newValue) {
-        exerciseNumber = newValue!;
-        exercises[dropdownNumber - 1] = exerciseNumber;
-        setState(() {});
-      },
-      //items: deckOfCardsExercises()
-      items: exerciseListHere.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-    )));
+          horizontal: 0.03.sw,
+          vertical: 0.00.sh,
+        ),
+        margin: EdgeInsets.only(top: 0.015.sh),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(0.03.sw),
+          border: Border.all(
+            width: 0.002.sw,
+            color: Colors.blueGrey.shade900,
+          ),
+        ),
+        child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              value: exerciseNumber,
+              isExpanded: true,
+              icon: const Icon(Icons.arrow_drop_down),
+              iconSize: 24.sp,
+              elevation: 16,
+              style: TextStyle(color: Colors.blueGrey.shade900),
+              underline: Container(
+                height: 2,
+                color: Colors.deepPurpleAccent,
+              ),
+              onChanged: (String? newValue) {
+                exerciseNumber = newValue!;
+                exercises[dropdownNumber - 1] = exerciseNumber;
+                setState(() {});
+              },
+              //items: deckOfCardsExercises()
+              items: exerciseListHere.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            )));
   }
+
 }

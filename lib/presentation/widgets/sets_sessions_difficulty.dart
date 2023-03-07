@@ -15,7 +15,7 @@ import 'package:home_pt/presentation/widgets/sets_session.dart';
 //import 'package:home_pt/presentation/widgets/sets_select_exercises.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'exercise_selection.dart';
+import '../../globals.dart';
 
 class SetsSessionDifficulty extends StatefulWidget {
   //MainMenu({Key key}) : super(key: key);
@@ -25,18 +25,6 @@ class SetsSessionDifficulty extends StatefulWidget {
 
 class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
   @override
-  bool isInitialised = false;
-
-  Future<InitializationStatus> _initGoogleMobileAds() {
-    // TODO: Initialize Google Mobile Ads SDK
-    return MobileAds.instance.initialize();
-  }
-
-  // TODO: Add _interstitialAd
-  InterstitialAd? _interstitialAd;
-
-  // TODO: Add _isInterstitialAdReady
-  bool _isInterstitialAdReady = false;
 
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -229,40 +217,13 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
   }
 
   initState() {
-    // TODO: Load an Interstitial Ad
-    if (!_isInterstitialAdReady) {
-      _loadInterstitialAd();
-    }
-    setState(() {});
-  }
+    super.initState();
 
-  void _loadInterstitialAd() {
-    InterstitialAd.load(
-      adUnitId: AdHelper.interstitialAdUnitId,
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
-          this._interstitialAd = ad;
-
-          ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) {
-              setState(() {});
-            },
-          );
-
-          _isInterstitialAdReady = true;
-        },
-        onAdFailedToLoad: (err) {
-          print('Failed to load an interstitial ad: ${err.message}');
-          _isInterstitialAdReady = false;
-        },
-      ),
-    );
   }
 
   void dispose() {
     // COMPLETE: Dispose an InterstitialAd object
-    _interstitialAd?.dispose();
+    interstitialAd?.dispose();
 
     super.dispose();
   }
@@ -271,10 +232,7 @@ class _SetsSessionDifficulty extends State<SetsSessionDifficulty> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt("setsSessionDifficulty", levelNumber);
 
-    // TODO: Display an Interstitial Ad
-    if (_isInterstitialAdReady) {
-      _interstitialAd?.show();
-    }
+    showAd();
 
     Navigator.of(context).push(
       MaterialPageRoute(

@@ -7,6 +7,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/material.dart';
 import 'package:home_pt/helpers/ad_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../globals.dart';
 import 'hiit_session.dart';
 
 class HIITDifficulty extends StatefulWidget {
@@ -15,19 +16,12 @@ class HIITDifficulty extends StatefulWidget {
 }
 
 class _HIITDifficulty extends State<HIITDifficulty> {
-  @override
-  bool isInitialised = false;
 
-  Future<InitializationStatus> _initGoogleMobileAds() {
-    // TODO: Initialize Google Mobile Ads SDK
-    return MobileAds.instance.initialize();
-  }
-
-  // TODO: Add _interstitialAd
   InterstitialAd? _interstitialAd;
+  int _countMaxAdFailedToLoad = 3;
+  int _countAdInitialToLoad = 0;
 
-  // TODO: Add _isInterstitialAdReady
-  bool _isInterstitialAdReady = false;
+  @override
 
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -220,46 +214,13 @@ class _HIITDifficulty extends State<HIITDifficulty> {
   }
 
   void initState() {
-    // TODO: Load an Interstitial Ad
-    if (!_isInterstitialAdReady) {
-      _loadInterstitialAd();
-    }
     super.initState();
-    //setState(() {
 
-    //});
-  }
-
-  void _loadInterstitialAd() {
-    InterstitialAd.load(
-      adUnitId: AdHelper.interstitialAdUnitId,
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
-          // changed this._interstitialAd to _interstitialAd
-          _interstitialAd = ad;
-
-          ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) {
-              setState(() {});
-            },
-          );
-
-          _isInterstitialAdReady = true;
-        },
-        onAdFailedToLoad: (err) {
-          print('Failed to load an interstitial ad: ${err.message}');
-          _isInterstitialAdReady = false;
-        },
-      ),
-    );
-    setState(() {});
   }
 
   void dispose() {
     // COMPLETE: Dispose an InterstitialAd object
     _interstitialAd?.dispose();
-
     super.dispose();
   }
 
@@ -267,10 +228,7 @@ class _HIITDifficulty extends State<HIITDifficulty> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt("hiitDifficulty", levelNumber);
 
-    // TODO: Display an Interstitial Ad
-    if (_isInterstitialAdReady) {
-      _interstitialAd?.show();
-    }
+    showAd();
 
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -278,4 +236,5 @@ class _HIITDifficulty extends State<HIITDifficulty> {
       ),
     );
   }
+
 }

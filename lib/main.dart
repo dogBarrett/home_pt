@@ -3,8 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:home_pt/helpers/initialise.dart';
+import 'package:home_pt/presentation/widgets/add_todays_stats.dart';
+import 'package:home_pt/presentation/widgets/display_daily_stats.dart';
 
 import 'package:home_pt/presentation/widgets/loading_page.dart';
+import 'package:home_pt/presentation/widgets/main_menu.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +42,9 @@ class MyApp extends StatelessWidget {
                 //primarySwatch: Colors.indigo,
                 primarySwatch: Colors.grey,
               ),
-              home: LoadingPage(),
+              home: MainMenu(),
+              //home: LoadingPage(),
+
               debugShowCheckedModeBanner: false,
             ));
 

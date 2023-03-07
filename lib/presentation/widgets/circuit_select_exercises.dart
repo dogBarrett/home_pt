@@ -21,7 +21,7 @@ class CircuitSelectExercises extends StatefulWidget {
 class _CircuitSelectExercises extends State<CircuitSelectExercises> {
   var randomNumber = new Random();
 
-  List<String> exerciseListHere = <String>[];
+  List<String>? exerciseListHere = <String>[];
   int numberOfExercises = 0;
   int numberOfExerciseSets = 4;
 
@@ -279,8 +279,8 @@ class _CircuitSelectExercises extends State<CircuitSelectExercises> {
     setPrefs();
     Navigator.of(context)
         .push(MaterialPageRoute(
-          builder: (context) => CircuitDifficulty(),
-        ))
+      builder: (context) => CircuitDifficulty(),
+    ))
         .then((value) => setState(() {}));
   }
 
@@ -299,23 +299,27 @@ class _CircuitSelectExercises extends State<CircuitSelectExercises> {
 
   void initState() {
     super.initState();
+    createAds();
     getExerciseList();
-    setState(() {});
   }
+
 
   void getExerciseList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int i = 0;
 
     do {
-      if (prefs.getString("isSelected" + i.toString()) == "1" && circuit[i]) {
-        exerciseListHere.add(exerciseNamePlural[i]);
+      if (prefs.getString("isSelected" + i.toString()) == "1" && exerciseList[i].circuit) {
+        exerciseListHere!.add(exerciseList[i].exerciseNamePlural);
       }
       i++;
     } while (i < numberOfExercisesToChooseFrom);
     numberOfExerciseSets = prefs.getInt("circuitExercises") ?? 4;
 
-    numberOfExercises = exerciseListHere.length;
+    numberOfExercises = exerciseListHere!.length;
+
+    exerciseListHere!.sort((a, b) => a.toString().compareTo(b.toString()));
+
     randomiseExercises();
 
     setState(() {});
@@ -338,7 +342,7 @@ class _CircuitSelectExercises extends State<CircuitSelectExercises> {
     do {
       ex[4] = randomNumber.nextInt(count);
     } while (
-        ex[4] == ex[0] || ex[4] == ex[1] || ex[4] == ex[2] || ex[4] == ex[3]);
+    ex[4] == ex[0] || ex[4] == ex[1] || ex[4] == ex[2] || ex[4] == ex[3]);
     do {
       ex[5] = randomNumber.nextInt(count);
     } while (ex[5] == ex[0] ||
@@ -367,7 +371,7 @@ class _CircuitSelectExercises extends State<CircuitSelectExercises> {
     int numberHere = 0;
 
     do {
-      exercises[numberHere] = exerciseListHere[ex[numberHere]];
+      exercises[numberHere] = exerciseListHere![ex[numberHere]];
       numberHere++;
     } while (numberHere < 8);
 
@@ -414,7 +418,7 @@ class _CircuitSelectExercises extends State<CircuitSelectExercises> {
             },
             //items: deckOfCardsExercises()
             items:
-                exerciseListHere.map<DropdownMenuItem<String>>((String value) {
+            exerciseListHere!.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:core';
 import 'dart:math';
 
+//import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,6 +22,7 @@ class _HIITTimer extends State<HIITTimer> {
   Timer? timer;
 
   var player = AudioCache();
+  final thisPlayer = AudioPlayer();
 
   bool finished = false;
 
@@ -314,9 +316,9 @@ class _HIITTimer extends State<HIITTimer> {
   }
 
   Widget buildTimeCard(
-          {required String time,
-          required String header,
-          required bool total}) =>
+      {required String time,
+        required String header,
+        required bool total}) =>
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -364,7 +366,9 @@ class _HIITTimer extends State<HIITTimer> {
     //if (_settings.silentMode) {
     //  return Future.value();
     // }
-    return player.play(sound, mode: PlayerMode.LOW_LATENCY);
+    //thisPlayer.setSource(AssetSource(sound));
+    return thisPlayer.play(AssetSource(sound) ,mode: PlayerMode.lowLatency);
+    //return player.play(sound, mode: PlayerMode.LOW_LATENCY);
   }
 
   double getTextSize(bool isLarge) {
@@ -387,57 +391,57 @@ class _HIITTimer extends State<HIITTimer> {
     //final isCompleted = false;
     return isRunning || isCompleted
         ? new GestureDetector(
-            onTap: () {
-              if (isRunning) {
-                stopTimer(resets: false);
-              }
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 0.02.sh,
-                horizontal: 0.06.sw,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey.shade900,
-                borderRadius: BorderRadius.circular(
-                  0.02.sw,
-                ),
-              ),
-              width: 0.45.sw,
-              child: new Text(
-                "Stop!",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.merriweather(
-                  fontSize: 0.05.sw,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          )
+      onTap: () {
+        if (isRunning) {
+          stopTimer(resets: false);
+        }
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 0.02.sh,
+          horizontal: 0.06.sw,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.blueGrey.shade900,
+          borderRadius: BorderRadius.circular(
+            0.02.sw,
+          ),
+        ),
+        width: 0.45.sw,
+        child: new Text(
+          "Stop!",
+          textAlign: TextAlign.center,
+          style: GoogleFonts.merriweather(
+            fontSize: 0.05.sw,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    )
         : new GestureDetector(
-            onTap: startTimer,
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 0.02.sh,
-                horizontal: 0.06.sw,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.blueGrey.shade900,
-                borderRadius: BorderRadius.circular(
-                  0.02.sw,
-                ),
-              ),
-              width: 0.45.sw,
-              child: new Text(
-                "Start Timer!",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.merriweather(
-                  fontSize: 0.05.sw,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          );
+      onTap: startTimer,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 0.02.sh,
+          horizontal: 0.06.sw,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.blueGrey.shade900,
+          borderRadius: BorderRadius.circular(
+            0.02.sw,
+          ),
+        ),
+        width: 0.45.sw,
+        child: new Text(
+          "Start Timer!",
+          textAlign: TextAlign.center,
+          style: GoogleFonts.merriweather(
+            fontSize: 0.05.sw,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -449,20 +453,20 @@ class ButtonWidget extends StatelessWidget {
 
   const ButtonWidget(
       {Key? key,
-      required this.text,
-      required this.onClicked,
-      this.color = Colors.white,
-      this.backgroundColor = Colors.black})
+        required this.text,
+        required this.onClicked,
+        this.color = Colors.white,
+        this.backgroundColor = Colors.black})
       : super(key: key);
   @override
   Widget build(BuildContext context) => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            primary: backgroundColor,
-            padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
-        onPressed: onClicked,
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 20, color: color),
-        ),
-      );
+    style: ElevatedButton.styleFrom(
+        primary: backgroundColor,
+        padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16)),
+    onPressed: onClicked,
+    child: Text(
+      text,
+      style: TextStyle(fontSize: 20, color: color),
+    ),
+  );
 }

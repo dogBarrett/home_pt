@@ -10,6 +10,7 @@ import 'package:home_pt/helpers/ad_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../globals.dart';
 import 'circuit_session.dart';
 
 class CircuitDifficulty extends StatefulWidget {
@@ -19,19 +20,6 @@ class CircuitDifficulty extends StatefulWidget {
 }
 
 class _CircuitDifficulty extends State<CircuitDifficulty> {
-  @override
-  bool isInitialised = false;
-
-  Future<InitializationStatus> _initGoogleMobileAds() {
-    // TODO: Initialize Google Mobile Ads SDK
-    return MobileAds.instance.initialize();
-  }
-
-  // TODO: Add _interstitialAd
-  InterstitialAd? _interstitialAd;
-
-  // TODO: Add _isInterstitialAdReady
-  bool _isInterstitialAdReady = false;
 
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -91,15 +79,9 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
   }
 
   void initState() {
-    // TODO: Load an Interstitial Ad
-    if (!_isInterstitialAdReady) {
-      _loadInterstitialAd();
-    }
-    super.initState();
-    //_initGoogleMobileAds();
-    //setState(() {
 
-    //});
+    super.initState();
+
   }
 
   Container getButtonContainer(String textLine, String imageAsset) {
@@ -135,33 +117,9 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
     );
   }
 
-  void _loadInterstitialAd() {
-    InterstitialAd.load(
-      adUnitId: AdHelper.interstitialAdUnitId,
-      request: AdRequest(),
-      adLoadCallback: InterstitialAdLoadCallback(
-        onAdLoaded: (ad) {
-          this._interstitialAd = ad;
-
-          ad.fullScreenContentCallback = FullScreenContentCallback(
-            onAdDismissedFullScreenContent: (ad) {
-              setState(() {});
-            },
-          );
-
-          _isInterstitialAdReady = true;
-        },
-        onAdFailedToLoad: (err) {
-          print('Failed to load an interstitial ad: ${err.message}');
-          _isInterstitialAdReady = false;
-        },
-      ),
-    );
-  }
-
   void dispose() {
     // COMPLETE: Dispose an InterstitialAd object
-    _interstitialAd?.dispose();
+    interstitialAd?.dispose();
 
     super.dispose();
   }
@@ -169,12 +127,7 @@ class _CircuitDifficulty extends State<CircuitDifficulty> {
   void startSession(int levelNumber) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt("circuitDifficulty", levelNumber);
-
-    // TODO: Display an Interstitial Ad
-    if (_isInterstitialAdReady) {
-      _interstitialAd?.show();
-    }
-
+    showAd();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CircuitSession(),

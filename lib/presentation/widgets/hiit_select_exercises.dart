@@ -23,7 +23,7 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
   var randomNumber = new Random();
 
   // ignore: deprecated_member_use
-  List<String> exerciseList = <String>[];
+  List<String> exerciseListHere = <String>[];
   int numberOfExercises = 0;
   int numberOfExerciseSets = 4;
 
@@ -284,8 +284,8 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
     setPrefs();
     Navigator.of(context)
         .push(MaterialPageRoute(
-          builder: (context) => HIITDifficulty(),
-        ))
+      builder: (context) => HIITDifficulty(),
+    ))
         .then((value) => setState(() {}));
   }
 
@@ -303,8 +303,9 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
   }
 
   void initState() {
+    super.initState();
+    createAds();
     getExerciseList();
-    setState(() {});
   }
 
   void getExerciseList() async {
@@ -312,13 +313,17 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
     int i = 0;
 
     do {
-      if (prefs.getString("isSelected" + i.toString()) == "1" && HIIT[i]) {
-        exerciseList.add(exerciseNamePlural[i]);
+      if (prefs.getString("isSelected" + i.toString()) == "1" && exerciseList[i].hiit) {
+        exerciseListHere.add(exerciseList[i].exerciseNamePlural);
       }
       i++;
     } while (i < numberOfExercisesToChooseFrom);
+
     numberOfExerciseSets = prefs.getInt("hiitExercises") ?? 4;
-    numberOfExercises = exerciseList.length;
+    numberOfExercises = exerciseListHere.length;
+
+    exerciseList.sort((a, b) => a.toString().compareTo(b.toString()));
+
     randomiseExercises();
 
     setState(() {});
@@ -341,7 +346,7 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
     do {
       ex[4] = randomNumber.nextInt(count);
     } while (
-        ex[4] == ex[0] || ex[4] == ex[1] || ex[4] == ex[2] || ex[4] == ex[3]);
+    ex[4] == ex[0] || ex[4] == ex[1] || ex[4] == ex[2] || ex[4] == ex[3]);
     do {
       ex[5] = randomNumber.nextInt(count);
     } while (ex[5] == ex[0] ||
@@ -369,7 +374,7 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
 
     int numberHere = 0;
     do {
-      exercises[numberHere] = exerciseList[ex[numberHere]];
+      exercises[numberHere] = exerciseListHere[ex[numberHere]];
       numberHere++;
     } while (numberHere < 8);
 
@@ -382,7 +387,6 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
     } else {
       return Container();
     }
-    ;
   }
 
   Container getDropdownMenu(String exerciseNumber, int dropdownNumber) {
@@ -414,8 +418,7 @@ class _HIITSelectExercises extends State<HIITSelectExercises> {
 
               setState(() {});
             },
-            //items: deckOfCardsExercises()
-            items: exerciseList.map<DropdownMenuItem<String>>((String value) {
+            items: exerciseListHere.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(

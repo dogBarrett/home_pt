@@ -122,10 +122,7 @@ class _DeckOfCards extends State<DeckOfCards> {
     if (numberOfCardsLeft == 52) {
       return "Touch cards to begin session";
     } else {
-      if (numberOfCardsLeft > 1) {
-        return numberOfCardsLeft.toString() + " cards left";
-      } else
-        return "Last card";
+      return (numberOfCardsLeft > 1)? (numberOfCardsLeft.toString() + " cards left") : "Last card";
     }
   }
 

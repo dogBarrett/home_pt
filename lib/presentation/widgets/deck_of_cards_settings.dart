@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:home_pt/presentation/widgets/deck_of_cards_select_exercises.dart';
 
+import '../../globals.dart';
+
 class DeckOfCardsSettings extends StatefulWidget {
   //DeckOfCardsPage({Key key}) : super(key: key);
   @override
@@ -44,34 +46,36 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      new RaisedButton(
+                      new ElevatedButton(
                           key: null,
                           onPressed: flipAce,
-                          color: const Color(0xFFe0e0e0),
+                          style:ElevatedButton.styleFrom(backgroundColor: Color(0xFFe0e0e0)),
+                          //color: const Color(0xFFe0e0e0),
                           child: new Text(
                             "1 rep",
                             style: new TextStyle(
                                 fontSize: 12.0,
                                 color: const Color(0xFF000000),
                                 fontWeight:
-                                    isAce1 ? FontWeight.w800 : FontWeight.w200,
+                                isAce1 ? FontWeight.w800 : FontWeight.w200,
                                 fontFamily: "Roboto"),
                           )),
                       new Image.asset(
                         "assets/cards/AS.png",
                         fit: BoxFit.fill,
                       ),
-                      new RaisedButton(
+                      new ElevatedButton(
                           key: null,
                           onPressed: flipAce,
-                          color: const Color(0xFFe0e0e0),
+                          style:ElevatedButton.styleFrom(backgroundColor: Color(0xFFe0e0e0)),
+                          //color: const Color(0xFFe0e0e0),
                           child: new Text(
                             "11 reps",
                             style: new TextStyle(
                                 fontSize: 12.0,
                                 color: const Color(0xFF000000),
                                 fontWeight:
-                                    isAce11 ? FontWeight.w800 : FontWeight.w200,
+                                isAce11 ? FontWeight.w800 : FontWeight.w200,
                                 fontFamily: "Roboto"),
                           ))
                     ]),
@@ -83,10 +87,11 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      new RaisedButton(
+                      new ElevatedButton(
                           key: null,
                           onPressed: flipPicture,
-                          color: const Color(0xFFe0e0e0),
+                          style:ElevatedButton.styleFrom(backgroundColor: Color(0xFFe0e0e0)),
+                          //color: const Color(0xFFe0e0e0),
                           child: new Text(
                             "10 reps",
                             style: new TextStyle(
@@ -101,10 +106,11 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
                         "assets/cards/KS.png",
                         fit: BoxFit.fill,
                       ),
-                      new RaisedButton(
+                      new ElevatedButton(
                           key: null,
                           onPressed: flipPicture,
-                          color: const Color(0xFFe0e0e0),
+                          style:ElevatedButton.styleFrom(backgroundColor: Color(0xFFe0e0e0)),
+                          //color: const Color(0xFFe0e0e0),
                           child: new Text(
                             "Card value",
                             style: new TextStyle(
@@ -118,10 +124,11 @@ class _DeckOfCardsSettings extends State<DeckOfCardsSettings> {
                     ]),
                 height: 100,
               ),
-              new RaisedButton(
+              new ElevatedButton(
                   key: null,
                   onPressed: proceed,
-                  color: const Color(0xFFe0e0e0),
+                  style:ElevatedButton.styleFrom(backgroundColor: Color(0xFFe0e0e0)),
+                  //color: const Color(0xFFe0e0e0),
                   child: new Text(
                     "Continue",
                     style: new TextStyle(

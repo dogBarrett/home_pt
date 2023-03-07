@@ -1,13 +1,19 @@
+import 'dart:convert';
 import 'dart:core';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:home_pt/presentation/widgets/add_todays_stats.dart';
 import 'package:home_pt/presentation/widgets/deck_of_cards_select_exercises.dart';
+import 'package:home_pt/presentation/widgets/display_daily_stats.dart';
 import 'package:home_pt/presentation/widgets/sets_select_exercises2.dart';
+import 'package:home_pt/presentation/widgets/weights_select_muscle_group.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:home_pt/presentation/widgets/sets_select_exercises.dart';
 
+import '../../globals.dart';
 import 'circuit_select_exercises.dart';
 import 'exercise_selection.dart';
 import 'hiit_select_exercises.dart';
@@ -28,23 +34,58 @@ class _MainMenu extends State<MainMenu> {
       appBar: new AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            icon: Icon(
-              FontAwesomeIcons.cog,
-            ),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => ExerciseSelection(),
-                ),
-              );
-            },
-          ),
-        ],
+        automaticallyImplyLeading: true,
+
       ),
       extendBodyBehindAppBar: true,
+      drawer: Drawer(
+        child: Container(
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text('' ,style: TextStyle(
+            fontWeight: FontWeight.bold,
+          )),
+
+              ),
+              ListTile(
+                title: Text('Select Exercises to include'),
+                onTap: () {
+                  getPrefs();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ExerciseSelection(),
+                    ),
+                  );
+                  // TODO: Implement function for Option 1
+                },
+              ),
+              ListTile(
+                title: Text('Enter Measurements'),
+                onTap: () {
+                  getPrefs();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => AddTodaysStats(),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: Text('View Measurements'),
+                onTap: () {
+                  getPrefs();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DisplayDailyStats(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       body: new Container(
         height: 1.sh,
         width: 1.sw,
@@ -73,14 +114,12 @@ class _MainMenu extends State<MainMenu> {
                   openDeckOfCards();
                 },
                 child: getTile(0),
-
               ),
               GestureDetector(
                 onTap: () {
                   openCircuit();
                 },
                 child: getTile(1),
-
               ),
               GestureDetector(
                 onTap: () {
@@ -100,6 +139,12 @@ class _MainMenu extends State<MainMenu> {
                 },
                 child: getTile(4),
               ),
+              GestureDetector(
+                onTap: () {
+                  openWeights();
+                },
+                child: getTile(5),
+              ),
             ],
           ),
         ),
@@ -113,16 +158,14 @@ class _MainMenu extends State<MainMenu> {
       ),
     );
   }
-
-  /*void onClose() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => SelectExercisesForDeckOfCards(),
-      ),
-    );
-  }*/
+  void initState() {
+    super.initState();
+    getPrefs();
+  }
 
   void openDeckOfCards() {
+    createAds();
+
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => DeckOfCardsSelectExercises(),
@@ -131,6 +174,7 @@ class _MainMenu extends State<MainMenu> {
   }
 
   void openSets() {
+    createAds();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => SetsSelectExercises(),
@@ -139,6 +183,7 @@ class _MainMenu extends State<MainMenu> {
   }
 
   void openHIIT() {
+    createAds();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => HIITSelectExercises(),
@@ -147,6 +192,7 @@ class _MainMenu extends State<MainMenu> {
   }
 
   void openHIITTimer() {
+    createAds();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => HIITTimerSetup(),
@@ -155,9 +201,19 @@ class _MainMenu extends State<MainMenu> {
   }
 
   void openCircuit() {
+    createAds();
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CircuitSelectExercises(),
+      ),
+    );
+  }
+
+  void openWeights() {
+    createAds();
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => WeightsSelectMuscleGroup(),
       ),
     );
   }
@@ -167,30 +223,36 @@ class _MainMenu extends State<MainMenu> {
     String thisTitle = "";
     String thisExplanation = "";
 
-    if (thisNumber == 0){
+    if (thisNumber == 0) {
       imageFile = "assets/images/button4_result.jpg";
       thisTitle = "Deck of Cards";
-      thisExplanation = "52 cards. 4 exercises. Surprise order. Surprise number of reps. Max effort.";
-    }
-    else if(thisNumber == 1){
+      thisExplanation =
+          "52 cards. 4 exercises. Surprise order. Surprise number of reps. Max effort.";
+    } else if (thisNumber == 1) {
       imageFile = "assets/images/button3_result.jpg";
       thisTitle = "Circuit";
-      thisExplanation = "Circuit is a list of exercises to do in order going from top to bottom, then back to the top 5 times through.";
-    }
-    else if(thisNumber == 2){
+      thisExplanation =
+          "Circuit is a list of exercises to do in order going from top to bottom, then back to the top 5 times through.";
+    } else if (thisNumber == 2) {
       imageFile = "assets/images/button2_result.jpg";
       thisTitle = "HIIT Session";
-      thisExplanation = "High Intensity Interval Training is max effort during work period, rest during rest period. MAX effort.";
-    }
-    else if(thisNumber == 3){
+      thisExplanation =
+          "High Intensity Interval Training is max effort during work period, rest during rest period. MAX effort.";
+    } else if (thisNumber == 3) {
       imageFile = "assets/images/button1_result.jpg";
       thisTitle = "Sets";
-      thisExplanation = "Repeat the same exercise the given number of times before moving to the next exercise.";
-    }
-    else if(thisNumber == 4){
+      thisExplanation =
+          "Repeat the same exercise the given number of times before moving to the next exercise.";
+    } else if (thisNumber == 4) {
       imageFile = "assets/images/button5_result.jpg";
       thisTitle = "HIIT Timer";
-      thisExplanation = "Select your own HIIT timer values, and do your own HIIT session using the apps HIIT countdown timer.";
+      thisExplanation =
+          "Select your own HIIT timer values, and do your own HIIT session using the apps HIIT countdown timer.";
+    } else if (thisNumber == 5) {
+      imageFile = "assets/images/button6_result.jpg";
+      thisTitle = "Weights";
+      thisExplanation =
+          "Select a muscle group to work out, and build muscle with the weights session";
     }
     return Container(
       height: 0.4.sh,
@@ -223,8 +285,7 @@ class _MainMenu extends State<MainMenu> {
             top: 0,
             left: 0,
             child: Container(
-              margin:
-              EdgeInsets.only(left: 0.05.sw, top: 0.035.sh),
+              margin: EdgeInsets.only(left: 0.05.sw, top: 0.035.sh),
               child: Text(
                 thisTitle,
                 style: GoogleFonts.merriweather(
@@ -240,8 +301,7 @@ class _MainMenu extends State<MainMenu> {
             left: 0,
             child: Container(
               width: 0.8.sw,
-              margin:
-              EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
+              margin: EdgeInsets.only(left: 0.05.sw, bottom: 0.035.sh),
               child: Text(
                 thisExplanation,
                 style: TextStyle(
@@ -258,4 +318,22 @@ class _MainMenu extends State<MainMenu> {
     );
   }
 
+  void getPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? jsonStr = prefs!.getString('jsonDailyMeasurements');
+
+    // If there's no existing data, return an empty list
+    /*if (jsonStr == null) {
+      return [];
+    }*/
+// Parse JSON string to List<Map<String, dynamic>>
+    List<dynamic> jsonList = jsonDecode(jsonStr!);
+    List<Map<String, dynamic>> mapList =
+    List<Map<String, dynamic>>.from(jsonList);
+
+    globalDailyMeasurements =
+        mapList.map((map) => DailyMeasurements.fromJson(map)).toList();
+
+// Read JSON string from shared preference
+  }
 }
