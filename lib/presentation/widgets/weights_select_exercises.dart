@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+//import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:home_pt/helpers/ad_helper.dart';
@@ -53,7 +53,7 @@ class _WeightsSelectExercises extends State<WeightsSelectExercises> {
         actions: [
           IconButton(
               icon: Icon(
-                FontAwesomeIcons.cog,
+                Icons.settings,
                 color: Colors.white,
               ),
               onPressed: () {
@@ -186,7 +186,7 @@ class _WeightsSelectExercises extends State<WeightsSelectExercises> {
                 constraints: BoxConstraints(maxHeight: 0.45.sh),
                 child: new Container(
                   child: Scrollbar(
-                    isAlwaysShown: true,
+                    thumbVisibility: true,
                     child: SingleChildScrollView(
                       child: Column(children: <Widget>[
                         getDropdownMenu(exercises[0], 1),

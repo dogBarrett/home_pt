@@ -35,7 +35,7 @@ dependencies:
   google_fonts:
   audioplayers:
   flutter_screenutil:
-  font_awesome_flutter:
+  #font_awesome_flutter:
   file: ^6.1.4
   intl:
   fluttertoast: ^8.2.1

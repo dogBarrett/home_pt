@@ -158,6 +158,7 @@ class _ExerciseSelection extends State<ExerciseSelection> {
                                   return Image.asset(
                                     "assets/exercises/NoImageYet.jpeg",
                                     fit: BoxFit.fitWidth,
+                                    gaplessPlayback: true,
                                   );
                                 },
                               ),
@@ -279,7 +280,7 @@ class _ExerciseSelection extends State<ExerciseSelection> {
                 child: Icon(
                   Icons.info_outline_rounded,
                   color: Colors.blueGrey.shade900,
-                  size: 0.06.sw,
+                  //size: 0.06.sw,
                 ),
               ),
               title: Transform(

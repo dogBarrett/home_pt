@@ -71,7 +71,7 @@ class _DeckOfCardsSelectExercises extends State<DeckOfCardsSelectExercises> {
                   constraints: BoxConstraints(maxHeight: 0.45.sh),
                   child: new Container(
                     child: Scrollbar(
-                      isAlwaysShown: true,
+                      thumbVisibility: true,
                       child: SingleChildScrollView(
                         child: Column(children: <Widget>[
                           new Container(
